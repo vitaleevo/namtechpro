@@ -6,6 +6,7 @@
         "backend"
     ],
     "devDependencies": {
-        "convex": "^1.31.7"
+        "convex": "^1.31.7",
+        "typescript": "^5.9.3"
     }
 }
