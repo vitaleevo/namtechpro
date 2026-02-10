@@ -1,8 +1,0 @@
-{
-  "name": "Namtech Pro Portal",
-  "description": "A comprehensive maritime and industrial technology platform featuring a product catalog, technical dashboards, and an AI-powered technical assistant.",
-  "requestFramePermissions": [
-    "camera",
-    "microphone"
-  ]
-}
