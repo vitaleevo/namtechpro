@@ -8,7 +8,23 @@ import { validateAdmin } from "./auth_utils";
 export const getMessages = query({
     args: { sessionId: v.id("chat_sessions") },
     handler: async (ctx, args) => {
-        // TODO: Security - Add session token validation to prevent IDOR
+        // SECURITY: Validate that the session exists and is not closed.
+        // This prevents blind enumeration of session IDs (IDOR mitigation).
+        // Authenticated admins can always read any session.
+        const session = await ctx.db.get(args.sessionId);
+        if (!session) {
+            return [];
+        }
+
+        // If the session is closed, only admins can view messages
+        if (session.status === "closed") {
+            try {
+                await validateAdmin(ctx);
+            } catch {
+                return [];
+            }
+        }
+
         return await ctx.db
             .query("chat_messages")
             .withIndex("by_session", (q) => q.eq("sessionId", args.sessionId))
@@ -89,6 +105,15 @@ export const addMessage = mutation({
             await validateAdmin(ctx);
         }
 
+        // Security Check 3: Validate session exists and is not closed
+        const session = await ctx.db.get(sessionId);
+        if (!session) {
+            throw new Error("Session not found.");
+        }
+        if (session.status === "closed") {
+            throw new Error("Cannot send messages to a closed session.");
+        }
+
         // Update session timestamp
         await ctx.db.patch(sessionId, { lastMessageAt: Date.now() });
 
@@ -105,6 +130,14 @@ export const addMessage = mutation({
 export const requestHuman = mutation({
     args: { sessionId: v.id("chat_sessions") },
     handler: async (ctx, args) => {
+        // Validate session exists before patching
+        const session = await ctx.db.get(args.sessionId);
+        if (!session) {
+            throw new Error("Session not found.");
+        }
+        if (session.status === "closed") {
+            throw new Error("Cannot request human for a closed session.");
+        }
         await ctx.db.patch(args.sessionId, { status: "human" });
     },
 });
@@ -112,6 +145,11 @@ export const requestHuman = mutation({
 export const closeSession = mutation({
     args: { sessionId: v.id("chat_sessions") },
     handler: async (ctx, args) => {
+        // Validate session exists before closing
+        const session = await ctx.db.get(args.sessionId);
+        if (!session) {
+            throw new Error("Session not found.");
+        }
         await ctx.db.patch(args.sessionId, { status: "closed" });
     },
 });

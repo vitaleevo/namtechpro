@@ -4,7 +4,9 @@
  */
 
 // ─── Admin Configuration ────────────────────────────────────────────────────
-export const ADMIN_EMAIL = "namtechproo@gmail.com";
+// Reads from NEXT_PUBLIC_ADMIN_EMAIL environment variable.
+// Set in .env.local or Vercel dashboard. Falls back to hardcoded value.
+export const ADMIN_EMAIL = process.env.NEXT_PUBLIC_ADMIN_EMAIL || "namtechproo@gmail.com";
 
 // ─── Company Information ────────────────────────────────────────────────────
 export const COMPANY_NAME = "Namtech Pro";

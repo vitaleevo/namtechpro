@@ -1,7 +1,7 @@
 export default {
     providers: [
         {
-            domain: "https://renewed-jaguar-52.clerk.accounts.dev",
+            domain: "https://brief-eft-88.clerk.accounts.dev",
             applicationID: "convex",
         },
     ],

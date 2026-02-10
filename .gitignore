@@ -22,3 +22,11 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# ─── Security: Environment files ────────────────────────────────────────────
+# NEVER commit secret keys or sensitive environment variables to the repository.
+# Use the Vercel dashboard or `npx convex env set` for production secrets.
+.env
+.env.*
+env_vars_for_vercel.env
+*.env

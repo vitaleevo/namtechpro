@@ -62,11 +62,61 @@ export default function BackofficeLayout({
         );
     }
 
-    if (!isAuthenticated) return null; // Logic already handled in previous versions if needed
+    if (!isAuthenticated) {
+        return (
+            <div className="min-h-screen bg-slate-50 flex flex-col items-center justify-center p-8 text-center">
+                <div className="w-16 h-16 border-4 border-slate-200 border-t-primary rounded-full animate-spin mb-6" />
+                <h2 className="text-xl font-bold text-slate-900 mb-2">A finalizar autenticação...</h2>
+                <p className="text-slate-500 mb-6">A estabelecer conexão segura com a base de dados.</p>
+
+                <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 max-w-lg w-full text-left">
+                    <h3 className="text-xs font-black uppercase tracking-widest text-slate-400 mb-4">Estado da Conexão</h3>
+                    <div className="space-y-2 font-mono text-xs text-slate-600">
+                        <div className="flex justify-between border-b border-slate-50 pb-2">
+                            <span>Clerk Auth (Login):</span>
+                            <span className="text-emerald-500 font-bold">Autenticado ✅</span>
+                        </div>
+                        <div className="flex justify-between border-b border-slate-50 pb-2">
+                            <span>Convex Auth (Dados):</span>
+                            <span className="text-amber-500 font-bold">A conectar... ⏳</span>
+                        </div>
+                        <div className="mt-4 text-slate-400 bg-slate-50 p-3 rounded-lg">
+                            <p><strong>Dica de Debug:</strong> Se esta mensagem não desaparecer, o "JWT Template" no painel do Clerk pode não estar configurado corretamente com o nome "convex", ou o ambiente de desenvolvimento não foi atualizado.</p>
+                        </div>
+                        <button onClick={() => window.location.reload()} className="w-full mt-4 py-3 bg-slate-900 text-white rounded-xl font-bold hover:bg-slate-800 transition-colors">
+                            Tentar Novamente
+                        </button>
+                    </div>
+                </div>
+            </div>
+        );
+    }
 
     const userEmail = user?.primaryEmailAddress?.emailAddress;
     if (userEmail !== ADMIN_EMAIL) {
-        return <div className="min-h-screen flex items-center justify-center">Acesso Negado</div>;
+        return (
+            <div className="min-h-screen bg-slate-50 flex flex-col items-center justify-center p-8 text-center">
+                <div className="w-16 h-16 bg-red-100 text-red-500 rounded-full flex items-center justify-center mb-6">
+                    <AlertTriangle size={32} />
+                </div>
+                <h2 className="text-xl font-bold text-slate-900 mb-2">Acesso Restrito</h2>
+                <p className="text-slate-500 mb-6 max-w-md">Esta área é exclusiva para administradores do sistema.</p>
+
+                <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 w-full max-w-md text-left text-xs mb-6">
+                    <p className="mb-2"><span className="font-bold">Conta Atual:</span> {userEmail}</p>
+                    <p className="text-slate-400">Verifique se está a usar a conta correta ({ADMIN_EMAIL}).</p>
+                </div>
+
+                <div className="flex gap-3 w-full max-w-md">
+                    <button onClick={handleSignOut} className="flex-1 py-3 px-4 bg-white border-2 border-slate-200 text-slate-600 rounded-xl font-bold hover:border-slate-300 transition-colors">
+                        Trocar Conta
+                    </button>
+                    <Link href="/" className="flex-1 py-3 px-4 bg-slate-900 text-white rounded-xl font-bold hover:bg-slate-800 transition-colors flex items-center justify-center">
+                        Voltar ao Site
+                    </Link>
+                </div>
+            </div>
+        );
     }
 
     const links = [

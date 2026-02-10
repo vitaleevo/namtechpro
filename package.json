@@ -2,8 +2,7 @@
     "name": "namtechpro-monorepo",
     "private": true,
     "workspaces": [
-        "frontend",
-        "backend"
+        "frontend"
     ],
     "devDependencies": {
         "convex": "^1.31.7",
