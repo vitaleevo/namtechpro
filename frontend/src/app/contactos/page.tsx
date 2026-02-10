@@ -5,8 +5,20 @@ import { Metadata } from "next";
 import { Suspense } from "react";
 
 export const metadata: Metadata = {
-    title: "Contactos | Namtech Pro",
+    title: "Contactos",
     description: "Entre em contacto com a equipa técnica da Namtech Pro. Suporte técnico marítimo e industrial 24/7 em Angola.",
+    openGraph: {
+        title: "Contactos | Namtech Pro",
+        description: "Entre em contacto com a equipa técnica da Namtech Pro. Suporte técnico marítimo e industrial 24/7 em Angola.",
+    },
+    twitter: {
+        card: "summary_large_image",
+        title: "Contactos | Namtech Pro",
+        description: "Suporte técnico 24/7 em Angola.",
+    },
+    alternates: {
+        canonical: "/contactos",
+    },
 };
 
 export default function ContactPage() {

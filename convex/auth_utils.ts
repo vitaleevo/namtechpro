@@ -1,6 +1,8 @@
 import { ConvexError } from "convex/values";
 import { QueryCtx, MutationCtx } from "./_generated/server";
 
+// NOTE: Convex runs on its own server runtime and cannot import from the frontend.
+// If you change this email, also update frontend/src/lib/constants.ts
 export const ADMIN_EMAIL = "namtechproo@gmail.com";
 
 export async function validateAdmin(ctx: QueryCtx | MutationCtx) {

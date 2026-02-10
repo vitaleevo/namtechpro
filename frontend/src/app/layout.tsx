@@ -16,10 +16,60 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Namtech Pro | Excellence in Angolan Technology",
-  description: "Especialistas em integração de sistemas de navegação, rádio e energia industrial em Angola.",
+  title: {
+    default: "Namtech Pro | Excelência em Tecnologia Angolana",
+    template: "%s | Namtech Pro",
+  },
+  description:
+    "Especialistas em integração de sistemas de navegação, rádio e energia industrial em Angola. Soluções tecnológicas marítimas e industriais premium.",
+  keywords: [
+    "navegação marítima",
+    "radar",
+    "GPS",
+    "rádio VHF",
+    "energia solar",
+    "Angola",
+    "Namibe",
+    "Luanda",
+    "tecnologia naval",
+    "Furuno",
+    "Icom",
+    "Namtech Pro",
+  ],
+  authors: [{ name: "Namtech Pro" }],
+  creator: "Namtech Pro",
+  publisher: "Namtech Pro",
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
   icons: {
     icon: "/favicon.png",
+    apple: "/favicon.png",
+  },
+  openGraph: {
+    type: "website",
+    locale: "pt_AO",
+    siteName: "Namtech Pro",
+    title: "Namtech Pro | Excelência em Tecnologia Angolana",
+    description:
+      "Especialistas em integração de sistemas de navegação, rádio e energia industrial em Angola.",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Namtech Pro | Excelência em Tecnologia Angolana",
+    description:
+      "Especialistas em integração de sistemas de navegação, rádio e energia industrial em Angola.",
+  },
+  alternates: {
+    canonical: "/",
   },
 };
 
@@ -31,12 +81,16 @@ export default function RootLayout({
   return (
     <html lang="pt-AO" className="light">
       <head>
-        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet" />
-        <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;600;700;800&display=swap"
+          rel="stylesheet"
+        />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+          rel="stylesheet"
+        />
       </head>
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <ConvexClientProvider>
           <ClientLanguageProvider>
             {children}

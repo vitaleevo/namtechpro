@@ -1,7 +1,6 @@
 import { clerkMiddleware, createRouteMatcher, clerkClient } from "@clerk/nextjs/server";
 import { NextResponse } from "next/server";
-
-const ADMIN_EMAIL = "namtechproo@gmail.com";
+import { ADMIN_EMAIL } from "@/lib/constants";
 
 const isProtectedRoute = createRouteMatcher([
     "/namtechprobackoffice(.*)",

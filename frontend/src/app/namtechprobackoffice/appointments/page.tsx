@@ -18,6 +18,8 @@ import {
     ChevronRight,
     MessageSquare
 } from "lucide-react";
+import DeleteConfirmationModal from "@/components/ui/DeleteConfirmationModal";
+import ErrorModal from "@/components/ui/ErrorModal";
 
 export default function AppointmentsPage() {
     const { isAuthenticated } = useConvexAuth();
@@ -27,6 +29,11 @@ export default function AppointmentsPage() {
 
     const [searchTerm, setSearchTerm] = useState("");
     const [selectedId, setSelectedId] = useState<Id<"appointments"> | null>(null);
+    const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
+    const [appointmentToDelete, setAppointmentToDelete] = useState<Id<"appointments"> | null>(null);
+    const [isDeleting, setIsDeleting] = useState(false);
+    const [isErrorModalOpen, setIsErrorModalOpen] = useState(false);
+    const [errorMessage, setErrorMessage] = useState("");
 
     const filteredAppointments = appointments?.filter(app =>
         app.customerName.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -37,14 +44,36 @@ export default function AppointmentsPage() {
     const selectedApp = appointments?.find(app => app._id === selectedId);
 
     const handleUpdateStatus = async (id: Id<"appointments">, status: string) => {
-        await updateStatus({ id, status });
+        try {
+            await updateStatus({ id, status });
+        } catch (error) {
+            console.error("Failed to update status:", error);
+            setErrorMessage("Não foi possível atualizar o estado do agendamento. Por favor, tente novamente.");
+            setIsErrorModalOpen(true);
+        }
     };
 
-    const handleDelete = async (e: React.MouseEvent, id: Id<"appointments">) => {
+    const handleDelete = (e: React.MouseEvent, id: Id<"appointments">) => {
         e.stopPropagation();
-        if (confirm("Deseja eliminar este agendamento permanentemente?")) {
-            await deleteAppointment({ id });
-            if (selectedId === id) setSelectedId(null);
+        setAppointmentToDelete(id);
+        setIsDeleteModalOpen(true);
+    };
+
+    const confirmDelete = async () => {
+        if (appointmentToDelete) {
+            setIsDeleting(true);
+            try {
+                await deleteAppointment({ id: appointmentToDelete });
+                if (selectedId === appointmentToDelete) setSelectedId(null);
+                setIsDeleteModalOpen(false);
+                setAppointmentToDelete(null);
+            } catch (error) {
+                console.error("Failed to delete appointment:", error);
+                setErrorMessage("Não foi possível eliminar o agendamento. Por favor, verifique a sua ligação ou tente mais tarde.");
+                setIsErrorModalOpen(true);
+            } finally {
+                setIsDeleting(false);
+            }
         }
     };
 
@@ -256,6 +285,23 @@ export default function AppointmentsPage() {
                     )}
                 </div>
             </div>
+
+
+            <DeleteConfirmationModal
+                isOpen={isDeleteModalOpen}
+                onClose={() => setIsDeleteModalOpen(false)}
+                onConfirm={confirmDelete}
+                title="Eliminar Agendamento"
+                description="Tem a certeza que deseja eliminar este agendamento permanentemente? Esta ação não pode ser desfeita."
+                isDeleting={isDeleting}
+            />
+
+            <ErrorModal
+                isOpen={isErrorModalOpen}
+                onClose={() => setIsErrorModalOpen(false)}
+                title="Erro"
+                message={errorMessage}
+            />
         </div>
     );
 }

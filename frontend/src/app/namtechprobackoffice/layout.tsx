@@ -22,9 +22,7 @@ import {
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
-
-// Email do administrador autorizado - deve corresponder ao convex/auth_utils.ts
-const ADMIN_EMAIL = "namtechproo@gmail.com";
+import { ADMIN_EMAIL } from "@/lib/constants";
 
 export default function BackofficeLayout({
     children,

@@ -1,6 +1,6 @@
-import { query, mutation, action } from "./_generated/server";
+import { query, mutation, action, internalMutation } from "./_generated/server";
 import { v } from "convex/values";
-import { api } from "./_generated/api";
+import { api, internal } from "./_generated/api";
 import { validateAdmin } from "./auth_utils";
 
 // --- Queries ---
@@ -8,6 +8,7 @@ import { validateAdmin } from "./auth_utils";
 export const getMessages = query({
     args: { sessionId: v.id("chat_sessions") },
     handler: async (ctx, args) => {
+        // TODO: Security - Add session token validation to prevent IDOR
         return await ctx.db
             .query("chat_messages")
             .withIndex("by_session", (q) => q.eq("sessionId", args.sessionId))
@@ -18,7 +19,6 @@ export const getMessages = query({
 export const listActiveSessions = query({
     args: {},
     handler: async (ctx) => {
-        // In a real app, only admins would call this, so we validate
         try {
             await validateAdmin(ctx);
             return await ctx.db
@@ -46,6 +46,29 @@ export const createSession = mutation({
     },
 });
 
+// Internal mutation for secure bot messages
+export const internalAddBotMessage = internalMutation({
+    args: {
+        sessionId: v.id("chat_sessions"),
+        text: v.string(),
+        options: v.optional(v.array(v.string())),
+    },
+    handler: async (ctx, args) => {
+        const { sessionId, text, options } = args;
+
+        await ctx.db.patch(sessionId, { lastMessageAt: Date.now() });
+
+        return await ctx.db.insert("chat_messages", {
+            sessionId,
+            sender: "bot",
+            text,
+            options,
+            createdAt: Date.now(),
+        });
+    },
+});
+
+// Public mutation with security checks
 export const addMessage = mutation({
     args: {
         sessionId: v.id("chat_sessions"),
@@ -56,12 +79,22 @@ export const addMessage = mutation({
     handler: async (ctx, args) => {
         const { sessionId, sender, text, options } = args;
 
+        // Security Check 1: Prevent Bot Spoofing
+        if (sender === "bot") {
+            throw new Error("Security Violation: Clients cannot send messages as 'bot'.");
+        }
+
+        // Security Check 2: Validate Admin
+        if (sender === "admin") {
+            await validateAdmin(ctx);
+        }
+
         // Update session timestamp
         await ctx.db.patch(sessionId, { lastMessageAt: Date.now() });
 
         return await ctx.db.insert("chat_messages", {
             sessionId,
-            sender,
+            sender, // 'user' or 'admin' (validated)
             text,
             options,
             createdAt: Date.now(),
@@ -83,8 +116,7 @@ export const closeSession = mutation({
     },
 });
 
-// --- Simple Bot Logic (Actions for future expansion with actual AI if needed) ---
-// For now, we'll implement a simple keyword-based response in an action
+// --- Bot Logic ---
 
 export const processBotResponse = action({
     args: { sessionId: v.id("chat_sessions"), text: v.string() },
@@ -108,7 +140,7 @@ export const processBotResponse = action({
         // 2. PRODUCTS / CATALOG
         else if (text.includes("produto") || text.includes("catalogo") || text.includes("catálogo") || text.includes("comprar") || text.includes("venda") || text.includes("ver produtos")) {
             response = `Temos soluções avançadas em várias áreas. Qual destas categorias gostaria de explorar primeiro?`;
-            options = catNames.slice(0, 4); // Show top 4 categories as buttons
+            options = catNames.slice(0, 4);
             if (options.length === 0) options = ["Energia Solar", "Navegação", "Segurança"];
         }
 
@@ -151,9 +183,9 @@ export const processBotResponse = action({
             options = ["Ver Catálogo", "Falar com Humano"];
         }
 
-        await ctx.runMutation(api.chat.addMessage, {
+        // SECURE IMPLEMENTATION: Use internal mutation
+        await ctx.runMutation(internal.chat.internalAddBotMessage, {
             sessionId: args.sessionId,
-            sender: "bot",
             text: response,
             options: options
         });
