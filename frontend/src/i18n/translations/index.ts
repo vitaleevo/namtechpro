@@ -14,11 +14,11 @@ import { pageTranslations } from './pages';
 export type Language = 'PT' | 'EN' | 'FR';
 
 // Deep merge helper — combines common + page translations per language
-function mergeTranslations<T extends Record<string, unknown>>(
-    common: T,
-    pages: T
-): T {
-    return { ...common, ...pages } as T;
+function mergeTranslations<
+    C extends Record<string, unknown>,
+    P extends Record<string, unknown>
+>(common: C, pages: P): C & P {
+    return { ...common, ...pages } as C & P;
 }
 
 export const translations = {
