@@ -81,7 +81,7 @@ export default function BackofficeLayout({
                             <span className="text-amber-500 font-bold">A conectar... ⏳</span>
                         </div>
                         <div className="mt-4 text-slate-400 bg-slate-50 p-3 rounded-lg">
-                            <p><strong>Dica de Debug:</strong> Se esta mensagem não desaparecer, o "JWT Template" no painel do Clerk pode não estar configurado corretamente com o nome "convex", ou o ambiente de desenvolvimento não foi atualizado.</p>
+                            <p><strong>Dica de Debug:</strong> Se esta mensagem não desaparecer, o &quot;JWT Template&quot; no painel do Clerk pode não estar configurado corretamente com o nome &quot;convex&quot;, ou o ambiente de desenvolvimento não foi atualizado.</p>
                         </div>
                         <button onClick={() => window.location.reload()} className="w-full mt-4 py-3 bg-slate-900 text-white rounded-xl font-bold hover:bg-slate-800 transition-colors">
                             Tentar Novamente

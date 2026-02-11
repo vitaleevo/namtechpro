@@ -263,7 +263,7 @@ export default function AppointmentsPage() {
                                                 </div>
                                                 <div className="bg-white px-8 py-8 rounded-[2rem] rounded-tl-none border border-slate-100 shadow-sm">
                                                     <p className="text-slate-600 text-lg leading-relaxed font-serif italic">
-                                                        "{selectedApp.message}"
+                                                        &quot;{selectedApp.message}&quot;
                                                     </p>
                                                 </div>
                                             </div>

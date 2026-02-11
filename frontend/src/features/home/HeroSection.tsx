@@ -241,7 +241,7 @@ export const HeroSection = () => {
                                 <div className="flex gap-1 text-secondary mb-6">
                                     {[...Array(5)].map((_, star) => <span key={star} className="material-symbols-outlined text-sm">star</span>)}
                                 </div>
-                                <p className="italic text-slate-300 mb-8 leading-relaxed">"{t.text}"</p>
+                                <p className="italic text-slate-300 mb-8 leading-relaxed">&quot;{t.text}&quot;</p>
                                 <div>
                                     <p className="font-bold text-lg">{t.name}</p>
                                     <p className="text-xs text-secondary font-bold uppercase tracking-wider">{t.role}</p>
