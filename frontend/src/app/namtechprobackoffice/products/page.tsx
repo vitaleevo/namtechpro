@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import { useQuery, useMutation } from "convex/react";
 import { api } from "@/convex/_generated/api";
-import { Id } from "@/convex/_generated/dataModel";
+import { Id, Doc } from "@/convex/_generated/dataModel";
 import { Plus, Pencil, Trash2, X, Save, Search, Package, Tag, Layers } from "lucide-react";
 import { ImageUpload } from "@/features/backoffice/ImageUpload";
 import Image from "next/image";
@@ -74,7 +74,7 @@ export default function ProductsPage() {
         }
     };
 
-    const handleEdit = (product: any) => { // Ignorado no config.mjs para agilizar deploy, mas documentado aqui.
+    const handleEdit = (product: Doc<"products">) => {
         setFormData({
             name: product.name,
             category: product.category,

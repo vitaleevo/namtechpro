@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { useQuery, useMutation } from "convex/react";
 import { api } from "@/convex/_generated/api";
-import { Id } from "@/convex/_generated/dataModel";
+import { Id, Doc } from "@/convex/_generated/dataModel";
 import { Plus, Pencil, Trash2, X, Save, Search, MapPin, Calendar as CalendarIcon } from "lucide-react";
 import { ImageUpload } from "@/features/backoffice/ImageUpload";
 import { RichTextEditor } from "@/features/backoffice/RichTextEditor";
@@ -76,7 +76,7 @@ export default function EventsPage() {
         setFormData(initialForm);
     };
 
-    const handleEdit = (event: any) => {
+    const handleEdit = (event: Doc<"events">) => {
         setFormData({
             title: event.title,
             description: event.description,

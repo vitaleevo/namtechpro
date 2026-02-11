@@ -2,7 +2,7 @@
 
 import { useQuery, useMutation, useConvexAuth } from "convex/react";
 import { api } from "@/convex/_generated/api";
-import { Id } from "@/convex/_generated/dataModel";
+import { Id, Doc } from "@/convex/_generated/dataModel";
 import { Trash2, Search, Mail, Phone, Calendar, User, MessageSquare } from "lucide-react";
 import { useState } from "react";
 
@@ -11,7 +11,7 @@ export default function LeadsPage() {
     const leads = useQuery(api.leads.listLeads, isAuthenticated ? {} : "skip");
     const deleteLead = useMutation(api.leads.removeLead);
     const [searchTerm, setSearchTerm] = useState("");
-    const [selectedLead, setSelectedLead] = useState<unknown>(null);
+    const [selectedLead, setSelectedLead] = useState<Doc<"leads"> | null>(null);
 
     const handleDelete = async (e: React.MouseEvent, id: Id<"leads">) => {
         e.stopPropagation();
