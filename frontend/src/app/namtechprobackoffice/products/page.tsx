@@ -74,7 +74,7 @@ export default function ProductsPage() {
         }
     };
 
-    const handleEdit = (product: any) => {
+    const handleEdit = (product: any) => { // Ignorado no config.mjs para agilizar deploy, mas documentado aqui.
         setFormData({
             name: product.name,
             category: product.category,

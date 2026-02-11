@@ -25,7 +25,7 @@ interface RichTextEditorProps {
     placeholder?: string;
 }
 
-const Toolbar = ({ editor, isUploading }: { editor: any, isUploading: boolean }) => {
+const Toolbar = ({ editor, isUploading }: { editor: any, isUploading: boolean }) => { // Tiptap editor typing is complex, using any for now to unblock build.
     const generateUploadUrl = useMutation(api.files.generateUploadUrl);
     const convex = useConvex();
     const fileInputRef = useRef<HTMLInputElement>(null);

@@ -11,7 +11,7 @@ export default function LeadsPage() {
     const leads = useQuery(api.leads.listLeads, isAuthenticated ? {} : "skip");
     const deleteLead = useMutation(api.leads.removeLead);
     const [searchTerm, setSearchTerm] = useState("");
-    const [selectedLead, setSelectedLead] = useState<any>(null);
+    const [selectedLead, setSelectedLead] = useState<unknown>(null);
 
     const handleDelete = async (e: React.MouseEvent, id: Id<"leads">) => {
         e.stopPropagation();
@@ -164,7 +164,7 @@ export default function LeadsPage() {
                                         </div>
                                         <div className="bg-white px-8 py-8 rounded-[2rem] rounded-tl-none border border-slate-100 shadow-sm">
                                             <p className="text-slate-600 text-lg leading-relaxed font-serif italic">
-                                                "{selectedLead.message}"
+                                                &quot;{selectedLead.message}&quot;
                                             </p>
                                         </div>
                                     </div>
