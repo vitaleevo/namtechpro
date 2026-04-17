@@ -20,11 +20,15 @@ export const metadata: Metadata = {
     },
 };
 
+import { Suspense } from "react";
+
 export default function CatalogPage() {
     return (
         <main className="min-h-screen bg-white">
             <Navbar />
-            <CatalogContent />
+            <Suspense fallback={<div className="min-h-screen flex items-center justify-center pt-24"><div className="w-12 h-12 border-4 border-primary/30 border-t-primary rounded-full animate-spin"></div></div>}>
+                <CatalogContent />
+            </Suspense>
             <Footer />
         </main>
     );
