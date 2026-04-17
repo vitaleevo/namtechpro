@@ -2,6 +2,7 @@ import { Navbar } from "@/features/navigation/Navbar";
 import { Footer } from "@/features/navigation/Footer";
 import { ContactContent } from "@/features/contact/ContactContent";
 import { Metadata } from "next";
+import { Suspense } from "react";
 
 export const metadata: Metadata = {
     title: "Contactos",
@@ -20,17 +21,16 @@ export const metadata: Metadata = {
     },
 };
 
-type Props = {
-    searchParams: { [key: string]: string | string[] | undefined };
-};
+// Force dynamic rendering — never try to prerender this page
+export const dynamic = "force-dynamic";
 
-export default function ContactPage({ searchParams }: Props) {
-    const subjectQuery = typeof searchParams.subject === 'string' ? searchParams.subject : undefined;
-
+export default function ContactPage() {
     return (
         <main className="min-h-screen bg-white">
             <Navbar />
-            <ContactContent initialSubject={subjectQuery} />
+            <Suspense fallback={<div className="min-h-screen flex items-center justify-center pt-24"><div className="w-12 h-12 border-4 border-primary/30 border-t-primary rounded-full animate-spin"></div></div>}>
+                <ContactContent />
+            </Suspense>
             <Footer />
         </main>
     );

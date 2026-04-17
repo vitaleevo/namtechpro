@@ -1,14 +1,16 @@
 "use client";
 
 import React, { useState, useEffect } from 'react';
+import { useSearchParams } from 'next/navigation';
 import { motion } from "framer-motion";
 import { useMutation } from "convex/react";
 import { api } from "@/convex/_generated/api";
 import { useLanguage } from '@/i18n';
 import Image from 'next/image';
 
-export const ContactContent = ({ initialSubject }: { initialSubject?: string }) => {
+export const ContactContent = () => {
     const { t } = useLanguage();
+    const searchParams = useSearchParams();
     const [formData, setFormData] = useState({
         name: '',
         email: '',
@@ -21,14 +23,15 @@ export const ContactContent = ({ initialSubject }: { initialSubject?: string }) 
     const [emailError, setEmailError] = useState(false);
 
     useEffect(() => {
-        if (initialSubject) {
+        const subjectParam = searchParams?.get('subject');
+        if (subjectParam) {
             setFormData(prev => ({
                 ...prev,
                 subject: 'Orcamento',
-                message: `Ref: ${initialSubject}\n\nGostaria de obter mais informações sobre este item.`
+                message: `Ref: ${subjectParam}\n\nGostaria de obter mais informações sobre este item.`
             }));
         }
-    }, [initialSubject]);
+    }, [searchParams]);
     const saveLead = useMutation(api.leads.createLead);
 
     const validateEmail = (email: string) => {

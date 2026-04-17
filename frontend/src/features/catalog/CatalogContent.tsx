@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useMemo, useEffect } from 'react';
+import { useSearchParams } from 'next/navigation';
 import { useQuery } from "convex/react";
 import { api } from "@/convex/_generated/api";
 import { motion, AnimatePresence } from "framer-motion";
@@ -21,11 +22,16 @@ export const CatalogContent = ({ initialCategory }: { initialCategory?: string }
     const [selectedCategory, setSelectedCategory] = useState(initialCategory || ALL_CATEGORY);
     const [detailedProduct, setDetailedProduct] = useState<any>(null);
 
+    const searchParams = useSearchParams();
+    const categoryParam = searchParams.get('category');
+
     useEffect(() => {
-        if (initialCategory) {
+        if (categoryParam) {
+            setSelectedCategory(categoryParam);
+        } else if (initialCategory) {
             setSelectedCategory(initialCategory);
         }
-    }, [initialCategory]);
+    }, [categoryParam, initialCategory]);
 
     const categories = useMemo(() => {
         if (!products) return [ALL_CATEGORY];

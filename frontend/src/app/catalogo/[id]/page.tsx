@@ -7,6 +7,7 @@ import { fetchQuery } from "convex/nextjs";
 import { api } from "@/convex/_generated/api";
 import { Metadata } from "next";
 import { Id } from "@/convex/_generated/dataModel";
+import { Suspense } from "react";
 
 interface PageProps {
     params: Promise<{ id: string }>;
@@ -49,48 +50,75 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     }
 }
 
+// Force dynamic rendering
+export const dynamic = "force-dynamic";
+
 export default async function ProductPage({ params }: PageProps) {
     const { id } = await params;
 
     // Check if it's a real Convex ID or a category slug
     if (isValidConvexId(id)) {
-        // Fetch single product by ID
-        const product = await fetchQuery(api.products.getById, { id: id as Id<"products"> });
+        try {
+            // Fetch single product by ID
+            const product = await fetchQuery(api.products.getById, { id: id as Id<"products"> });
 
-        if (!product) {
+            if (!product) {
+                return (
+                    <div className="min-h-screen flex items-center justify-center">
+                        <h1 className="text-2xl font-bold">Produto não encontrado</h1>
+                    </div>
+                );
+            }
+
+            return <ProductDetailContent product={product} />;
+        } catch (error) {
+            console.error("Error fetching product:", error);
             return (
                 <div className="min-h-screen flex items-center justify-center">
-                    <h1 className="text-2xl font-bold">Produto não encontrado</h1>
+                    <h1 className="text-2xl font-bold">Erro ao carregar produto</h1>
                 </div>
             );
         }
-
-        return <ProductDetailContent product={product} />;
     } else {
-        // It's a category slug - fetch all products in this category
-        const products = await fetchQuery(api.products.getBySlug, { slug: id });
+        try {
+            // It's a category slug - fetch all products in this category
+            const products = await fetchQuery(api.products.getBySlug, { slug: id });
 
-        if (products.length === 0) {
+            if (products.length === 0) {
+                return (
+                    <div className="min-h-screen flex flex-col items-center justify-center p-20 bg-slate-50">
+                        <Navbar />
+                        <h1 className="text-4xl font-black text-primary mb-6">Categoria não encontrada</h1>
+                        <p className="text-slate-500 mb-10">Lamentamos, mas não encontrámos produtos nesta categoria.</p>
+                        <Link href="/catalogo" className="bg-primary text-white px-10 py-4 rounded-xl font-bold">Voltar ao Catálogo</Link>
+                        <Footer />
+                    </div>
+                );
+            }
+
+            // Show the catalog filtered by this category
+            const actualCategoryName = products[0].category;
+
             return (
-                <div className="min-h-screen flex flex-col items-center justify-center p-20 bg-slate-50">
+                <main className="min-h-screen bg-white">
                     <Navbar />
-                    <h1 className="text-4xl font-black text-primary mb-6">Categoria não encontrada</h1>
-                    <p className="text-slate-500 mb-10">Lamentamos, mas não encontrámos produtos nesta categoria.</p>
-                    <Link href="/catalogo" className="bg-primary text-white px-10 py-4 rounded-xl font-bold">Voltar ao Catálogo</Link>
+                    <Suspense fallback={<div className="min-h-screen flex items-center justify-center pt-24"><div className="w-12 h-12 border-4 border-primary/30 border-t-primary rounded-full animate-spin"></div></div>}>
+                        <CatalogContent initialCategory={actualCategoryName} />
+                    </Suspense>
                     <Footer />
-                </div>
+                </main>
+            );
+        } catch (error) {
+            console.error("Error fetching category:", error);
+            return (
+                <main className="min-h-screen bg-white">
+                    <Navbar />
+                    <div className="p-20 text-center">
+                        <h1 className="text-2xl font-bold">Erro ao carregar categoria</h1>
+                    </div>
+                    <Footer />
+                </main>
             );
         }
-
-        // Show the catalog filtered by this category
-        const actualCategoryName = products[0].category;
-
-        return (
-            <main className="min-h-screen bg-white">
-                <Navbar />
-                <CatalogContent initialCategory={actualCategoryName} />
-                <Footer />
-            </main>
-        );
     }
 }
