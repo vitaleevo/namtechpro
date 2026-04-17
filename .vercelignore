@@ -1,0 +1,6 @@
+*.pdf
+novas fotos/
+.git/
+.github/
+docs/
+testsprite_tests/
