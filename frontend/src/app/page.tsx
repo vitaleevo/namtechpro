@@ -31,10 +31,10 @@ export default function Home() {
             </div>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
               {[
-                { name: 'Navegação', icon: <Compass />, slug: 'navegacao', color: 'bg-blue-50' },
-                { name: 'Comunicação', icon: <Radio />, slug: 'comunicacao', color: 'bg-slate-50' },
-                { name: 'Energia', icon: <Zap />, slug: 'energia', color: 'bg-yellow-50' },
-                { name: 'Controlo', icon: <Box />, slug: 'controlo', color: 'bg-indigo-50' },
+                { name: 'Navegação', icon: <Compass size={32} />, slug: 'navegacao', color: 'bg-blue-50' },
+                { name: 'Comunicação', icon: <Radio size={32} />, slug: 'comunicacao', color: 'bg-slate-50' },
+                { name: 'Energia', icon: <Zap size={32} />, slug: 'energia', color: 'bg-yellow-50' },
+                { name: 'Controlo', icon: <Box size={32} />, slug: 'controlo', color: 'bg-indigo-50' },
               ].map((cat, i) => (
                 <Link key={i} href={`/catalogo/${cat.slug}`}>
                   <motion.div 
@@ -42,7 +42,7 @@ export default function Home() {
                     className={`p-10 rounded-[3rem] ${cat.color} flex flex-col items-center text-center group transition-all cursor-pointer border border-transparent hover:border-slate-200 hover:shadow-2xl`}
                   >
                     <div className="w-20 h-20 rounded-3xl bg-white shadow-xl flex items-center justify-center mb-6 text-primary group-hover:bg-primary group-hover:text-white transition-all duration-500">
-                      {React.cloneElement(cat.icon as React.ReactElement, { size: 32 })}
+                      {cat.icon}
                     </div>
                     <span className="text-lg font-black text-primary uppercase tracking-widest leading-none">{cat.name}</span>
                     <div className="mt-4 opacity-0 group-hover:opacity-100 transition-opacity flex items-center gap-2 text-secondary font-black text-[10px] uppercase tracking-widest">
