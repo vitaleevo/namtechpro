@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { ProductDetailContent } from "@/features/catalog/ProductDetailContent";
 import { CatalogContent } from "@/features/catalog/CatalogContent";
 import { Navbar } from "@/features/navigation/Navbar";
@@ -75,7 +76,7 @@ export default async function ProductPage({ params }: PageProps) {
                     <Navbar />
                     <h1 className="text-4xl font-black text-primary mb-6">Categoria não encontrada</h1>
                     <p className="text-slate-500 mb-10">Lamentamos, mas não encontrámos produtos nesta categoria.</p>
-                    <a href="/catalogo" className="bg-primary text-white px-10 py-4 rounded-xl font-bold">Voltar ao Catálogo</a>
+                    <Link href="/catalogo" className="bg-primary text-white px-10 py-4 rounded-xl font-bold">Voltar ao Catálogo</Link>
                     <Footer />
                 </div>
             );
