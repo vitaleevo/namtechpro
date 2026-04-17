@@ -20,15 +20,18 @@ export const metadata: Metadata = {
     },
 };
 
-import { Suspense } from "react";
+type Props = {
+    searchParams: { [key: string]: string | string[] | undefined };
+};
 
-export default function CatalogPage() {
+export default function CatalogPage({ searchParams }: Props) {
+    // Acessa o searchParam através de prop e não hook (evita erro no build)
+    const categoryQuery = typeof searchParams.category === 'string' ? searchParams.category : undefined;
+
     return (
         <main className="min-h-screen bg-white">
             <Navbar />
-            <Suspense fallback={<div className="min-h-screen flex items-center justify-center pt-24"><div className="w-12 h-12 border-4 border-primary/30 border-t-primary rounded-full animate-spin"></div></div>}>
-                <CatalogContent />
-            </Suspense>
+            <CatalogContent initialCategory={categoryQuery} />
             <Footer />
         </main>
     );
