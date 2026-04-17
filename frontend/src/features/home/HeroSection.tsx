@@ -17,7 +17,7 @@ export const HeroSection = () => {
                         fill
                         priority
                         className="object-cover scale-105"
-                        src="https://images.unsplash.com/photo-1524522173746-f628baad3644?auto=format&fit=crop&q=80&w=2000"
+                        src="/hero_bg.jpg"
                     />
                     <div className="absolute inset-0 bg-gradient-to-r from-primary/95 via-primary/70 to-transparent"></div>
                     <div className="absolute bottom-0 left-0 w-full h-2 bg-gradient-to-r from-red-600 via-secondary to-black opacity-80"></div>
@@ -83,25 +83,28 @@ export const HeroSection = () => {
                 </div>
             </section>
 
-            {/* Stats Section */}
+            {/* Sectors Section */}
             <section className="relative z-20 -mt-32 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8">
                     {[
-                        { label: 'Anos de Experiência', val: '15+', icon: 'history_edu' },
-                        { label: 'Navios Equipados', val: '450+', icon: 'directions_boat' },
-                        { label: 'Técnicos Certificados', val: '24/7', icon: 'engineering' },
-                        { label: 'Cidades Atendidas', val: '12', icon: 'location_city' }
-                    ].map((stat, i) => (
+                        { label: 'Barcos (SEARIBS / Workboats)', image: '/hero_bg.jpg' },
+                        { label: 'Meios de Socorro (Palamentas)', image: '/sectors/socorro.jpg' },
+                        { label: 'Serviços', image: '/sectors/servicos.jpg' },
+                        { label: 'Equipamentos Marítimos', image: '/sectors/equipamentos.webp' }
+                    ].map((sector, i) => (
                         <motion.div
                             key={i}
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: 0.4 + i * 0.1 }}
-                            className="bg-white p-8 rounded-2xl shadow-2xl border border-slate-100 flex flex-col items-center text-center transform hover:-translate-y-2 transition-transform"
+                            className="bg-white rounded-2xl shadow-2xl border border-slate-100 overflow-hidden group flex flex-col items-center text-center transform hover:-translate-y-2 transition-transform"
                         >
-                            <span className="material-symbols-outlined text-secondary text-3xl mb-4">{stat.icon}</span>
-                            <span className="text-4xl font-display font-black text-primary mb-1">{stat.val}</span>
-                            <span className="text-xs font-bold text-slate-500 uppercase tracking-widest leading-tight">{stat.label}</span>
+                            <div className="relative w-full h-48 md:h-56 bg-slate-100">
+                                <Image src={sector.image} alt={sector.label} fill className="object-cover group-hover:scale-110 transition-transform duration-500" />
+                            </div>
+                            <div className="p-4 md:p-6 flex-1 flex items-center justify-center">
+                                <span className="text-xs md:text-sm font-bold text-slate-700 uppercase tracking-widest leading-relaxed">{sector.label}</span>
+                            </div>
                         </motion.div>
                     ))}
                 </div>
@@ -139,10 +142,10 @@ export const HeroSection = () => {
 
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
                         {[
-                            { icon: 'explore', title: 'Navegação', desc: 'Sistemas radar de última geração e cartas náuticas eletrónicas (ECDIS).' },
-                            { icon: 'settings_input_antenna', title: 'Rádio-Comunicação', desc: 'Soluções GMDSS, VHF, UHF e MF/HF para segurança máxima no mar.' },
-                            { icon: 'satellite_alt', title: 'Satélite & VSAT', desc: 'Internet de alta velocidade e voz em qualquer ponto do oceano.' },
-                            { icon: 'solar_power', title: 'Energia Híbrida', desc: 'Sistemas solares e bancos de baterias para autonomia industrial.' }
+                            { icon: 'explore', title: 'Navegação', desc: 'Sistemas radar de última geração e cartas náuticas eletrónicas (ECDIS).', href: '/catalogo/navegacao' },
+                            { icon: 'settings_input_antenna', title: 'Rádio-Comunicação', desc: 'Soluções GMDSS, VHF, UHF e MF/HF para segurança máxima no mar.', href: '/catalogo/comunicacao' },
+                            { icon: 'satellite_alt', title: 'Satélite & VSAT', desc: 'Internet de alta velocidade e voz em qualquer ponto do oceano.', href: '/catalogo/comunicacao' },
+                            { icon: 'directions_boat', title: 'Embarcações e Busca e Salvamento', desc: 'Soluções em embarcações especializadas e meios de socorro marítimo.', href: '/catalogo/barcos' }
                         ].map((item, idx) => (
                             <motion.div
                                 key={idx}
@@ -159,9 +162,12 @@ export const HeroSection = () => {
                                 <h3 className="text-2xl font-bold mb-4 relative z-10">{item.title}</h3>
                                 <p className="text-slate-500 leading-relaxed text-sm relative z-10">{item.desc}</p>
                                 <div className="mt-8 pt-6 border-t border-slate-50">
-                                    <button className="text-primary text-xs font-bold uppercase tracking-widest flex items-center gap-2 group-hover:gap-4 transition-all">
+                                    <Link 
+                                        href={item.href}
+                                        className="text-primary text-xs font-bold uppercase tracking-widest flex items-center gap-2 group-hover:gap-4 transition-all"
+                                    >
                                         Saber Mais <span className="material-symbols-outlined text-sm">arrow_forward</span>
-                                    </button>
+                                    </Link>
                                 </div>
                             </motion.div>
                         ))}
@@ -175,7 +181,7 @@ export const HeroSection = () => {
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
                         <div className="relative">
                             <div className="relative rounded-3xl overflow-hidden shadow-2xl z-10 w-full h-[600px]">
-                                <Image src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&q=80&w=800" alt="Equipa Técnica" fill className="object-cover" />
+                                <Image src="/sectors/servicos.jpg" alt="Equipa Técnica" fill className="object-cover" />
                                 <div className="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent"></div>
                                 <div className="absolute bottom-10 left-10 text-white">
                                     <p className="text-5xl font-display font-black mb-2">24/7</p>
@@ -193,9 +199,10 @@ export const HeroSection = () => {
                             </h2>
                             <div className="space-y-8">
                                 {[
-                                    { title: 'Certificação Internacional', desc: 'Trabalhamos rigorosamente sob as normas da IMO (International Maritime Organization).', icon: 'verified_user' },
-                                    { title: 'Presença Local, Visão Global', desc: 'Sede no Namibe com capacidade de mobilização para Luanda, Lobito e Soyo.', icon: 'public' },
-                                    { title: 'Stock de Peças Críticas', desc: 'Mantemos um inventário local para evitar tempos de paragem prolongados.', icon: 'inventory_2' }
+                                    { title: 'Certificação Internacional', desc: 'Comercializamos equipamentos certificados mundialmente e com garantias internacionais.', icon: 'verified_user' },
+                                    { title: 'Presença Local, Visão Global', desc: 'Sede no Namibe, escritório em Luanda, capacidade de mobilização Lobito e Soyo.', icon: 'public' },
+                                    { title: 'Stock de Peças Críticas', desc: 'Mantemos um inventário local para evitar tempos de paragem prolongados.', icon: 'inventory_2' },
+                                    { title: 'Registo ANPG', desc: 'Empresa registada na ANPG para actuar junto do sector petrolífero.', icon: 'assignment_turned_in' }
                                 ].map((feature, i) => (
                                     <div key={i} className="flex gap-6">
                                         <div className="flex-shrink-0 w-12 h-12 rounded-2xl bg-slate-100 flex items-center justify-center">

@@ -2,144 +2,172 @@
 
 import React from 'react';
 import { motion } from "framer-motion";
-import { Zap, ShieldCheck, Hammer, Satellite, Droplets } from "lucide-react";
+import { Zap, ShieldCheck, Hammer, Satellite, Droplets, CheckCircle2, ArrowRight } from "lucide-react";
 import Link from "next/link";
 import { useLanguage } from '@/i18n';
+import Image from 'next/image';
+import { useQuery } from "convex/react";
+import { api } from "@/convex/_generated/api";
+
+const iconMap: Record<string, any> = {
+    Zap,
+    ShieldCheck,
+    Hammer,
+    Satellite,
+    Droplets
+};
 
 export const ServicesContent = () => {
     const { t } = useLanguage();
+    const services = useQuery(api.services.list);
 
-    const mainServices = [
-        {
-            title: t.services.cleanEnergy,
-            desc: t.services.cleanEnergyDesc,
-            icon: Zap,
-            color: "text-emerald-500",
-            bg: "bg-emerald-500/10",
-            href: "/servicos/energia-limpa"
-        },
-        {
-            title: t.services.support247,
-            desc: t.services.support247Desc,
-            icon: ShieldCheck,
-            color: "text-red-500",
-            bg: "bg-red-500/10",
-            href: "/servicos/suporte"
-        },
-        {
-            title: t.services.maintenance,
-            desc: t.services.maintenanceDesc,
-            icon: Hammer,
-            color: "text-amber-500",
-            bg: "bg-amber-500/10",
-            href: "/servicos"
-        },
-        {
-            title: t.services.satellite,
-            desc: t.services.satelliteDesc,
-            icon: Satellite,
-            color: "text-indigo-500",
-            bg: "bg-indigo-500/10",
-            href: "/servicos"
-        },
-        {
-            title: t.services.hydrographic,
-            desc: t.services.hydrographicDesc,
-            icon: Droplets,
-            color: "text-cyan-500",
-            bg: "bg-cyan-500/10",
-            href: "/servicos"
-        }
-    ];
+    if (services === undefined) {
+        return (
+            <div className="min-h-screen pt-40 flex items-center justify-center">
+                <div className="w-12 h-12 border-4 border-primary/30 border-t-primary rounded-full animate-spin"></div>
+            </div>
+        );
+    }
 
     return (
-        <div className="pt-20">
+        <div className="pt-20 bg-slate-50">
             {/* Hero Section */}
-            <section className="relative py-32 bg-primary overflow-hidden">
-                <div className="absolute inset-0 opacity-20">
-                    <div className="absolute top-0 left-0 w-96 h-96 bg-secondary rounded-full blur-[120px] -ml-48 -mt-48"></div>
-                    <div className="absolute bottom-0 right-0 w-96 h-96 bg-emerald-600 rounded-full blur-[120px] -mr-48 -mb-48"></div>
+            <section className="relative h-[80vh] flex items-center overflow-hidden">
+                <div className="absolute inset-0 z-0">
+                    <Image
+                        alt="Maritime Services"
+                        fill
+                        priority
+                        className="object-cover"
+                        src="https://images.unsplash.com/photo-1540962351504-03099e0a754b?auto=format&fit=crop&q=80&w=2000"
+                    />
+                    <div className="absolute inset-0 bg-slate-900/80 backdrop-blur-sm"></div>
+                    <div className="absolute inset-0 bg-gradient-to-b from-transparent via-slate-900/20 to-slate-50"></div>
                 </div>
 
-                <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-12 text-center">
-                    <motion.h1
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        className="text-5xl md:text-8xl font-display font-black text-white mb-8 tracking-tighter"
+                <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-12">
+                    <motion.div
+                        initial={{ opacity: 0, x: -30 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        className="max-w-4xl"
                     >
-                        {t.services.heroTitle} <span className="text-secondary">{t.services.heroTitleHighlight}</span> <br /> {t.services.heroTitleEnd}
-                    </motion.h1>
-                    <motion.p
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.1 }}
-                        className="text-xl text-slate-300 max-w-3xl mx-auto font-medium"
-                    >
-                        {t.services.heroSubtitle}
-                    </motion.p>
+                        <span className="text-secondary font-black uppercase tracking-[0.5em] text-xs mb-8 block">
+                            Excelência Industrial
+                        </span>
+                        <h1 className="text-6xl md:text-9xl font-display font-black text-white mb-10 tracking-tighter leading-none">
+                            {t.services.heroTitle} <span className="text-secondary italic">{t.services.heroTitleHighlight}</span>
+                        </h1>
+                        <p className="text-2xl text-slate-300 max-w-2xl font-medium leading-relaxed mb-12 border-l-4 border-secondary pl-8">
+                            {t.services.heroSubtitle}
+                        </p>
+                    </motion.div>
                 </div>
             </section>
 
             {/* Services Grid */}
-            <section className="py-32 bg-white">
+            <section className="py-32">
                 <div className="max-w-7xl mx-auto px-6 lg:px-12">
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-                        {mainServices.map((service, i) => (
-                            <motion.div
-                                initial={{ opacity: 0, y: 20 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                transition={{ delay: i * 0.1 }}
-                                viewport={{ once: true }}
-                                key={i}
-                                className="group p-10 rounded-[3rem] bg-slate-50 border border-slate-100 hover:border-primary transition-all duration-500"
-                            >
-                                <div className={`w-16 h-16 ${service.bg} ${service.color} rounded-2xl flex items-center justify-center mb-8 group-hover:scale-110 transition-transform duration-500`}>
-                                    <service.icon size={32} />
-                                </div>
-                                <h3 className="text-2xl font-black text-slate-900 mb-4 tracking-tight">{service.title}</h3>
-                                <p className="text-slate-500 leading-relaxed font-medium mb-8">{service.desc}</p>
-                                <Link
-                                    href={service.href}
-                                    className="inline-flex items-center gap-2 text-sm font-black uppercase tracking-widest text-primary hover:gap-4 transition-all"
+                    <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
+                        {services.map((service, i) => {
+                            const Icon = iconMap[service.icon] || Zap;
+                            return (
+                                <motion.div
+                                    initial={{ opacity: 0, y: 30 }}
+                                    whileInView={{ opacity: 1, y: 0 }}
+                                    transition={{ delay: i * 0.1 }}
+                                    viewport={{ once: true }}
+                                    key={service._id}
+                                    className="group relative bg-white rounded-[3rem] border border-slate-100 p-2 overflow-hidden hover:shadow-[0_40px_80px_-15px_rgba(0,0,0,0.1)] transition-all duration-500"
                                 >
-                                    {t.services.learnMore}
-                                    <span className="text-lg">→</span>
-                                </Link>
-                            </motion.div>
-                        ))}
+                                    <div className="p-10">
+                                        <div className="flex items-center justify-between mb-12">
+                                            <div className="w-20 h-20 bg-primary/5 rounded-[2rem] flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-all duration-500">
+                                                <Icon size={40} />
+                                            </div>
+                                            <span className="text-[10px] font-black text-slate-300 uppercase tracking-widest">
+                                                0{i + 1}
+                                            </span>
+                                        </div>
+
+                                        <h3 className="text-3xl font-black text-slate-900 mb-6 group-hover:text-primary transition-colors tracking-tighter">
+                                            {service.title}
+                                        </h3>
+                                        <p className="text-slate-500 leading-relaxed font-medium mb-10 text-lg">
+                                            {service.description}
+                                        </p>
+
+                                        <div className="space-y-4 mb-12">
+                                            {service.features.map((feature, j) => (
+                                                <div key={j} className="flex items-center gap-3 text-sm text-slate-400 font-bold uppercase tracking-widest">
+                                                    <CheckCircle2 size={16} className="text-secondary" />
+                                                    {feature}
+                                                </div>
+                                            ))}
+                                        </div>
+
+                                        <Link
+                                            href={`/servicos/${service.slug}`}
+                                            className="inline-flex w-full items-center justify-between p-6 bg-slate-50 rounded-2xl text-primary font-black uppercase tracking-widest text-xs group-hover:bg-primary group-hover:text-white transition-all duration-500"
+                                        >
+                                            Detalhes do Serviço
+                                            <ArrowRight size={20} />
+                                        </Link>
+                                    </div>
+                                    <div className="absolute top-0 right-0 w-32 h-32 bg-secondary/5 rounded-full blur-3xl -mr-16 -mt-16 group-hover:bg-secondary/10 transition-colors"></div>
+                                </motion.div>
+                            );
+                        })}
                     </div>
                 </div>
             </section>
 
-            {/* Support Highlight */}
-            <section className="py-24 bg-slate-50">
-                <div className="max-w-7xl mx-auto px-6 lg:px-12">
-                    <div className="bg-primary rounded-[4rem] p-12 md:p-24 text-white relative overflow-hidden shadow-2xl">
-                        <div className="absolute top-0 right-0 w-96 h-96 bg-white/10 rounded-full blur-3xl -mr-48 -mt-48"></div>
-                        <div className="relative z-10 flex flex-col lg:flex-row items-center justify-between gap-12">
+            {/* Support Highlight - Elite Version */}
+            <section className="py-24 px-6 lg:px-12">
+                <div className="max-w-7xl mx-auto">
+                    <div className="bg-slate-900 rounded-[4.5rem] p-12 md:p-24 text-white relative overflow-hidden border border-white/5">
+                        <div className="absolute top-0 right-0 w-[40rem] h-[40rem] bg-secondary/10 rounded-full blur-[120px] -mr-[20rem] -mt-[20rem]"></div>
+                        <div className="absolute bottom-0 left-0 w-[40rem] h-[40rem] bg-primary/20 rounded-full blur-[120px] -ml-[20rem] -mb-[20rem]"></div>
+                        
+                        <div className="relative z-10 flex flex-col lg:flex-row items-center justify-between gap-16">
                             <div className="max-w-2xl text-center lg:text-left">
-                                <h2 className="text-4xl md:text-6xl font-display font-black mb-8 tracking-tighter">{t.services.needSupport}</h2>
-                                <p className="text-xl text-slate-300 font-medium mb-12">
+                                <motion.span
+                                    initial={{ opacity: 0 }}
+                                    whileInView={{ opacity: 1 }}
+                                    className="inline-block py-2 px-6 bg-secondary/10 text-secondary border border-secondary/20 rounded-full text-[10px] font-black uppercase tracking-[0.3em] mb-10"
+                                >
+                                    Suporte Crítico 24/7
+                                </motion.span>
+                                <h2 className="text-5xl md:text-8xl font-display font-black mb-10 tracking-tighter leading-none">
+                                    {t.services.needSupport}
+                                </h2>
+                                <p className="text-xl text-slate-400 font-medium mb-12 leading-relaxed">
                                     {t.services.supportDesc}
                                 </p>
                                 <div className="flex flex-col sm:flex-row gap-6 justify-center lg:justify-start">
                                     <Link
-                                        href="tel:+244900000000"
-                                        className="px-12 py-5 bg-secondary text-primary rounded-2xl font-black text-lg hover:bg-yellow-400 hover:scale-105 transition-all shadow-xl flex items-center justify-center gap-3"
+                                        href="tel:+244921791515"
+                                        className="px-14 py-6 bg-secondary text-primary rounded-2xl font-black text-sm uppercase tracking-widest hover:bg-white hover:scale-105 transition-all shadow-2xl flex items-center justify-center gap-4"
                                     >
-                                        {t.services.call247}
+                                        Falar com Engenheiro
+                                        <ArrowRight size={20} />
                                     </Link>
                                     <Link
                                         href="/contactos"
-                                        className="px-12 py-5 bg-white/10 text-white border border-white/20 rounded-2xl font-black text-lg hover:bg-white/20 transition-all flex items-center justify-center"
+                                        className="px-14 py-6 bg-white/5 text-white border border-white/10 rounded-2xl font-black text-sm uppercase tracking-widest hover:bg-white/10 transition-all flex items-center justify-center"
                                     >
-                                        {t.services.openTicket}
+                                        Enviar Pedido
                                     </Link>
                                 </div>
                             </div>
-                            <div className="w-64 h-64 bg-secondary/20 rounded-full border-8 border-secondary/30 flex items-center justify-center animate-pulse">
-                                <ShieldCheck size={120} className="text-secondary" />
-                            </div>
+                            <motion.div
+                                initial={{ rotate: 10, scale: 0.9 }}
+                                whileInView={{ rotate: 0, scale: 1 }}
+                                transition={{ type: "spring", damping: 10 }}
+                                className="w-80 h-80 bg-white/5 rounded-[3rem] border border-white/10 flex items-center justify-center relative group"
+                            >
+                                <div className="absolute inset-0 bg-gradient-to-br from-secondary/20 to-transparent rounded-[3rem] opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                                <ShieldCheck size={160} className="text-secondary relative z-10" />
+                            </motion.div>
                         </div>
                     </div>
                 </div>

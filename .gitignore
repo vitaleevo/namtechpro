@@ -30,3 +30,13 @@ dist-ssr
 .env.*
 env_vars_for_vercel.env
 *.env
+
+# Large Assets
+*.pdf
+novas fotos/
+
+# AI Agent Artifacts
+.agent/
+testsprite_tests/
+.gemini/
+.qoder/

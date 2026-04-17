@@ -18,6 +18,7 @@ import type * as files from "../files.js";
 import type * as init from "../init.js";
 import type * as leads from "../leads.js";
 import type * as products from "../products.js";
+import type * as rateLimit from "../rateLimit.js";
 
 import type {
   ApiFromModules,
@@ -36,6 +37,7 @@ declare const fullApi: ApiFromModules<{
   init: typeof init;
   leads: typeof leads;
   products: typeof products;
+  rateLimit: typeof rateLimit;
 }>;
 
 /**

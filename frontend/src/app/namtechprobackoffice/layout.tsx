@@ -54,7 +54,7 @@ export default function BackofficeLayout({
             <div className="min-h-screen bg-slate-100 flex items-center justify-center p-4">
                 <div className="w-full max-w-md bg-white rounded-[2.5rem] shadow-2xl overflow-hidden border border-slate-100 p-10 text-center">
                     <div className="relative w-48 h-16 mx-auto mb-8">
-                        <Image src="/images/logo-primary.png" alt="Namtech Pro" fill className="object-contain" priority />
+                        <Image src="/images/logo-horizontal.png" alt="Namtech Pro" fill className="object-contain" priority />
                     </div>
                     <SignIn redirectUrl="/namtechprobackoffice" />
                 </div>
@@ -135,7 +135,7 @@ export default function BackofficeLayout({
             {/* Mobile Header */}
             <header className="lg:hidden bg-primary p-4 flex items-center justify-between sticky top-0 z-50 shadow-lg">
                 <Link href="/namtechprobackoffice" className="relative w-32 h-8">
-                    <Image src="/images/logo-white.png" alt="Namtech" fill className="object-contain" />
+                    <Image src="/images/logo-horizontal.png" alt="Namtech" fill className="object-contain" />
                 </Link>
                 <button
                     onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
@@ -187,7 +187,7 @@ export default function BackofficeLayout({
                 <div className="p-6 flex items-center justify-between border-b border-white/10">
                     <Link href="/namtechprobackoffice" className="flex items-center gap-3">
                         {isSidebarOpen ? (
-                            <div className="relative w-32 h-10"><Image src="/images/logo-white.png" alt="Namtech" fill className="object-contain" /></div>
+                            <div className="relative w-32 h-10"><Image src="/images/logo-horizontal.png" alt="Namtech" fill className="object-contain" /></div>
                         ) : (
                             <div className="relative w-8 h-8 mx-auto"><Image src="/images/flavico.png" alt="N" fill className="object-contain" /></div>
                         )}

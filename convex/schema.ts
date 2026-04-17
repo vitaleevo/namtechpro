@@ -2,6 +2,12 @@ import { defineSchema, defineTable } from "convex/server";
 import { v } from "convex/values";
 
 export default defineSchema({
+    rate_limits: defineTable({
+        identifier: v.string(),
+        action: v.string(),
+        timestamp: v.number(),
+    }).index("by_identifier_action", ["identifier", "action"]),
+
     products: defineTable({
         name: v.string(),
         category: v.string(),
@@ -80,4 +86,15 @@ export default defineSchema({
         options: v.optional(v.array(v.string())), // Quick replies
         createdAt: v.number(),
     }).index("by_session", ["sessionId"]),
+
+    services: defineTable({
+        title: v.string(),
+        slug: v.string(),
+        description: v.string(),
+        fullContent: v.string(),
+        icon: v.string(), // Lucide icon name
+        imageUrl: v.string(),
+        storageId: v.optional(v.id("_storage")),
+        features: v.array(v.string()),
+    }).index("by_slug", ["slug"]),
 });

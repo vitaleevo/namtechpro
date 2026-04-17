@@ -31,6 +31,36 @@ export const getById = query({
     },
 });
 
+export const getBySlug = query({
+    args: { slug: v.string() },
+    handler: async (ctx, args) => {
+        // First try to find by storageId or a custom slug field if it exists
+        // For now, we'll return all products in a category matching the slug
+        const products = await ctx.db.query("products").collect();
+        
+        // Filter products by category matching the slug
+        const matchingProducts = products.filter(p => {
+            const categorySlug = p.category.toLowerCase()
+                .replace(/[^a-z0-9]+/g, '-')
+                .replace(/^-|-$/g, '');
+            return categorySlug === args.slug.toLowerCase();
+        });
+        
+        if (matchingProducts.length === 0) return [];
+        
+        // Add image URLs to all matching products
+        return Promise.all(
+            matchingProducts.map(async (p) => {
+                const storageUrl = p.storageId ? await ctx.storage.getUrl(p.storageId) : null;
+                return {
+                    ...p,
+                    imageUrl: storageUrl || p.imageUrl || 'https://images.unsplash.com/photo-1511467687858-23d96c32e4ae'
+                };
+            })
+        );
+    },
+});
+
 export const getByCategory = query({
     args: { category: v.string() },
     handler: async (ctx, args) => {

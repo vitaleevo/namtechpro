@@ -1,6 +1,7 @@
 import { mutation, query } from "./_generated/server";
 import { v, ConvexError } from "convex/values";
 import { validateAdmin } from "./auth_utils";
+import { rateLimit } from "./rateLimit";
 
 export const createLead = mutation({
     args: {
@@ -11,6 +12,17 @@ export const createLead = mutation({
         message: v.string(),
     },
     handler: async (ctx, args) => {
+        await rateLimit(ctx, "createLead");
+        
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(args.email)) {
+            throw new ConvexError("Email inválido");
+        }
+        
+        if (args.message.length < 10) {
+            throw new ConvexError("Mensagem deve ter pelo menos 10 caracteres");
+        }
+        
         return await ctx.db.insert("leads", {
             ...args,
         });

@@ -15,7 +15,7 @@ export const Footer = () => {
                     <div className="col-span-1 md:col-span-1">
                         <div className="flex items-center gap-2 mb-6">
                             <Image
-                                src="/images/logo-primary.png"
+                                src="/images/logo-horizontal.png"
                                 alt="Namtech Pro"
                                 width={160}
                                 height={48}
@@ -42,12 +42,17 @@ export const Footer = () => {
                             <li><Link href="/catalogo" className="hover:text-white transition-colors">{t.footer.equipment}</Link></li>
                             <li><Link href="/servicos/energia-limpa" className="hover:text-white transition-colors">{t.footer.cleanEnergy}</Link></li>
                             <li><Link href="/servicos/suporte" className="hover:text-white transition-colors">{t.footer.support247}</Link></li>
+                            <li><Link href="/barcos" className="hover:text-white transition-colors">Meios de busca e salvamento</Link></li>
+                            <li><Link href="/barcos" className="hover:text-white transition-colors">Embarcações</Link></li>
                         </ul>
                     </div>
                     <div>
                         <h4 className="text-sm font-bold uppercase tracking-widest text-secondary mb-6">{t.footer.contactTitle}</h4>
-                        <p className="text-slate-400 text-sm mb-2">{t.footer.address}</p>
-                        <p className="text-slate-400 text-sm mb-6">+244 9XX XXX XXX</p>
+                        <p className="text-slate-400 text-sm mb-2">Av. Mondlaine Loja 3 Cidade de Moçamedes, Namibe, Angola</p>
+                        <p className="text-slate-400 text-sm mb-1">Escritório: +244 921 791 515</p>
+                        <p className="text-slate-400 text-sm mb-2">Loja: +244 921 807 557</p>
+                        <p className="text-slate-400 text-sm mb-1">Geral@namtechpro.net</p>
+                        <p className="text-slate-400 text-sm mb-6">comercial@namtechpro.net</p>
                         <div className="flex gap-4">
                             <a href="https://www.facebook.com/Namtechpro" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-secondary hover:text-primary transition-all">
                                 <span className="material-symbols-outlined text-sm">public</span>

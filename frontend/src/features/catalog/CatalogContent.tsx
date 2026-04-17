@@ -1,6 +1,7 @@
 "use client";
 
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
+import { useSearchParams } from 'next/navigation';
 import { useQuery } from "convex/react";
 import { api } from "@/convex/_generated/api";
 import { motion, AnimatePresence } from "framer-motion";
@@ -9,17 +10,26 @@ import Link from "next/link";
 import Image from "next/image";
 import { useLanguage } from '@/i18n';
 import { productTranslations } from './productTranslations';
+import { PageHero } from '@/components/ui/PageHero';
 
-export const CatalogContent = () => {
+export const CatalogContent = ({ initialCategory }: { initialCategory?: string }) => {
     const { t, language } = useLanguage();
     const products = useQuery(api.products.list);
     const [searchTerm, setSearchTerm] = useState('');
 
     // Use a fixed sentinel value for "All" to avoid logic issues when language changes
     const ALL_CATEGORY = 'ALL_CATEGORIES_SENTINEL';
-    const [selectedCategory, setSelectedCategory] = useState(ALL_CATEGORY);
-
+    const [selectedCategory, setSelectedCategory] = useState(initialCategory || ALL_CATEGORY);
     const [detailedProduct, setDetailedProduct] = useState<any>(null);
+
+    const searchParams = useSearchParams();
+    const categoryParam = searchParams.get('category');
+
+    useEffect(() => {
+        if (categoryParam) {
+            setSelectedCategory(categoryParam);
+        }
+    }, [categoryParam]);
 
     const categories = useMemo(() => {
         if (!products) return [ALL_CATEGORY];
@@ -100,25 +110,19 @@ export const CatalogContent = () => {
     }
 
     return (
-        <div className="pt-32 pb-24 bg-slate-50 min-h-screen">
+        <div className="bg-slate-50 min-h-screen">
+            <PageHero
+                title={t.catalog.title}
+                highlight={t.catalog.titleHighlight}
+                subtitle={t.catalog.subtitle}
+                image="https://images.unsplash.com/photo-1497048676732-d65bc937f952?auto=format&fit=crop&q=80&w=2000"
+                height="h-[65vh]"
+            />
+
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-8 mb-16">
+                <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-8 mb-16 -mt-12 relative z-40">
                     <div className="max-w-xl">
-                        <motion.h1
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            className="text-4xl md:text-6xl font-display font-black text-primary mb-4 tracking-tighter"
-                        >
-                            {t.catalog.title} <span className="text-secondary">{t.catalog.titleHighlight}</span>
-                        </motion.h1>
-                        <motion.p
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ delay: 0.1 }}
-                            className="text-slate-500"
-                        >
-                            {t.catalog.subtitle}
-                        </motion.p>
+                        <div className="h-1.5 w-12 bg-secondary mb-6 rounded-full"></div>
                     </div>
                     <div className="flex flex-col sm:flex-row gap-4 w-full md:w-auto">
                         <div className="relative flex-1 sm:w-80">

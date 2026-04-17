@@ -50,14 +50,25 @@ export const EventsContent = () => {
     }
 
     return (
-        <div className="pt-32 pb-24 bg-slate-50 min-h-screen">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                {/* Header */}
-                <div className="text-center mb-16">
+        <div className="bg-slate-50 min-h-screen">
+            {/* Hero Section */}
+            <section className="relative h-[50vh] flex items-center overflow-hidden mb-16">
+                <div className="absolute inset-0 z-0">
+                    <Image
+                        alt="Events & Projects"
+                        fill
+                        priority
+                        className="object-cover"
+                        src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=2000"
+                    />
+                    <div className="absolute inset-0 bg-primary/70 backdrop-blur-[2px]"></div>
+                </div>
+
+                <div className="relative z-10 max-w-7xl mx-auto px-4 w-full text-center text-white">
                     <motion.h1
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
-                        className="text-4xl md:text-6xl font-display font-black text-primary mb-6"
+                        className="text-5xl md:text-8xl font-display font-black mb-6 tracking-tighter"
                     >
                         {t.eventsPage.title} <span className="text-secondary">{t.eventsPage.titleHighlight}</span>
                     </motion.h1>
@@ -65,11 +76,14 @@ export const EventsContent = () => {
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.1 }}
-                        className="text-slate-500 max-w-2xl mx-auto text-lg"
+                        className="text-xl text-slate-200 max-w-2xl mx-auto font-medium"
                     >
                         {t.eventsPage.subtitle}
                     </motion.p>
                 </div>
+            </section>
+
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
                 {/* Filters */}
                 <div className="flex flex-wrap justify-center gap-4 mb-16">

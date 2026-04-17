@@ -1,4 +1,7 @@
 import { ProductDetailContent } from "@/features/catalog/ProductDetailContent";
+import { CatalogContent } from "@/features/catalog/CatalogContent";
+import { Navbar } from "@/features/navigation/Navbar";
+import { Footer } from "@/features/navigation/Footer";
 import { fetchQuery } from "convex/nextjs";
 import { api } from "@/convex/_generated/api";
 import { Metadata } from "next";
@@ -8,41 +11,85 @@ interface PageProps {
     params: Promise<{ id: string }>;
 }
 
+// Helper function to check if a string is a valid Convex ID
+function isValidConvexId(id: string): boolean {
+    // Convex IDs have format: "xxxxx|xxxxx..." (alphanumeric with pipe)
+    return /^[a-z0-9]+[|]/i.test(id);
+}
+
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
     const { id } = await params;
 
-    // We assume the ID is a valid products ID
-    const product = await fetchQuery(api.products.getById, { id: id as Id<"products"> });
-
-    if (!product) {
+    // Check if it's a real Convex ID or a category slug
+    if (isValidConvexId(id)) {
+        const product = await fetchQuery(api.products.getById, { id: id as Id<"products"> });
+        if (!product) {
+            return {
+                title: "Produto não encontrado | Namtech Pro",
+            };
+        }
         return {
-            title: "Produto não encontrado | Namtech Pro",
+            title: `${product.name} | ${product.brand} | Catálogo Namtech Pro`,
+            description: product.description,
+            openGraph: {
+                title: product.name,
+                description: product.description,
+                images: [product.imageUrl],
+            },
+        };
+    } else {
+        // It's a category slug
+        const products = await fetchQuery(api.products.getBySlug, { slug: id });
+        const categoryName = products.length > 0 ? products[0].category : id;
+        return {
+            title: `Catálogo: ${categoryName} | Namtech Pro`,
+            description: `Explore a nossa gama de produtos na categoria ${categoryName}.`,
         };
     }
-
-    return {
-        title: `${product.name} | ${product.brand} | Catálogo Namtech Pro`,
-        description: product.description,
-        openGraph: {
-            title: product.name,
-            description: product.description,
-            images: [product.imageUrl],
-        },
-    };
 }
 
 export default async function ProductPage({ params }: PageProps) {
     const { id } = await params;
 
-    const product = await fetchQuery(api.products.getById, { id: id as Id<"products"> });
+    // Check if it's a real Convex ID or a category slug
+    if (isValidConvexId(id)) {
+        // Fetch single product by ID
+        const product = await fetchQuery(api.products.getById, { id: id as Id<"products"> });
 
-    if (!product) {
+        if (!product) {
+            return (
+                <div className="min-h-screen flex items-center justify-center">
+                    <h1 className="text-2xl font-bold">Produto não encontrado</h1>
+                </div>
+            );
+        }
+
+        return <ProductDetailContent product={product} />;
+    } else {
+        // It's a category slug - fetch all products in this category
+        const products = await fetchQuery(api.products.getBySlug, { slug: id });
+
+        if (products.length === 0) {
+            return (
+                <div className="min-h-screen flex flex-col items-center justify-center p-20 bg-slate-50">
+                    <Navbar />
+                    <h1 className="text-4xl font-black text-primary mb-6">Categoria não encontrada</h1>
+                    <p className="text-slate-500 mb-10">Lamentamos, mas não encontrámos produtos nesta categoria.</p>
+                    <a href="/catalogo" className="bg-primary text-white px-10 py-4 rounded-xl font-bold">Voltar ao Catálogo</a>
+                    <Footer />
+                </div>
+            );
+        }
+
+        // Show the catalog filtered by this category
+        const actualCategoryName = products[0].category;
+
         return (
-            <div className="min-h-screen flex items-center justify-center">
-                <h1 className="text-2xl font-bold">Produto não encontrado</h1>
-            </div>
+            <main className="min-h-screen bg-white">
+                <Navbar />
+                <CatalogContent initialCategory={actualCategoryName} />
+                <Footer />
+            </main>
         );
     }
-
-    return <ProductDetailContent product={product} />;
 }

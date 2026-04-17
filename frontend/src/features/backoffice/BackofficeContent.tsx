@@ -73,7 +73,7 @@ export const BackofficeContent = () => {
                 <div className="p-8 flex items-center justify-between">
                     {isSidebarOpen && (
                         <div className="w-40 h-10 relative">
-                            <Image src="/images/logo-primary.png" alt="Logo" fill className="object-contain object-left" />
+                            <Image src="/images/logo-horizontal.png" alt="Logo" fill className="object-contain object-left" />
                         </div>
                     )}
                     <button

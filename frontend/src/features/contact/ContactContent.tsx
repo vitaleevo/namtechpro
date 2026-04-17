@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 import { useMutation } from "convex/react";
 import { api } from "@/convex/_generated/api";
 import { useLanguage } from '@/i18n';
+import Image from 'next/image';
 
 export const ContactContent = () => {
     const { t } = useLanguage();
@@ -73,13 +74,24 @@ export const ContactContent = () => {
     };
 
     return (
-        <div className="pt-32 pb-24 bg-slate-50 min-h-screen">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="text-center mb-16">
+        <div className="bg-slate-50 min-h-screen">
+            {/* New Hero Section for Contacts */}
+            <section className="relative h-[45vh] flex items-center overflow-hidden mb-16">
+                <div className="absolute inset-0 z-0">
+                    <Image
+                        alt="Contact Us"
+                        fill
+                        priority
+                        className="object-cover"
+                        src="https://images.unsplash.com/photo-1534533983688-c7ba8d13ec91?auto=format&fit=crop&q=80&w=2000"
+                    />
+                    <div className="absolute inset-0 bg-primary/60 backdrop-blur-[2px]"></div>
+                </div>
+                <div className="relative z-10 max-w-7xl mx-auto px-4 w-full text-center text-white">
                     <motion.h1
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
-                        className="text-4xl md:text-6xl font-display font-black text-primary mb-4"
+                        className="text-5xl md:text-7xl font-display font-black mb-4 tracking-tighter"
                     >
                         {t.contact.title} <span className="text-secondary">{t.contact.titleHighlight}</span>
                     </motion.h1>
@@ -87,11 +99,14 @@ export const ContactContent = () => {
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.1 }}
-                        className="text-slate-500 max-w-2xl mx-auto"
+                        className="text-lg text-slate-200 max-w-2xl mx-auto font-medium"
                     >
                         {t.contact.subtitle}
                     </motion.p>
                 </div>
+            </section>
+
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
                 <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
                     {/* Contact Information */}
@@ -114,8 +129,8 @@ export const ContactContent = () => {
                                     <span className="material-symbols-outlined text-secondary">call</span>
                                     <div>
                                         <p className="font-bold">{t.contact.phone}</p>
-                                        <p className="text-sm text-slate-300">+244 9XX XXX XXX</p>
-                                        <p className="text-sm text-slate-300">+244 2XX XXX XXX</p>
+                                        <p className="text-sm text-slate-300">+244 921 791 515 (Escritório)</p>
+                                        <p className="text-sm text-slate-300">+244 921 807 557 (Loja)</p>
                                     </div>
                                 </div>
 
@@ -123,7 +138,8 @@ export const ContactContent = () => {
                                     <span className="material-symbols-outlined text-secondary">mail</span>
                                     <div>
                                         <p className="font-bold">{t.contact.email}</p>
-                                        <p className="text-sm text-slate-300">suporte@namtechpro.ao</p>
+                                        <p className="text-sm text-slate-300">geral@namtechpro.net</p>
+                                        <p className="text-sm text-slate-300">comercial@namtechpro.net</p>
                                     </div>
                                 </div>
 
