@@ -5,16 +5,16 @@ import { Metadata } from "next";
 import { Suspense } from "react";
 
 export const metadata: Metadata = {
-    title: "Catálogo de Equipamentos",
-    description: "Explore nossa seleção premium de radares, GPS, rádios VHF e soluções de energia renovável para o sector marítimo e industrial.",
+    title: "Catálogo de Equipamentos | Namtech Pro",
+    description: "Explore nossa seleção premium de radares, GPS, rádios VHF e soluções eletrónicas para o sector marítimo e industrial.",
     openGraph: {
         title: "Catálogo de Equipamentos | Namtech Pro",
-        description: "Explore nossa seleção premium de radares, GPS, rádios VHF e soluções de energia renovável.",
+        description: "Explore nossa seleção premium de radares, GPS, rádios VHF e eletrónica marítima.",
     },
     twitter: {
         card: "summary_large_image",
         title: "Catálogo de Equipamentos | Namtech Pro",
-        description: "Radares, GPS, rádios VHF e soluções de energia renovável.",
+        description: "Radares, GPS, rádios VHF e eletrónica marítima.",
     },
     alternates: {
         canonical: "/catalogo",

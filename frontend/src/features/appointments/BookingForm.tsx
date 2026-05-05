@@ -27,7 +27,6 @@ export const BookingForm = () => {
 
     const serviceOptions = [
         { value: 'naval', label: t.booking.services.naval },
-        { value: 'solar', label: t.booking.services.solar },
         { value: 'radio', label: t.booking.services.radio },
         { value: 'general', label: t.booking.services.general },
     ];

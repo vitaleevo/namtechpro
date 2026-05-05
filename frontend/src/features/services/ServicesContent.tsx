@@ -2,20 +2,13 @@
 
 import React from 'react';
 import { motion } from "framer-motion";
-import { Zap, ShieldCheck, Hammer, Satellite, Droplets, CheckCircle2, ArrowRight, Radio, Sun, Wrench } from "lucide-react";
+import { Zap, ShieldCheck, Hammer, Satellite, Droplets, CheckCircle2, ArrowRight, Radio, Wrench } from "lucide-react";
 import Link from "next/link";
 import { useLanguage } from '@/i18n';
 import Image from 'next/image';
 
 const services = [
-    {
-        id: 'clean-energy',
-        icon: Sun,
-        titleKey: 'cleanEnergy' as const,
-        descKey: 'cleanEnergyDesc' as const,
-        features: ['Solar Fotovoltaico', 'Sistemas Híbridos', 'Bancos de Baterias', 'Eólica Marítima'],
-        image: '/assets/new/painel-solar-maritimo.webp',
-    },
+
     {
         id: 'support-247',
         icon: Wrench,

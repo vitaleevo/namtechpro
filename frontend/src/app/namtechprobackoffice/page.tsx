@@ -196,7 +196,7 @@ export default function DashboardPage() {
 
                                 <div className="space-y-2">
                                     <div className="flex items-center justify-between mb-1">
-                                        <span className="text-sm font-bold">Catálogo Solar & Naval</span>
+                                        <span className="text-sm font-bold">Catálogo Industrial & Naval</span>
                                         <span className="text-sm font-black text-blue-400">{stats?.totalProducts || 0}</span>
                                     </div>
                                     <div className="h-1 bg-white/10 rounded-full overflow-hidden">

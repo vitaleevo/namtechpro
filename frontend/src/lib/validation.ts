@@ -22,7 +22,7 @@ export const appointmentSchema = z.object({
   customerName: z.string().min(2, 'Nome deve ter pelo menos 2 caracteres'),
   email: z.string().email('Email inválido'),
   phone: z.string().min(9, 'Telefone deve ter pelo menos 9 dígitos'),
-  serviceType: z.enum(['Naval Tech', 'Solar Audit', 'Radio Maintenance', 'GPS Installation', 'Radar System']),
+  serviceType: z.enum(['Naval Tech', 'Radio Maintenance', 'GPS Installation', 'Radar System']),
   location: z.enum(['Namibe', 'Luanda', 'Lobito']),
   date: z.string().refine((val) => !isNaN(Date.parse(val)), 'Data inválida'),
   time: z.string().regex(/^([01]\d|2[0-3]):([0-5]\d)$/, 'Hora inválida (formato HH:MM)'),

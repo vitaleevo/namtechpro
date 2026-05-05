@@ -22,7 +22,7 @@ interface ProductFormData {
 
 const initialForm: ProductFormData = {
     name: '',
-    category: 'Energia Solar',
+    category: 'Navegação',
     description: '',
     imageUrl: '',
     status: 'Disponível',
@@ -177,11 +177,10 @@ export default function ProductsPage() {
                                         <CustomSelect
                                             value={formData.category}
                                             options={dbCategories?.map(cat => ({ value: cat.name, label: cat.name })) || [
-                                                { value: 'Energia Solar', label: 'Energia Solar' },
-                                                { value: 'Mobilidade Elétrica', label: 'Mobilidade Elétrica' },
-                                                { value: 'Iluminação', label: 'Iluminação' },
-                                                { value: 'Agricultura', label: 'Agricultura' },
-                                                { value: 'Segurança', label: 'Segurança' }
+                                                { value: 'Navegação', label: 'Navegação' },
+                                                { value: 'Comunicação', label: 'Comunicação' },
+                                                { value: 'Segurança', label: 'Segurança' },
+                                                { value: 'Acessórios', label: 'Acessórios' }
                                             ]}
                                             onChange={value => setFormData({ ...formData, category: value })}
                                         />

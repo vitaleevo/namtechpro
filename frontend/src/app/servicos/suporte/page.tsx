@@ -5,10 +5,10 @@ import { Metadata } from "next";
 
 export const metadata: Metadata = {
     title: "Assistência 24/7",
-    description: "Serviço de suporte técnico de emergência para sistemas de navegação, rádio e energia em Angola.",
+    description: "Serviço de suporte técnico de emergência para sistemas de navegação e rádio em Angola.",
     openGraph: {
         title: "Assistência 24/7 | Namtech Pro",
-        description: "Serviço de suporte técnico de emergência para sistemas de navegação, rádio e energia em Angola.",
+        description: "Serviço de suporte técnico de emergência para sistemas de navegação e rádio em Angola.",
     },
     alternates: {
         canonical: "/servicos/suporte",

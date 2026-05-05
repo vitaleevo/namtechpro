@@ -144,7 +144,7 @@ export default function CategoriesPage() {
                                             value={formData.name}
                                             onChange={e => handleNameChange(e.target.value)}
                                             className="w-full px-5 py-4 rounded-2xl border-2 border-slate-100 focus:border-primary outline-none transition-all text-lg font-medium bg-slate-50/50"
-                                            placeholder="Ex: Painéis Solares"
+                                            placeholder="Ex: Navegação"
                                             required
                                         />
                                     </div>

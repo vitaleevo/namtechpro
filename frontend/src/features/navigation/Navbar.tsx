@@ -62,7 +62,6 @@ export const Navbar = () => {
                 image: "/assets/new/equipamentos-maritimos.webp",
                 items: [
                     { label: t.megaMenu.bookService, href: "/agendamento", icon: "calendar_month" },
-                    { label: t.megaMenu.cleanEnergySea, href: "/servicos#energy", icon: "solar_power" },
                 ]
             }
         ]

@@ -10,6 +10,13 @@ Namtech Pro is a maritime industry platform built with Next.js, Tailwind CSS, an
 - **Design System**: Midnight Industrial (Transitioning back to Light Mode per user request)
 
 ## UI Migration History
+### 2026-05-05: Full Removal of Solar Energy Infrastructure
+- Successfully purged all references to "Energia Solar" and "Clean Energy" from the platform.
+- Deleted `CleanEnergyContent.tsx` and removed the `energia-limpa` service route.
+- Audited and removed all solar-related translation keys (PT, EN, FR).
+- Updated SEO metadata and backoffice placeholders to focus strictly on Maritime, Industrial, and Technical services.
+- The platform is now officially "solar-free".
+
 ### 2026-05-05: Reversion to Light Mode & No-Blur Policy
 - The user requested to stop the Dark Mode migration and return to **Light Mode**.
 - Successfully replaced all remaining `bg-slate-950` instances across `/atualidades`, `/contactos`, `/sobre`, `/termos`, `/privacidade`, `/agendamento` and their corresponding content components.

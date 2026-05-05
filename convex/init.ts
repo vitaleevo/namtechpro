@@ -25,7 +25,6 @@ export const seed = mutation({
         const catMap = {
             nav: "Navegação",
             com: "Comunicação",
-            ene: "Energia",
             con: "Controlo"
         };
 
@@ -78,25 +77,7 @@ export const seed = mutation({
             specs: ["Dados IP até 88kbps", "Voz de alta qualidade", "Design compacto"]
         });
 
-        await ctx.db.insert("products", {
-            name: "Painel Solar Marítimo 200W",
-            category: catMap.ene,
-            brand: "Namtech Solar",
-            description: "Painel monocristalino flexível com revestimento ETFE para alta durabilidade.",
-            status: "Novo",
-            imageUrl: "/assets/new/painel-solar-maritimo.webp",
-            specs: ["Design flexível", "Resistente a água salgada", "Anti-reflexo"]
-        });
 
-        await ctx.db.insert("products", {
-            name: "Victron MultiPlus 3000",
-            category: catMap.ene,
-            brand: "Victron Energy",
-            description: "Inversor/carregador híbrido para sistemas marítimos e industriais.",
-            status: "Top Vendas",
-            imageUrl: "/assets/new/victron-multiplus-3000.webp",
-            specs: ["Onda Senoidal Pura", "Ligação em paralelo", "Monitorização remota"]
-        });
 
         await ctx.db.insert("products", {
             name: "Telefone Satélite Iridium",
@@ -108,15 +89,7 @@ export const seed = mutation({
             specs: ["Cobertura Global", "Voz e Dados", "Resistente"]
         });
 
-        await ctx.db.insert("products", {
-            name: "Kit Solar Satelitário",
-            category: catMap.ene,
-            brand: "Namtech",
-            description: "Solução completa de energia solar para alimentação de terminais satélite em áreas remotas.",
-            status: "Disponível",
-            imageUrl: "/assets/new/telefone-solar-por-talelite-energia-solar.webp",
-            specs: ["Autonomia Total", "Fácil Instalação"]
-        });
+
 
         await ctx.db.insert("products", {
             name: "SR 1350 Patrol C",
@@ -162,10 +135,10 @@ export const seed = mutation({
             name: "Boia de Sinalização Cardinal",
             category: "Acessórios",
             brand: "Namtech Pro",
-            description: "Boia de canal de alta visibilidade com sistema de iluminação solar integrado.",
+            description: "Boia de canal de alta visibilidade com sistema de iluminação integrado.",
             status: "Disponível",
             imageUrl: "/images/boias/depositphotos_164132740-stock-photo-colorful-beacons-at-the-depot.jpg",
-            specs: ["Resistente a UV", "LED Solar", "Ancoragem Reforçada"]
+            specs: ["Resistente a UV", "LED de Alta Intensidade", "Ancoragem Reforçada"]
         });
 
         await ctx.db.insert("products", {
@@ -201,16 +174,7 @@ export const seed = mutation({
             content: "Iniciativa de responsabilidade social da Namtech Pro para aumentar a segurança no mar da comunidade piscatória local, fornecendo equipamentos de comunicação críticos e treinamento básico de SOS."
         });
 
-        await ctx.db.insert("events", {
-            title: "Projeto Solar Porto do Namibe",
-            description: "Implementação de sistema híbrido de 500kW para suporte às operações portuárias, reduzindo o consumo de diesel em 40%.",
-            date: "2025-11-15",
-            location: "Porto Comercial, Namibe",
-            type: "Project",
-            imageUrl: "/images/decorativas/oil-platform.jpg",
-            featured: true,
-            content: "Um marco na sustentabilidade portuária em Angola. Este projeto de energia renovável fornece energia limpa e fiável para as operações críticas do Porto do Namibe."
-        });
+
 
         await ctx.db.insert("events", {
             title: "Namtech Pro na FILDA 2025",
@@ -258,15 +222,7 @@ export const seed = mutation({
                     imageUrl: "/assets/new/servicos.jpg",
                     features: ["Pontões Flutuantes", "Ancoragem Segura", "Manutenção de Cais"]
                 },
-                {
-                    title: "Energia Limpa & Solar",
-                    slug: "energia-limpa",
-                    description: "Projetamos e instalamos sistemas fotovoltaicos navais e industriais em Angola.",
-                    fullContent: "A Namtech Pro é especialista em soluções de energia sustentável. Desde a auditoria energética inicial até à instalação de painéis solares flexíveis e bancos de baterias de lítio de última geração.",
-                    icon: "Zap",
-                    imageUrl: "/assets/new/painel-solar-maritimo.webp",
-                    features: ["Auditoria Energética", "Instalação de Painéis", "Manutenção de Baterias"]
-                },
+
                 {
                     title: "Mergulho Profissional",
                     slug: "mergulho",

@@ -84,7 +84,7 @@ export function EventsDetailContent({ event }: EventsDetailContentProps) {
                             href={`/contactos?subject=${encodeURIComponent(event.title)}`}
                             className="inline-flex items-center justify-center bg-primary text-white font-bold py-3 px-8 rounded-xl hover:bg-slate-800 transition-all"
                         >
-                            {t.nav.contact}
+                            {t.nav.contacts}
                         </Link>
                     </div>
                 </div>

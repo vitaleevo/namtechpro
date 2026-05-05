@@ -15,16 +15,11 @@ const servicesData: Record<string, {
     fullContent: string;
     features: string[];
 }> = {
-    'clean-energy': {
-        title: 'Energia Limpa',
-        description: 'Transformamos a matriz energética da sua frota ou infraestrutura portuária com soluções solares e híbridas.',
-        fullContent: 'A Namtech Pro fornece soluções completas de energia renovável para operações marítimas e terrestres. Os nossos sistemas solares fotovoltaicos, bancos de baterias de lítio e soluções híbridas garantem autonomia energética para embarcações, terminais portuários e infraestruturas industriais ao longo de todo o litoral angolano.',
-        features: ['Solar Fotovoltaico', 'Sistemas Híbridos', 'Bancos de Baterias', 'Eólica Marítima'],
-    },
+
     'support-247': {
         title: 'Suporte Técnico 24/7',
         description: 'Assistência técnica de emergência para sistemas críticos de navegação e rádio em todo o litoral angolano.',
-        fullContent: 'Com uma equipa de piquete disponível 24 horas por dia, 7 dias por semana, garantimos intervenção rápida em sistemas críticos de navegação, radiocomunicações e energia. A nossa cobertura abrange todo o litoral de Angola, desde o Namibe até ao Soyo.',
+        fullContent: 'Com uma equipa de piquete disponível 24 horas por dia, 7 dias por semana, garantimos intervenção rápida em sistemas críticos de navegação e radiocomunicações. A nossa cobertura abrange todo o litoral de Angola, desde o Namibe até ao Soyo.',
         features: ['Piquete 24/7', 'Diagnóstico Remoto', 'Mobilização Rápida', 'Peças Críticas em Stock'],
     },
     'maintenance': {

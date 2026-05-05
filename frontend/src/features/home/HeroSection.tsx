@@ -146,7 +146,7 @@ export const HeroSection = () => {
                             { icon: 'explore', title: t.coreBusiness.navigation, desc: t.coreBusiness.navigationDesc, href: '/catalogo?category=Navegação' },
                             { icon: 'settings_input_antenna', title: t.coreBusiness.radio, desc: t.coreBusiness.radioDesc, href: '/catalogo?category=Comunicação' },
                             { icon: 'satellite_alt', title: t.coreBusiness.satellite, desc: t.coreBusiness.satelliteDesc, href: '/catalogo?category=Comunicação' },
-                            { icon: 'directions_boat', title: t.home.sectors.boats, desc: t.coreBusiness.energyDesc, href: '/barcos' }
+                            { icon: 'directions_boat', title: t.home.sectors.boats, desc: t.coreBusiness.vesselsDesc, href: '/barcos' }
                         ].map((item, idx) => (
                             <motion.div
                                 key={idx}

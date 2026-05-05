@@ -40,7 +40,6 @@ export const Footer = () => {
                         <h4 className="text-sm font-bold uppercase tracking-widest text-secondary mb-6">{t.footer.solutions}</h4>
                         <ul className="space-y-4 text-slate-400 text-sm">
                             <li><Link href="/catalogo" className="hover:text-white transition-colors">{t.footer.equipment}</Link></li>
-                            <li><Link href="/servicos/energia-limpa" className="hover:text-white transition-colors">{t.footer.cleanEnergy}</Link></li>
                             <li><Link href="/servicos/suporte" className="hover:text-white transition-colors">{t.footer.support247}</Link></li>
                             <li><Link href="/barcos" className="hover:text-white transition-colors">{t.footer.searchAndRescue}</Link></li>
                             <li><Link href="/barcos" className="hover:text-white transition-colors">{t.footer.vessels}</Link></li>

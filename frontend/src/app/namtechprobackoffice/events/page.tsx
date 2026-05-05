@@ -159,7 +159,7 @@ export default function EventsPage() {
                                             type="text"
                                             value={formData.title}
                                             onChange={e => setFormData({ ...formData, title: e.target.value })}
-                                            placeholder="Ex: Workshop de Energias Renováveis..."
+                                            placeholder="Ex: FILDA 2025 - Feira Internacional de Luanda"
                                             className="w-full px-5 py-4 rounded-2xl border-2 border-slate-100 focus:border-primary outline-none transition-all text-lg font-medium bg-slate-50/50"
                                             required
                                         />
