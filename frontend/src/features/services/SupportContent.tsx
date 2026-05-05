@@ -14,9 +14,9 @@ export const SupportContent = () => {
             {/* Hero Section */}
             <section className="relative h-[60vh] flex items-center bg-slate-900 overflow-hidden text-white">
                 <div className="absolute inset-0 opacity-40">
-                    <Image src="https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?auto=format&fit=crop&q=80&w=2000" alt="Support Center" fill priority className="object-cover" />
+                    <Image src="/images/loja/equipamentos-socorro.jpg" alt="Support Center" fill priority className="object-cover" />
                 </div>
-                <div className="absolute inset-0 bg-gradient-to-t from-primary via-primary/80 to-transparent"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-black/30 to-transparent"></div>
                 <div className="relative z-10 max-w-7xl mx-auto px-4 text-center">
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
@@ -57,20 +57,20 @@ export const SupportContent = () => {
                             {
                                 tier: t.supportPage.bronze,
                                 time: t.supportPage.response24h,
-                                features: ['Suporte Remoto Ilimitado', 'Diagnóstico via Email/Chat', 'Desconto em Peças', 'Horário Comercial'],
+                                features: t.supportPage.tiers.bronze,
                                 price: t.supportPage.basicSupport
                             },
                             {
                                 tier: t.supportPage.silver,
                                 time: t.supportPage.response12h,
-                                features: ['Prioridade de Mobilização', '2 Visitas Preventivas/Ano', 'Relatórios de Performance', 'Suporte WhatsApp 24/7'],
+                                features: t.supportPage.tiers.silver,
                                 price: t.supportPage.mostPopular,
                                 highlight: true
                             },
                             {
                                 tier: t.supportPage.gold,
                                 time: t.supportPage.response4h,
-                                features: ['Intervenção Imediata', 'Gestor de Conta Dedicado', 'Stock de Backup Local', 'Monitorização Cloud em Tempo Real'],
+                                features: t.supportPage.tiers.gold,
                                 price: t.supportPage.missionCritical
                             }
                         ].map((s, i) => (
@@ -99,7 +99,7 @@ export const SupportContent = () => {
             <section className="py-24 bg-slate-50">
                 <div className="max-w-7xl mx-auto px-4">
                     <div className="bg-red-600 rounded-[4rem] p-12 md:p-20 text-white flex flex-col md:flex-row items-center justify-between gap-12 shadow-2xl relative overflow-hidden">
-                        <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full -mr-32 -mt-32"></div>
+                        <div className="absolute top-0 right-0 w-64 h-64 bg-black/20 rounded-full -mr-32 -mt-32"></div>
                         <div className="max-w-xl">
                             <h2 className="text-4xl font-display font-black mb-6 leading-tight">{t.supportPage.emergencyLine}</h2>
                             <p className="text-lg text-red-100 mb-8 opacity-90">
@@ -113,7 +113,7 @@ export const SupportContent = () => {
                             </div>
                         </div>
                         <div className="w-64 h-64 flex items-center justify-center">
-                            <div className="w-full h-full rounded-full border-8 border-white/20 flex items-center justify-center">
+                            <div className="w-full h-full rounded-full border-8 border-black/20 flex items-center justify-center">
                                 <span className="material-symbols-outlined text-8xl">engineering</span>
                             </div>
                         </div>
@@ -147,17 +147,17 @@ export const SupportContent = () => {
                             </div>
                         </div>
                         <div className="grid grid-cols-2 gap-4">
-                            <div className="relative h-64 rounded-3xl shadow-xl overflow-hidden mt-12">
-                                <Image src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&q=80&w=400" fill className="object-cover" alt="Tech 1" />
+                            <div className="relative h-64 rounded-3xl shadow-xl overflow-hidden mt-12 bg-white">
+                                <Image src="/images/equipamentos/simrad/9 evo 3s with radar.jpg" fill className="object-cover" alt="Tech 1" />
                             </div>
-                            <div className="relative h-64 rounded-3xl shadow-xl overflow-hidden">
-                                <Image src="https://images.unsplash.com/photo-1544725121-be3fb520280c?auto=format&fit=crop&q=80&w=400" fill className="object-cover" alt="Tech 2" />
+                            <div className="relative h-64 rounded-3xl shadow-xl overflow-hidden bg-white">
+                                <Image src="/images/equipamentos/navicom/RT 750 F1.jpeg" fill className="object-cover" alt="Tech 2" />
                             </div>
-                            <div className="relative h-64 rounded-3xl shadow-xl overflow-hidden -mt-12">
-                                <Image src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&q=80&w=400" fill className="object-cover" alt="Tech 3" />
+                            <div className="relative h-64 rounded-3xl shadow-xl overflow-hidden -mt-12 bg-white">
+                                <Image src="/images/equipamentos/simrad/simrad-cruise-9-2.jpg" fill className="object-cover" alt="Tech 3" />
                             </div>
-                            <div className="relative h-64 rounded-3xl shadow-xl overflow-hidden mt-4">
-                                <Image src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&q=80&w=400" fill className="object-cover" alt="Tech 4" />
+                            <div className="relative h-64 rounded-3xl shadow-xl overflow-hidden mt-4 bg-white">
+                                <Image src="/images/equipamentos/onwa/PLACAR 6 FO 4 (4).jpg" fill className="object-cover" alt="Tech 4" />
                             </div>
                         </div>
                     </div>

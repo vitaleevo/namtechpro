@@ -73,7 +73,7 @@ export const BackofficeContent = () => {
                 <div className="p-8 flex items-center justify-between">
                     {isSidebarOpen && (
                         <div className="w-40 h-10 relative">
-                            <Image src="/images/logo-horizontal.png" alt="Logo" fill className="object-contain object-left" />
+                            <Image src="/images/logo.png" alt="Logo" fill className="object-contain object-left" />
                         </div>
                     )}
                     <button
@@ -119,7 +119,7 @@ export const BackofficeContent = () => {
                         <UserButton afterSignOutUrl="/" />
                         {isSidebarOpen && (
                             <div className="overflow-hidden">
-                                <p className="text-xs font-black text-slate-900 truncate">{user?.fullName}</p>
+                                <p className="text-xs font-black text-primary truncate">{user?.fullName}</p>
                                 <p className="text-[10px] text-emerald-500 font-black uppercase tracking-widest flex items-center gap-1">
                                     <span className="w-2 h-2 rounded-full bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.5)]" />
                                     Online
@@ -138,7 +138,7 @@ export const BackofficeContent = () => {
                             <div className="h-px w-10 bg-blue-600" />
                             <span className="text-[10px] font-black uppercase tracking-[0.4em] text-blue-600">Command Center</span>
                         </div>
-                        <h1 className="text-6xl font-black text-slate-900 tracking-tighter mb-4 capitalize">
+                        <h1 className="text-6xl font-black text-primary tracking-tighter mb-4 capitalize">
                             {sidebarLinks.find((l) => l.id === activeTab)?.label}
                         </h1>
                         <p className="text-lg text-slate-500 font-medium">

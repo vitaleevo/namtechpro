@@ -67,11 +67,11 @@ export const CustomDatePicker = ({ value, onChange, label }: DatePickerProps) =>
                     type="button"
                     onClick={() => setIsOpen(!isOpen)}
                     className={cn(
-                        "w-full px-6 py-4 rounded-2xl bg-white/60 border border-slate-200 text-left flex items-center justify-between transition-all outline-none",
-                        isOpen ? "border-primary ring-4 ring-primary/5" : "hover:border-slate-300"
+                        "w-full px-6 py-4 rounded-2xl bg-slate-800/50 border border-white/10 text-left flex items-center justify-between transition-all outline-none text-white",
+                        isOpen ? "border-secondary ring-4 ring-secondary/20" : "hover:border-white/20"
                     )}
                 >
-                    <span className={cn(selectedDate ? "text-primary font-bold" : "text-slate-400")}>
+                    <span className={cn(selectedDate ? "text-white font-bold" : "text-slate-500")}>
                         {selectedDate ? format(selectedDate, 'PPP', { locale }) : "Selecionar data"}
                     </span>
                     <CalendarIcon className="w-5 h-5 text-slate-400" />
@@ -83,18 +83,18 @@ export const CustomDatePicker = ({ value, onChange, label }: DatePickerProps) =>
                             initial={{ opacity: 0, y: 10, scale: 0.95 }}
                             animate={{ opacity: 1, y: 0, scale: 1 }}
                             exit={{ opacity: 0, y: 10, scale: 0.95 }}
-                            className="absolute z-50 mt-2 bg-white/95 backdrop-blur-xl border border-white/40 rounded-[2rem] shadow-2xl p-6 min-w-[320px]"
+                            className="absolute z-50 mt-2 bg-slate-900 border border-white/10 rounded-[2rem] shadow-2xl p-6 min-w-[320px]"
                         >
                             {/* Calendar Header */}
                             <div className="flex items-center justify-between mb-6">
-                                <button type="button" onClick={prevMonth} className="p-2 hover:bg-primary/5 rounded-full transition-colors">
-                                    <ChevronLeft className="w-5 h-5 text-primary" />
+                                <button type="button" onClick={prevMonth} className="p-2 hover:bg-white/5 rounded-full transition-colors">
+                                    <ChevronLeft className="w-5 h-5 text-secondary" />
                                 </button>
-                                <h3 className="font-display font-black text-primary capitalize">
+                                <h3 className="font-display font-black text-white capitalize">
                                     {format(currentMonth, 'MMMM yyyy', { locale })}
                                 </h3>
-                                <button type="button" onClick={nextMonth} className="p-2 hover:bg-primary/5 rounded-full transition-colors">
-                                    <ChevronRight className="w-5 h-5 text-primary" />
+                                <button type="button" onClick={nextMonth} className="p-2 hover:bg-white/5 rounded-full transition-colors">
+                                    <ChevronRight className="w-5 h-5 text-secondary" />
                                 </button>
                             </div>
 
@@ -120,10 +120,10 @@ export const CustomDatePicker = ({ value, onChange, label }: DatePickerProps) =>
                                             onClick={() => handleDateClick(day)}
                                             className={cn(
                                                 "h-10 w-10 rounded-xl flex items-center justify-center text-sm transition-all",
-                                                !isCurrentMonth && "text-slate-300 pointer-events-none",
-                                                isCurrentMonth && !isSelected && "hover:bg-primary/10 text-slate-600 font-medium",
-                                                isSelected && "bg-primary text-white font-bold shadow-lg shadow-primary/20",
-                                                isToday(day) && !isSelected && "border border-secondary text-primary font-bold"
+                                                !isCurrentMonth && "text-slate-700 pointer-events-none",
+                                                isCurrentMonth && !isSelected && "hover:bg-white/5 text-slate-300 font-medium",
+                                                isSelected && "bg-secondary text-primary font-bold shadow-lg shadow-secondary/20",
+                                                isToday(day) && !isSelected && "border border-secondary/50 text-secondary font-bold"
                                             )}
                                         >
                                             {format(day, 'd')}

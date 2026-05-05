@@ -36,7 +36,7 @@ export const InquiriesTab: React.FC<InquiriesTabProps> = ({ leads }) => {
                                 <tr key={item._id} className="group hover:bg-slate-50/50 transition-all">
                                     <td className="px-10 py-8">
                                         <div className="flex flex-col">
-                                            <span className="font-black text-slate-900 tracking-tight text-lg">{item.name}</span>
+                                            <span className="font-black text-primary tracking-tight text-lg">{item.name}</span>
                                             <span className="text-[10px] text-slate-400 uppercase font-black tracking-widest mt-1">Lead Qualificada</span>
                                         </div>
                                     </td>

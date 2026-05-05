@@ -43,11 +43,11 @@ export const CustomSelect = ({ options, value, onChange, placeholder, label, cla
                     type="button"
                     onClick={() => setIsOpen(!isOpen)}
                     className={cn(
-                        "w-full px-6 py-4 rounded-2xl bg-white/60 border border-slate-200 text-left flex items-center justify-between transition-all outline-none",
-                        isOpen ? "border-primary ring-4 ring-primary/5" : "hover:border-slate-300"
+                        "w-full px-6 py-4 rounded-2xl bg-slate-800/50 border border-white/10 text-left flex items-center justify-between transition-all outline-none text-white",
+                        isOpen ? "border-secondary ring-4 ring-secondary/20" : "hover:border-white/20"
                     )}
                 >
-                    <span className={cn(selectedOption ? "text-primary font-bold" : "text-slate-400")}>
+                    <span className={cn(selectedOption ? "text-white font-bold" : "text-slate-500")}>
                         {selectedOption ? selectedOption.label : placeholder}
                     </span>
                     <ChevronDown className={cn("w-5 h-5 text-slate-400 transition-transform", isOpen && "rotate-180")} />
@@ -60,7 +60,7 @@ export const CustomSelect = ({ options, value, onChange, placeholder, label, cla
                             animate={{ opacity: 1, y: 0, scale: 1 }}
                             exit={{ opacity: 0, y: 10, scale: 0.95 }}
                             transition={{ duration: 0.2, ease: "easeOut" }}
-                            className="absolute z-50 w-full mt-2 bg-white/90 backdrop-blur-xl border border-white/40 rounded-3xl shadow-2xl p-2 overflow-hidden"
+                            className="absolute z-50 w-full mt-2 bg-slate-900 border border-white/10 rounded-3xl shadow-2xl p-2 overflow-hidden"
                         >
                             <div className="max-h-60 overflow-y-auto custom-scrollbar pr-2">
                                 {options.map((option) => (
@@ -71,13 +71,13 @@ export const CustomSelect = ({ options, value, onChange, placeholder, label, cla
                                             onChange(option.value);
                                             setIsOpen(false);
                                         }}
-                                        className={cn(
-                                            "w-full px-4 py-3 rounded-xl flex items-center justify-between text-left transition-all hover:bg-primary/5 group",
-                                            value === option.value ? "bg-primary text-white" : "text-slate-600"
+                                         className={cn(
+                                            "w-full px-4 py-3 rounded-xl flex items-center justify-between text-left transition-all hover:bg-secondary/10 group",
+                                            value === option.value ? "bg-secondary text-primary" : "text-slate-300"
                                         )}
                                     >
                                         <span className="font-medium">{option.label}</span>
-                                        {value === option.value && <Check className="w-4 h-4 text-white" />}
+                                        {value === option.value && <Check className="w-4 h-4 text-primary" />}
                                     </button>
                                 ))}
                             </div>

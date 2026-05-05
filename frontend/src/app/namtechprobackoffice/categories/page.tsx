@@ -98,7 +98,7 @@ export default function CategoriesPage() {
         <div className="space-y-8 relative">
             <div className="flex items-center justify-between">
                 <div>
-                    <h1 className="text-3xl font-bold text-slate-900">Gestão de Categorias</h1>
+                    <h1 className="text-3xl font-bold text-primary">Gestão de Categorias</h1>
                     <p className="text-slate-500">Organize seus produtos e posts de blog</p>
                 </div>
                 <button
@@ -114,7 +114,7 @@ export default function CategoriesPage() {
             {isEditing && (
                 <div className="fixed inset-0 z-50 flex items-center justify-center p-4 md:p-8">
                     <div
-                        className="absolute inset-0 bg-slate-900/60 backdrop-blur-md transition-opacity animate-in fade-in duration-300"
+                        className="absolute inset-0 bg-slate-900/90 transition-opacity animate-in fade-in duration-300"
                         onClick={() => setIsEditing(false)}
                     />
 
@@ -122,14 +122,14 @@ export default function CategoriesPage() {
                         <div className="p-8 md:p-12">
                             <div className="flex items-center justify-between mb-10">
                                 <div>
-                                    <h2 className="text-3xl font-black text-slate-900 tracking-tight">
+                                    <h2 className="text-3xl font-black text-primary tracking-tight">
                                         {editingId ? 'Editar Categoria' : 'Nova Categoria'}
                                     </h2>
                                     <p className="text-slate-500 mt-1">Defina como os itens serão agrupados no site.</p>
                                 </div>
                                 <button
                                     onClick={() => setIsEditing(false)}
-                                    className="p-3 bg-slate-50 text-slate-400 hover:text-slate-900 hover:bg-slate-100 rounded-2xl transition-all"
+                                    className="p-3 bg-slate-50 text-slate-400 hover:text-primary hover:bg-slate-100 rounded-2xl transition-all"
                                 >
                                     <X size={24} />
                                 </button>
@@ -188,7 +188,7 @@ export default function CategoriesPage() {
                                     <button
                                         type="button"
                                         onClick={() => setIsEditing(false)}
-                                        className="px-8 py-4 rounded-2xl font-black text-slate-400 hover:text-slate-900 transition-all uppercase tracking-widest text-xs"
+                                        className="px-8 py-4 rounded-2xl font-black text-slate-400 hover:text-primary transition-all uppercase tracking-widest text-xs"
                                     >
                                         Cancelar
                                     </button>
@@ -207,7 +207,7 @@ export default function CategoriesPage() {
             )}
 
             {/* Table Section */}
-            <div className={`transition-all duration-500 ${isEditing ? 'blur-sm grayscale opacity-30 select-none' : ''}`}>
+            <div className={`transition-all duration-500 ${isEditing ? 'grayscale opacity-30 select-none' : ''}`}>
                 <div className="bg-white rounded-[2rem] shadow-sm border border-slate-100 overflow-hidden">
                     <div className="p-6 border-b border-slate-100 flex items-center gap-4 bg-slate-50/30">
                         <div className="relative flex-1 max-w-sm">
@@ -241,7 +241,7 @@ export default function CategoriesPage() {
                                                     <Type size={18} />
                                                 </div>
                                                 <div>
-                                                    <p className="font-black text-slate-900 leading-none mb-1">{category.name}</p>
+                                                    <p className="font-black text-primary leading-none mb-1">{category.name}</p>
                                                     <p className="text-[10px] font-mono text-slate-400">/{category.slug}</p>
                                                 </div>
                                             </div>

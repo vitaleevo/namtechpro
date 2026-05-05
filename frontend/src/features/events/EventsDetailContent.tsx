@@ -38,7 +38,7 @@ export function EventsDetailContent({ event }: EventsDetailContentProps) {
                         </span>
                     </div>
 
-                    <h1 className="text-4xl md:text-5xl lg:text-6xl font-display font-black text-slate-900 mb-8 leading-tight">
+                    <h1 className="text-4xl md:text-5xl lg:text-6xl font-display font-black text-primary mb-8 leading-tight">
                         {event.title}
                     </h1>
 
@@ -78,7 +78,7 @@ export function EventsDetailContent({ event }: EventsDetailContentProps) {
 
                     {/* CTA Contact if project */}
                     <div className="mt-16 bg-slate-50 rounded-2xl p-8 border border-slate-100 text-center">
-                        <h3 className="text-xl font-bold text-slate-900 mb-4">{t.cta.title}</h3>
+                        <h3 className="text-xl font-bold text-primary mb-4">{t.cta.title}</h3>
                         <p className="text-slate-500 mb-6">{t.cta.subtitle}</p>
                         <Link
                             href={`/contactos?subject=${encodeURIComponent(event.title)}`}

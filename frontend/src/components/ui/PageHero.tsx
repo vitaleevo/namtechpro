@@ -31,9 +31,9 @@ export const PageHero = ({ title, highlight, subtitle, image, height = "h-[60vh]
                 />
             </motion.div>
 
-            {/* Premium Gradient Overlay */}
-            <div className="absolute inset-0 bg-gradient-to-r from-primary/90 via-primary/70 to-transparent z-10"></div>
-            <div className="absolute inset-0 bg-gradient-to-t from-primary/40 via-transparent to-transparent z-10"></div>
+            {/* Premium Black Gradient Overlay */}
+            <div className="absolute inset-0 bg-gradient-to-r from-black/40 via-black/20 to-transparent z-10"></div>
+            <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent z-10"></div>
 
             {/* Content */}
             <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
@@ -57,7 +57,7 @@ export const PageHero = ({ title, highlight, subtitle, image, height = "h-[60vh]
                             )}
                         </h1>
 
-                        <p className="text-xl md:text-2xl text-slate-200 font-medium leading-relaxed max-w-2xl border-l-2 border-white/20 pl-6 backdrop-blur-sm py-2">
+                        <p className="text-xl md:text-2xl text-white/90 font-medium leading-relaxed max-w-2xl border-l-2 border-white/20 pl-6 py-2">
                             {subtitle}
                         </p>
                     </motion.div>
@@ -65,10 +65,10 @@ export const PageHero = ({ title, highlight, subtitle, image, height = "h-[60vh]
             </div>
 
             {/* Decorative Element */}
-            <div className="absolute bottom-0 left-0 w-full h-24 bg-gradient-to-t from-slate-50 to-transparent z-30"></div>
+            <div className="absolute bottom-0 left-0 w-full h-24 bg-gradient-to-t from-black/20 to-transparent z-30"></div>
 
             {/* Floating Tech Elements (Subtle) */}
-            <div className="absolute top-1/4 right-1/4 w-64 h-64 bg-secondary/10 rounded-full blur-3xl pulse z-10"></div>
+            <div className="absolute top-1/4 right-1/4 w-64 h-64 bg-secondary/10 rounded-full z-10"></div>
         </section>
     );
 };

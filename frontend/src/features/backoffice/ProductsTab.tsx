@@ -71,14 +71,14 @@ export const ProductsTab: React.FC<ProductsTabProps> = ({ products, onEdit, onDe
                                         <div className="flex items-center gap-6">
                                             <div className="w-16 h-16 rounded-2xl overflow-hidden bg-slate-100 shrink-0 border border-slate-100 relative">
                                                 <Image
-                                                    src={item.imageUrl || "https://images.unsplash.com/photo-1511467687858-23d96c32e4ae"}
+                                                    src={item.imageUrl || "/images/decorativas/nav-equipment.jpg"}
                                                     alt={item.name}
                                                     fill
                                                     className="object-cover"
                                                 />
                                             </div>
                                             <div className="flex flex-col">
-                                                <span className="font-black text-slate-900 text-lg tracking-tight leading-none mb-2">{item.name}</span>
+                                                <span className="font-black text-primary text-lg tracking-tight leading-none mb-2">{item.name}</span>
                                                 <span className="text-[10px] font-black uppercase tracking-widest text-blue-600">ID: {item._id.slice(-6)}</span>
                                             </div>
                                         </div>

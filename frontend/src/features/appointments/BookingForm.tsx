@@ -87,12 +87,12 @@ export const BookingForm = () => {
             <motion.div
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
-                className="bg-white/80 backdrop-blur-xl p-12 rounded-[2.5rem] shadow-2xl border border-white/20 text-center"
+                className="bg-slate-900 p-12 rounded-[2.5rem] shadow-2xl border border-white/10 text-center"
             >
                 <div className="w-20 h-20 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto mb-6">
                     <span className="material-symbols-outlined text-4xl">verified</span>
                 </div>
-                <h2 className="text-3xl font-black text-primary mb-4">{t.booking.successTitle}</h2>
+                <h2 className="text-3xl font-black text-white mb-4">{t.booking.successTitle}</h2>
                 <p className="text-slate-500 mb-8">{t.booking.successDesc}</p>
                 <button
                     onClick={() => setStatus('idle')}
@@ -105,7 +105,7 @@ export const BookingForm = () => {
     }
 
     return (
-        <form onSubmit={handleSubmit} className="space-y-8 bg-white/40 backdrop-blur-md p-8 md:p-12 rounded-[3rem] border border-white/40 shadow-xl">
+        <form onSubmit={handleSubmit} className="space-y-8 bg-slate-900 p-8 md:p-12 rounded-[3rem] border border-white/10 shadow-xl">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div className="space-y-2">
                     <label className="text-xs font-black uppercase tracking-widest text-slate-500 ml-1">{t.booking.name}</label>
@@ -114,7 +114,7 @@ export const BookingForm = () => {
                         required
                         value={formData.customerName}
                         onChange={(e) => setFormData({ ...formData, customerName: e.target.value })}
-                        className="w-full px-6 py-4 rounded-2xl bg-white/60 border border-slate-200 focus:ring-4 focus:ring-primary/5 outline-none transition-all"
+                        className="w-full px-6 py-4 rounded-2xl bg-slate-800/50 border border-white/10 focus:ring-4 focus:ring-secondary/20 outline-none transition-all text-white placeholder:text-slate-500"
                         placeholder="Ex: João Manuel"
                     />
                 </div>
@@ -125,7 +125,7 @@ export const BookingForm = () => {
                         required
                         value={formData.email}
                         onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                        className="w-full px-6 py-4 rounded-2xl bg-white/60 border border-slate-200 focus:ring-4 focus:ring-primary/5 outline-none transition-all"
+                        className="w-full px-6 py-4 rounded-2xl bg-slate-800/50 border border-white/10 focus:ring-4 focus:ring-secondary/20 outline-none transition-all text-white placeholder:text-slate-500"
                         placeholder="exemplo@namtechpro.ao"
                     />
                 </div>
@@ -139,7 +139,7 @@ export const BookingForm = () => {
                         required
                         value={formData.phone}
                         onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                        className="w-full px-6 py-4 rounded-2xl bg-white/60 border border-slate-200 focus:ring-4 focus:ring-primary/5 outline-none transition-all"
+                        className="w-full px-6 py-4 rounded-2xl bg-slate-800/50 border border-white/10 focus:ring-4 focus:ring-secondary/20 outline-none transition-all text-white placeholder:text-slate-500"
                         placeholder="+244"
                     />
                 </div>
@@ -179,7 +179,7 @@ export const BookingForm = () => {
                     rows={4}
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                    className="w-full px-6 py-4 rounded-2xl bg-white/60 border border-slate-200 focus:ring-4 focus:ring-primary/5 outline-none transition-all resize-none"
+                    className="w-full px-6 py-4 rounded-2xl bg-slate-50 border border-slate-200 focus:ring-4 focus:ring-primary/5 outline-none transition-all resize-none"
                     placeholder="Especifique o modelo do equipamento ou detalhes da urgência..."
                 />
             </div>

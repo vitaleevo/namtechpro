@@ -26,7 +26,7 @@ export default function ErrorModal({
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
                         onClick={onClose}
-                        className="absolute inset-0 bg-slate-900/60 backdrop-blur-sm"
+                        className="absolute inset-0 bg-slate-900/90"
                     />
 
                     {/* Modal Content */}
@@ -50,7 +50,7 @@ export default function ErrorModal({
                                 <XCircle size={32} className="text-red-500" />
                             </div>
 
-                            <h3 className="text-2xl font-black text-slate-900 tracking-tight mb-2">
+                            <h3 className="text-2xl font-black text-primary tracking-tight mb-2">
                                 {title}
                             </h3>
 

@@ -41,6 +41,8 @@ export const getBySlug = query({
         // Filter products by category matching the slug
         const matchingProducts = products.filter(p => {
             const categorySlug = p.category.toLowerCase()
+                .normalize("NFD")
+                .replace(/[\u0300-\u036f]/g, "")
                 .replace(/[^a-z0-9]+/g, '-')
                 .replace(/^-|-$/g, '');
             return categorySlug === args.slug.toLowerCase();

@@ -129,7 +129,7 @@ export default function BlogPage() {
         <div className="space-y-8 relative">
             <div className="flex items-center justify-between">
                 <div>
-                    <h1 className="text-3xl font-bold text-slate-900">Blog e Notícias</h1>
+                    <h1 className="text-3xl font-bold text-primary">Blog e Notícias</h1>
                     <p className="text-slate-500">Gerencie artigos e publicações</p>
                 </div>
                 <button
@@ -146,7 +146,7 @@ export default function BlogPage() {
                 <div className="fixed inset-0 z-50 flex items-center justify-center p-4 md:p-8">
                     {/* Backdrop */}
                     <div
-                        className="absolute inset-0 bg-slate-900/60 backdrop-blur-md transition-opacity animate-in fade-in duration-300"
+                        className="absolute inset-0 bg-slate-900/90 transition-opacity animate-in fade-in duration-300"
                         onClick={() => setIsEditing(false)}
                     />
 
@@ -155,14 +155,14 @@ export default function BlogPage() {
                         <div className="p-8 md:p-12">
                             <div className="flex items-center justify-between mb-10">
                                 <div>
-                                    <h2 className="text-3xl font-black text-slate-900 tracking-tight">
+                                    <h2 className="text-3xl font-black text-primary tracking-tight">
                                         {editingId ? 'Editar Artigo' : 'Criar Novo Post'}
                                     </h2>
                                     <p className="text-slate-500 mt-1">Preencha os detalhes para publicar no portal.</p>
                                 </div>
                                 <button
                                     onClick={() => setIsEditing(false)}
-                                    className="p-3 bg-slate-50 text-slate-400 hover:text-slate-900 hover:bg-slate-100 rounded-2xl transition-all"
+                                    className="p-3 bg-slate-50 text-slate-400 hover:text-primary hover:bg-slate-100 rounded-2xl transition-all"
                                 >
                                     <X size={24} />
                                 </button>
@@ -275,7 +275,7 @@ export default function BlogPage() {
                                     <button
                                         type="button"
                                         onClick={() => setIsEditing(false)}
-                                        className="px-8 py-4 rounded-2xl font-black text-slate-400 hover:text-slate-900 transition-all uppercase tracking-widest text-xs"
+                                        className="px-8 py-4 rounded-2xl font-black text-slate-400 hover:text-primary transition-all uppercase tracking-widest text-xs"
                                     >
                                         Descartar Alterações
                                     </button>
@@ -294,7 +294,7 @@ export default function BlogPage() {
             )}
 
             {/* Content List Section - Always visible behind modal or by itself */}
-            <div className={`transition-all duration-500 ${isEditing ? 'blur-sm grayscale opacity-30 select-none' : ''}`}>
+            <div className={`transition-all duration-500 ${isEditing ? 'grayscale opacity-30 select-none' : ''}`}>
                 <div className="bg-white rounded-[2rem] shadow-sm border border-slate-100 overflow-hidden">
                     <div className="p-6 border-b border-slate-100 flex items-center gap-4 bg-slate-50/30">
                         <div className="relative flex-1 max-w-sm">
@@ -324,10 +324,10 @@ export default function BlogPage() {
                                         <td className="p-6">
                                             <div className="flex items-center gap-4">
                                                 <div className="w-16 h-12 rounded-xl bg-slate-100 overflow-hidden relative shadow-inner">
-                                                    <Image src={post.imageUrl || 'https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d'} alt={post.title} fill className="object-cover transition-transform group-hover:scale-110 duration-500" />
+                                                    <Image src={post.imageUrl || '/images/decorativas/lighthouse-storm.jpg'} alt={post.title} fill className="object-cover transition-transform group-hover:scale-110 duration-500" />
                                                 </div>
                                                 <div>
-                                                    <p className="font-black text-slate-900 line-clamp-1 leading-none mb-1">{post.title}</p>
+                                                    <p className="font-black text-primary line-clamp-1 leading-none mb-1">{post.title}</p>
                                                     <p className="text-xs text-slate-400 line-clamp-1">{post.excerpt}</p>
                                                 </div>
                                             </div>

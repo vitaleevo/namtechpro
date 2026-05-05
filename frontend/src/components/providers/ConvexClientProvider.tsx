@@ -30,11 +30,14 @@ export function ConvexClientProvider({ children }: { children: ReactNode }) {
     // Avoid creating a real client during SSR if we don't have a URL
     // but we need to return the provider to keep the tree consistent.
     const convex = useMemo(() => getConvexClient(), []);
+    const clerkKey = process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY;
 
-    const clerkKey = process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY ?? "";
+    if (!clerkKey) {
+        return <>{children}</>;
+    }
 
     return (
-        <ClerkProvider publishableKey={clerkKey}>
+        <ClerkProvider publishableKey={clerkKey} dynamic>
             <ConvexProviderWithClerk client={convex} useAuth={useAuth}>
                 {children}
             </ConvexProviderWithClerk>

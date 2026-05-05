@@ -5,245 +5,224 @@ import { motion } from 'framer-motion';
 import { Ship, Anchor, Shield, Fuel, Navigation, Waves, ArrowRight, CheckCircle2 } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { Navbar } from '@/features/navigation/Navbar';
+import { Footer } from '@/features/navigation/Footer';
 
 const boats = [
     {
-        name: "Lancha NP-24 Intercetor",
-        type: "Segurança e Vigilância",
+        name: "KD Workboats Interceptor 14",
+        type: "Segurança e Defesa",
         length: "14.5m",
-        speed: "42 Knots",
+        speed: "45 Knots",
         range: "350 nm",
-        price: "Sob Consulta",
-        image: "https://images.unsplash.com/photo-1544551763-8cb069f29d20?auto=format&fit=crop&q=80&w=1000",
-        description: "Embarcação de alta velocidade projetada para patrulhamento costeiro, interceção rápida e missões táticas especiais."
+        image: '/images/barcos/kd-workboats/police-01.jpg',
+        description: "Embarcação tática de alta velocidade projetada para patrulhamento costeiro, interceção rápida e missões especiais de segurança marítima."
     },
     {
-        name: "Namtech Rescue 1200",
-        type: "Busca e Salvamento (SAR)",
+        name: "KD Workboats SAR 12",
+        type: "Busca e Salvamento",
         length: "12m",
-        speed: "35 Knots",
+        speed: "38 Knots",
         range: "400 nm",
-        price: "Sob Consulta",
-        image: "https://images.unsplash.com/photo-1530919771146-5fd70281b37f?auto=format&fit=crop&q=80&w=1000",
-        description: "Unidade de salvamento marítimo autoadireitável, equipada com os mais avançados sistemas de busca eletrónica e suporte médico."
+        image: "/images/barcos/kd-workboats/rescue-04.jpg",
+        description: "Unidade de salvamento marítimo de resposta rápida, equipada com avançados sistemas de busca eletrónica e capacidade de resgate."
     },
     {
-        name: "Ocean Pro Trawler 185",
-        type: "Pesca Profissional",
+        name: "Searibs SR 650 Patrol",
+        type: "Patrulha Costeira",
+        length: "6.5m",
+        speed: "40 Knots",
+        range: "150 nm",
+        image: "/images/barcos/searibs/cropped-DSC01578.webp",
+        description: "Embarcação rígida inflável (RIB) de alto desempenho, otimizada para missões de patrulha, fiscalização e resposta rápida."
+    },
+    {
+        name: "Ocean Trawler Pro",
+        type: "Operações Offshore",
         length: "18.5m",
-        speed: "12 Knots",
+        speed: "18 Knots",
         range: "1200 nm",
-        price: "Sob Consulta",
-        image: "https://images.unsplash.com/photo-1534447677768-be436bb09401?auto=format&fit=crop&q=80&w=1000",
-        description: "Embarcação de pesca industrial robusta, otimizada para longos períodos em alto mar com sistemas de frio redundantes."
+        image: "/images/barcos/kd-workboats/shunter2.jpg",
+        description: "Embarcação robusta otimizada para longos períodos em alto mar, transporte de tripulação e suporte logístico a plataformas offshore."
     }
 ];
 
 export default function BarcosPage() {
     return (
-        <main className="min-h-screen bg-white pt-20">
+        <>
+        <Navbar />
+        <main className="min-h-screen bg-white pt-24">
             {/* Hero Section */}
-            <section className="relative h-[70vh] flex items-center overflow-hidden bg-primary">
-                <div className="absolute inset-0 z-0">
-                    <Image
-                        src="/novas fotos/Serviços.jpg"
-                        alt="Namtech Fleet"
-                        fill
-                        className="object-cover opacity-40 grayscale"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-r from-primary via-primary/80 to-transparent"></div>
-                </div>
+            <section className="relative px-6 lg:px-12 mb-20">
+                <div className="max-w-7xl mx-auto rounded-3xl overflow-hidden relative h-[60vh] min-h-[500px] flex items-center shadow-2xl">
+                    <div className="absolute inset-0 z-0">
+                        <Image
+                            src="/images/decorativas/hero_principal.jpg"
+                            alt="Namtech Fleet"
+                            fill
+                            className="object-cover"
+                            priority
+                        />
+                        <div className="absolute inset-0 bg-black/50"></div>
+                        <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/20 to-transparent"></div>
+                    </div>
 
-                <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-12 w-full">
-                    <motion.div
-                        initial={{ opacity: 0, x: -30 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        className="max-w-3xl"
-                    >
-                        <span className="inline-flex items-center gap-2 px-4 py-2 bg-secondary/20 text-secondary border border-secondary/30 rounded-full text-[10px] font-black uppercase tracking-[0.4em] mb-8">
-                            <Anchor size={12} />
-                            Divisão de Embarcações
-                        </span>
-                        <h1 className="text-6xl md:text-8xl font-display font-black text-white mb-10 tracking-tighter leading-none">
-                            Venda de <br />
-                            <span className="text-secondary italic">Embarcações</span>
-                        </h1>
-                        <p className="text-xl md:text-2xl text-slate-300 font-medium leading-relaxed max-w-2xl border-l-4 border-secondary pl-8">
-                            Projetamos e comercializamos embarcações de alta performance com integração tecnológica de última geração para Angola.
-                        </p>
-                    </motion.div>
+                    <div className="relative z-10 p-10 lg:p-20 w-full">
+                        <motion.div
+                            initial={{ opacity: 0, y: 30 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.6 }}
+                            className="max-w-2xl"
+                        >
+                            <span className="inline-flex items-center gap-2 px-4 py-2 bg-secondary text-white rounded-full text-xs font-bold uppercase tracking-widest mb-6">
+                                <Ship size={14} />
+                                Divisão de Embarcações
+                            </span>
+                            <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 tracking-tight leading-tight">
+                                Soluções Marítimas de <span className="text-secondary italic font-serif">Excelência</span>
+                            </h1>
+                            <p className="text-lg md:text-xl text-white/90 font-medium leading-relaxed mb-8">
+                                Fornecemos embarcações de alta performance das prestigiadas marcas KD Workboats e Searibs, ideais para patrulha, resgate e operações offshore em Angola.
+                            </p>
+                            <Link href="#catalogo-embarcacoes" className="inline-flex items-center gap-3 bg-primary hover:bg-primary/90 text-white px-8 py-4 rounded-xl font-bold transition-all shadow-lg hover:shadow-primary/30">
+                                Ver Catálogo
+                                <ArrowRight size={18} />
+                            </Link>
+                        </motion.div>
+                    </div>
                 </div>
             </section>
 
-            {/* Filter / Inventory Header */}
-            <section className="py-24 max-w-7xl mx-auto px-6 lg:px-12">
-                <div className="flex flex-col lg:flex-row justify-between items-end gap-12 mb-20">
-                    <div className="max-w-2xl">
-                        <span className="text-primary font-black uppercase tracking-[0.3em] text-[10px] mb-6 block">Catálogo Premium</span>
-                        <h2 className="text-4xl md:text-6xl font-display font-black text-slate-900 tracking-tighter leading-none">
-                            Disponibilidade <span className="text-primary italic">Imediata</span>
-                        </h2>
+            {/* Catalog Grid Section */}
+            <section id="catalogo-embarcacoes" className="py-20 bg-slate-50">
+                <div className="max-w-7xl mx-auto px-6 lg:px-12">
+                    <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-16">
+                        <div className="max-w-2xl">
+                            <span className="text-secondary font-bold uppercase tracking-widest text-sm mb-3 block">Frota Disponível</span>
+                            <h2 className="text-4xl md:text-5xl font-bold text-primary tracking-tight">
+                                Catálogo de Embarcações
+                            </h2>
+                        </div>
                     </div>
-                    <div className="flex gap-4">
-                        {['Todas', 'Patrulha', 'Pesca', 'Salvamento'].map((f, i) => (
-                            <button key={i} className={`px-8 py-4 rounded-2xl text-[10px] font-black uppercase tracking-widest transition-all ${i === 0 ? 'bg-primary text-white shadow-xl shadow-primary/20' : 'bg-slate-50 text-slate-400 hover:bg-slate-100'}`}>
-                                {f}
-                            </button>
+
+                    <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                        {boats.map((boat, index) => (
+                            <motion.div
+                                key={index}
+                                initial={{ opacity: 0, y: 20 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: index * 0.1, duration: 0.5 }}
+                                className="group bg-white rounded-2xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col"
+                            >
+                                {/* Image Part */}
+                                <div className="relative h-64 overflow-hidden bg-slate-100">
+                                    <Image
+                                        src={boat.image}
+                                        alt={boat.name}
+                                        fill
+                                        className="object-cover transition-transform duration-700 group-hover:scale-105"
+                                    />
+                                    <div className="absolute top-4 left-4">
+                                        <span className="bg-white/95 text-primary text-xs font-bold uppercase px-3 py-1.5 rounded-lg shadow-sm border border-slate-100">
+                                            {boat.type}
+                                        </span>
+                                    </div>
+                                </div>
+
+                                {/* Content Part */}
+                                <div className="p-8 flex-1 flex flex-col">
+                                    <h3 className="text-2xl font-bold text-primary mb-3 group-hover:text-primary transition-colors">
+                                        {boat.name}
+                                    </h3>
+                                    <p className="text-slate-600 mb-8 leading-relaxed flex-1">
+                                        {boat.description}
+                                    </p>
+
+                                    <div className="grid grid-cols-2 gap-4 mb-8 bg-slate-50 p-4 rounded-xl border border-slate-100">
+                                        <div className="space-y-1">
+                                            <div className="flex items-center gap-1.5 text-slate-500">
+                                                <Ship size={14} />
+                                                <span className="text-xs font-semibold uppercase">Comprimento</span>
+                                            </div>
+                                            <p className="text-sm font-bold text-primary">{boat.length}</p>
+                                        </div>
+                                        <div className="space-y-1">
+                                            <div className="flex items-center gap-1.5 text-slate-500">
+                                                <Waves size={14} />
+                                                <span className="text-xs font-semibold uppercase">Velocidade</span>
+                                            </div>
+                                            <p className="text-sm font-bold text-primary">{boat.speed}</p>
+                                        </div>
+                                        <div className="space-y-1">
+                                            <div className="flex items-center gap-1.5 text-slate-500">
+                                                <Fuel size={14} />
+                                                <span className="text-xs font-semibold uppercase">Autonomia</span>
+                                            </div>
+                                            <p className="text-sm font-bold text-primary">{boat.range}</p>
+                                        </div>
+                                    </div>
+
+                                    <Link
+                                        href="/contactos"
+                                        className="w-full py-3.5 bg-primary/5 text-primary border border-primary/20 rounded-xl font-bold text-sm flex items-center justify-center gap-2 hover:bg-primary hover:text-white transition-all"
+                                    >
+                                        Solicitar Orçamento
+                                        <ArrowRight size={16} />
+                                    </Link>
+                                </div>
+                            </motion.div>
                         ))}
                     </div>
-                </div>
-
-                {/* Grid */}
-                <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
-                    {boats.map((boat, index) => (
-                        <motion.div
-                            key={index}
-                            initial={{ opacity: 0, y: 40 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ delay: index * 0.1 }}
-                            className="group bg-white rounded-[3.5rem] overflow-hidden border border-slate-100 hover:shadow-[0_50px_100px_-20px_rgba(0,0,0,0.1)] transition-all duration-700"
-                        >
-                            {/* Image Part */}
-                            <div className="relative h-80 overflow-hidden">
-                                <Image
-                                    src={boat.image}
-                                    alt={boat.name}
-                                    fill
-                                    className="object-cover transition-transform duration-1000 group-hover:scale-110"
-                                />
-                                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/40 to-transparent"></div>
-                                <div className="absolute top-8 left-8">
-                                    <span className="bg-white/95 backdrop-blur shadow-xl text-primary text-[9px] font-black uppercase px-5 py-2.5 rounded-full tracking-widest">
-                                        {boat.type}
-                                    </span>
-                                </div>
-                            </div>
-
-                            {/* Content Part */}
-                            <div className="p-12">
-                                <h3 className="text-3xl font-black text-slate-900 mb-6 tracking-tight group-hover:text-primary transition-colors">
-                                    {boat.name}
-                                </h3>
-                                <p className="text-slate-500 mb-10 leading-relaxed font-medium line-clamp-2">
-                                    {boat.description}
-                                </p>
-
-                                <div className="grid grid-cols-2 gap-8 mb-12 border-y border-slate-100 py-10">
-                                    <div className="space-y-2">
-                                        <div className="flex items-center gap-2 text-slate-400">
-                                            <Ship size={14} />
-                                            <span className="text-[10px] font-black uppercase tracking-widest">Comprimento</span>
-                                        </div>
-                                        <p className="text-base font-bold text-slate-900">{boat.length}</p>
-                                    </div>
-                                    <div className="space-y-2">
-                                        <div className="flex items-center gap-2 text-slate-400">
-                                            <Waves size={14} />
-                                            <span className="text-[10px] font-black uppercase tracking-widest">Velocidade</span>
-                                        </div>
-                                        <p className="text-base font-bold text-slate-900">{boat.speed}</p>
-                                    </div>
-                                    <div className="space-y-2">
-                                        <div className="flex items-center gap-2 text-slate-400">
-                                            <Fuel size={14} />
-                                            <span className="text-[10px] font-black uppercase tracking-widest">Autonomia</span>
-                                        </div>
-                                        <p className="text-base font-bold text-slate-900">{boat.range}</p>
-                                    </div>
-                                    <div className="space-y-2">
-                                        <div className="flex items-center gap-2 text-slate-400">
-                                            <Shield size={14} />
-                                            <span className="text-[10px] font-black uppercase tracking-widest">Garantia</span>
-                                        </div>
-                                        <p className="text-base font-extrabold text-primary">24 Meses</p>
-                                    </div>
-                                </div>
-
-                                <Link
-                                    href="/contactos"
-                                    className="w-full py-6 bg-slate-900 text-white rounded-[2rem] font-black uppercase tracking-widest text-[10px] flex items-center justify-center gap-4 hover:bg-primary transition-all shadow-xl active:scale-95"
-                                >
-                                    Solicitar Dossier
-                                    <ArrowRight size={16} />
-                                </Link>
-                            </div>
-                        </motion.div>
-                    ))}
                 </div>
             </section>
 
             {/* Custom Projects Section */}
-            <section className="py-32 bg-slate-50 relative overflow-hidden">
+            <section className="py-20 bg-white relative overflow-hidden">
                 <div className="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
-                    <div className="bg-primary rounded-[5rem] overflow-hidden shadow-3xl text-white flex flex-col lg:flex-row">
-                        <div className="lg:w-1/2 p-16 md:p-24 space-y-12">
-                            <span className="text-secondary font-black uppercase tracking-[0.3em] text-[10px]">Serviços Especiais</span>
-                            <h2 className="text-5xl md:text-7xl font-display font-black tracking-tighter leading-none">
-                                Engenharia <br />
-                                <span className="text-secondary italic">Por Medida</span>
+                    <div className="bg-primary rounded-3xl overflow-hidden shadow-2xl flex flex-col lg:flex-row">
+                        <div className="lg:w-1/2 p-10 lg:p-16 space-y-8">
+                            <span className="text-secondary font-bold uppercase tracking-widest text-sm">Serviços Especiais</span>
+                            <h2 className="text-4xl lg:text-5xl font-bold text-white tracking-tight">
+                                Projetos de Engenharia <span className="text-secondary italic font-serif">Por Medida</span>
                             </h2>
-                            <p className="text-xl text-slate-300 font-medium leading-relaxed">
-                                Trabalhamos em conjunto com armadoras e entidades governamentais para fornecer soluções de frota personalizadas.
+                            <p className="text-lg text-slate-300 leading-relaxed">
+                                Representamos marcas internacionais de renome e fornecemos soluções customizadas para as forças de defesa, segurança e empresas offshore.
                             </p>
                             
-                            <ul className="space-y-6">
+                            <ul className="space-y-4 pt-4">
                                 {[
-                                    'Projeto e Construção Customizada',
-                                    'Integração de Sistemas AIS e Radar',
-                                    'Remotorização de Frotas Antigas',
-                                    'Consultoria de Eficiência Energética'
+                                    'Consultoria e Aquisição Customizada',
+                                    'Integração de Sistemas de Navegação',
+                                    'Instalação de Eletrónica Marítima',
+                                    'Manutenção e Suporte Técnico'
                                 ].map((item, i) => (
-                                    <li key={i} className="flex items-center gap-4 text-slate-300">
-                                        <CheckCircle2 size={24} className="text-secondary shrink-0" />
-                                        <span className="font-bold text-lg">{item}</span>
+                                    <li key={i} className="flex items-center gap-3 text-slate-200">
+                                        <CheckCircle2 size={20} className="text-secondary shrink-0" />
+                                        <span className="font-medium text-base">{item}</span>
                                     </li>
                                 ))}
                             </ul>
 
-                            <button className="px-12 py-6 bg-secondary text-primary rounded-[2rem] font-black uppercase tracking-widest text-sm hover:bg-yellow-400 transition-all shadow-2xl">
-                                Agendar Reunião Técnica
-                            </button>
+                            <div className="pt-6">
+                                <Link href="/contactos" className="inline-flex items-center gap-3 px-8 py-4 bg-white text-primary rounded-xl font-bold hover:bg-slate-100 transition-colors">
+                                    Falar com um Especialista
+                                </Link>
+                            </div>
                         </div>
-                        <div className="lg:w-1/2 relative min-h-[500px]">
+                        <div className="lg:w-1/2 relative min-h-[400px]">
                             <Image
-                                src="https://images.unsplash.com/photo-1540962351504-03099e0a754b?auto=format&fit=crop&q=80&w=1200"
+                                src="/images/decorativas/catamaran-sailing.webp"
                                 alt="Custom Engineering"
                                 fill
                                 className="object-cover"
                             />
-                            <div className="absolute inset-0 bg-gradient-to-r from-primary via-transparent to-transparent"></div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            {/* Support Highlight - Reused Brand Asset */}
-            <section className="py-24 px-6 lg:px-12">
-                <div className="max-w-7xl mx-auto">
-                    <div className="p-16 md:p-24 bg-white rounded-[4rem] border border-slate-100 flex flex-col lg:flex-row items-center justify-between gap-12 shadow-2xl">
-                        <div className="max-w-2xl text-center lg:text-left">
-                            <h3 className="text-4xl font-black text-slate-900 mb-6 tracking-tight leading-none uppercase">
-                                Assistência Técnica <span className="text-primary italic">Global</span>
-                            </h3>
-                            <p className="text-lg text-slate-500 font-medium leading-relaxed">
-                                Todas as nossas embarcações incluem cobertura total de manutenção preventiva e corretiva em toda a costa de Angola.
-                            </p>
-                        </div>
-                        <div className="flex gap-6 shrink-0">
-                            {[
-                                { val: '24h', label: 'Suporte' },
-                                { val: '48h', label: 'Intervenção' }
-                            ].map((stat, i) => (
-                                <div key={i} className="w-40 h-40 bg-slate-50 rounded-[3rem] border border-slate-100 flex flex-col items-center justify-center">
-                                    <p className="text-primary text-4xl font-black mb-1">{stat.val}</p>
-                                    <p className="text-[10px] font-black uppercase tracking-widest text-slate-400">{stat.label}</p>
-                                </div>
-                            ))}
                         </div>
                     </div>
                 </div>
             </section>
         </main>
+        <Footer />
+        </>
     );
 }

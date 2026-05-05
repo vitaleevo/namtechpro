@@ -8,7 +8,7 @@ import { useLanguage, Language } from '@/i18n';
 import { useUser, UserButton } from '@clerk/nextjs';
 import { MegaMenu } from './MegaMenu';
 
-const ADMIN_EMAIL = "namtechproo@gmail.com";
+const ADMIN_EMAIL = process.env.NEXT_PUBLIC_ADMIN_EMAIL || "namtechproo@gmail.com";
 
 export const Navbar = () => {
     const [isLangMenuOpen, setIsLangMenuOpen] = useState(false);
@@ -34,26 +34,35 @@ export const Navbar = () => {
     const servicesMegaContent = {
         sections: [
             {
-                title: language === 'PT' ? "Agendamento" : "Booking",
+                title: t.megaMenu.defense,
                 image: "/images/imagens/Sondas.jpg",
                 items: [
-                    { label: language === 'PT' ? "Marcar Assistência" : "Book Service", href: "/agendamento", icon: "calendar_month" },
+                    { label: t.megaMenu.defenseSystems, href: "/catalogo?category=Defesa%20e%20Seguran%C3%A7a", icon: "shield" },
+                    { label: t.megaMenu.surveillance, href: "/catalogo?category=Defesa%20e%20Seguran%C3%A7a", icon: "visibility" },
                 ]
             },
             {
-                title: language === 'PT' ? "Assistência Técnica" : "Technical Support",
+                title: t.megaMenu.docking,
+                image: "/images/imagens/Sonares.png",
+                items: [
+                    { label: t.megaMenu.dockingEquip, href: "/catalogo?category=Atraca%C3%A7%C3%A3o%20e%20Dolfins", icon: "anchor" },
+                    { label: t.megaMenu.divingSystems, href: "/catalogo?category=Equipamentos%20de%20Mergulho", icon: "scuba_diving" },
+                ]
+            },
+            {
+                title: t.megaMenu.support,
                 image: "/images/imagens/Sondas.jpg",
                 items: [
-                    { label: language === 'PT' ? "Instalação Certificada" : "Certified Installation", href: "/servicos", icon: "construction" },
-                    { label: language === 'PT' ? "Manutenção e Reparação" : "Maintenance and Repair", href: "/servicos", icon: "build" },
+                    { label: t.megaMenu.certifiedInstall, href: "/servicos", icon: "construction" },
+                    { label: t.megaMenu.maintenance, href: "/servicos", icon: "build" },
                 ]
             },
             {
                 title: "NAMTECH SOLUTIONS",
-                image: "/images/imagens/Radar_antenna.jpg",
+                image: "/assets/new/equipamentos-maritimos.webp",
                 items: [
-                    { label: language === 'PT' ? "Sugestão de Soluções" : "Bespoke Solutions", href: "/servicos#solutions", icon: "lightbulb" },
-                    { label: language === 'PT' ? "Energia Limpa a Bordo" : "Clean Energy at Sea", href: "/servicos#energy", icon: "solar_power" },
+                    { label: t.megaMenu.bookService, href: "/agendamento", icon: "calendar_month" },
+                    { label: t.megaMenu.cleanEnergySea, href: "/servicos#energy", icon: "solar_power" },
                 ]
             }
         ]
@@ -62,8 +71,8 @@ export const Navbar = () => {
     const comunicacoesMegaContent = {
         sections: [
             {
-                title: "Radios VHF",
-                image: "/images/imagens/Radar_antenna.jpg", // Placeholder for Communications
+                title: t.megaMenu.vhf,
+                image: "/images/imagens/Radar_antenna.jpg",
                 items: [
                     { label: "Sailor", href: "/catalogo?category=Radios%20VHF", icon: "radio" },
                     { label: "Navicon", href: "/catalogo?category=Radios%20VHF", icon: "radio" },
@@ -72,7 +81,7 @@ export const Navbar = () => {
                 ]
             },
             {
-                title: "Rádios HF/SSB",
+                title: t.megaMenu.hf,
                 image: "/images/imagens/Radar_antenna.jpg",
                 items: [
                     { label: "Sailor", href: "/catalogo?category=R%C3%A1dios%20HF%2FSSB", icon: "radio" },
@@ -80,7 +89,7 @@ export const Navbar = () => {
                 ]
             },
             {
-                title: "Radios PMR",
+                title: t.megaMenu.pmr,
                 image: "/images/imagens/Radar_antenna.jpg",
                 items: [
                     { label: "Entel", href: "/catalogo?category=Radios%20PMR", icon: "radio" },
@@ -88,7 +97,7 @@ export const Navbar = () => {
                 ]
             },
             {
-                title: "GMDSS",
+                title: t.megaMenu.gmdss,
                 image: "/images/imagens/Radar_antenna.jpg",
                 items: [
                     { label: "Sailor Cobham", href: "/catalogo?category=GMDSS", icon: "emergency" },
@@ -96,7 +105,7 @@ export const Navbar = () => {
                 ]
             },
             {
-                title: "Satélite",
+                title: t.megaMenu.satellite,
                 image: "/images/imagens/Radar_antenna.jpg",
                 items: [
                     { label: "Iridium", href: "/catalogo?category=Sat%C3%A9lite", icon: "satellite_alt" },
@@ -106,7 +115,7 @@ export const Navbar = () => {
                 ]
             },
             {
-                title: "TV & Internas",
+                title: t.megaMenu.tv,
                 image: "/images/imagens/Radar_antenna.jpg",
                 items: [
                     { label: "Satélite TV (Intellian)", href: "/catalogo?category=Sat%C3%A9lite%20Televis%C3%A3o", icon: "tv" },
@@ -114,7 +123,7 @@ export const Navbar = () => {
                 ]
             },
             {
-                title: "4G/5G & Antenas",
+                title: t.megaMenu.network,
                 image: "/images/imagens/Radar_antenna.jpg",
                 items: [
                     { label: "4G / 5G (Scout)", href: "/catalogo?category=4G%20%2F%205G%20on%20Board", icon: "cell_tower" },
@@ -122,7 +131,7 @@ export const Navbar = () => {
                 ]
             },
             {
-                title: "Terrestres",
+                title: t.megaMenu.terrestrial,
                 image: "/images/imagens/Radar_antenna.jpg",
                 items: [
                     { label: "Satélite (Iridium...)", href: "/catalogo?category=Comunica%C3%A7%C3%B5es%20Terrestres", icon: "satellite_alt" },
@@ -135,8 +144,8 @@ export const Navbar = () => {
     const segurancaMegaContent = {
         sections: [
             {
-                title: "Palamentas",
-                image: "/images/imagens/Seguran%C3%A7a%20Mar%C3%ADtima.png",
+                title: t.megaMenu.rescue,
+                image: "/assets/new/meios-de-socorro-palamentas.jpg",
                 items: [
                     { label: "Coletes", href: "/catalogo?category=Palamentas", icon: "lifebelt" },
                     { label: "Balsas", href: "/catalogo?category=Palamentas", icon: "vessel" },
@@ -145,7 +154,7 @@ export const Navbar = () => {
                 ]
             },
             {
-                title: "Conforto & Navegação",
+                title: t.megaMenu.comfort,
                 image: "/images/imagens/Seguran%C3%A7a%20Mar%C3%ADtima.png",
                 items: [
                     { label: "Direções & Comandos", href: "/catalogo?category=Conforto", icon: "sports_steeringwheel" },
@@ -153,7 +162,7 @@ export const Navbar = () => {
                 ]
             },
             {
-                title: "Eletricidade I",
+                title: t.megaMenu.electricity1,
                 image: "/images/imagens/Seguran%C3%A7a%20Mar%C3%ADtima.png",
                 items: [
                     { label: "Geradores", href: "/catalogo?category=Eletricidade", icon: "bolt" },
@@ -161,7 +170,7 @@ export const Navbar = () => {
                 ]
             },
             {
-                title: "Eletricidade II",
+                title: t.megaMenu.electricity2,
                 image: "/images/imagens/Seguran%C3%A7a%20Mar%C3%ADtima.png",
                 items: [
                     { label: "Inversores / Conversores", href: "/catalogo?category=Eletricidade", icon: "published_with_changes" },
@@ -170,7 +179,7 @@ export const Navbar = () => {
                 ]
             },
             {
-                title: "Estabilização",
+                title: t.megaMenu.stabilization,
                 image: "/images/imagens/Seguran%C3%A7a%20Mar%C3%ADtima.png",
                 items: [
                     { label: "Giroestabilizadores", href: "/catalogo?category=Conforto", icon: "balance" },
@@ -178,7 +187,7 @@ export const Navbar = () => {
                 ]
             },
             {
-                title: "Propulsão & Água",
+                title: t.megaMenu.propulsion,
                 image: "/images/imagens/Seguran%C3%A7a%20Mar%C3%ADtima.png",
                 items: [
                     { label: "Propulsores de Proa", href: "/catalogo?category=Conforto", icon: "propane_tank" },
@@ -186,7 +195,7 @@ export const Navbar = () => {
                 ]
             },
             {
-                title: "Climatização",
+                title: t.megaMenu.climatization,
                 image: "/images/imagens/Seguran%C3%A7a%20Mar%C3%ADtima.png",
                 items: [
                     { label: "A/C", href: "/catalogo?category=Conforto", icon: "ac_unit" },
@@ -194,7 +203,7 @@ export const Navbar = () => {
                 ]
             },
             {
-                title: "Tratamento",
+                title: t.megaMenu.treatment,
                 image: "/images/imagens/Seguran%C3%A7a%20Mar%C3%ADtima.png",
                 items: [
                     { label: "Dessalinizadores", href: "/catalogo?category=Conforto", icon: "water_drop" }
@@ -206,23 +215,25 @@ export const Navbar = () => {
     const atualidadesMegaContent = {
         sections: [
             {
-                title: language === 'PT' ? "Mundo Namtech" : "Namtech World",
-                image: "/images/imagens/Mundo%20Namtech.jpeg",
-                description: language === 'PT' ? "Partilhe connosco notícias ligadas ao setor marítimo." : "Share maritime news with us.",
+                title: t.megaMenu.world,
+                image: "/assets/new/servicos.jpg",
+                description: language === 'PT' ? "Partilhe connosco notícias ligadas ao setor marítimo." : 
+                             language === 'EN' ? "Share maritime news with us." :
+                             "Partagez des nouvelles maritimes avec nous.",
                 items: [
-                    { label: language === 'PT' ? "Eventos & Feiras" : "Events & Fairs", href: "/eventos", icon: "event" },
-                    { label: language === 'PT' ? "Projetos no Terreno" : "Field Projects", href: "/projetos", icon: "architecture" },
-                    { label: language === 'PT' ? "Notícias da Empresa" : "Company News", href: "/noticias", icon: "newspaper" },
+                    { label: t.megaMenu.events, href: "/eventos", icon: "event" },
+                    { label: t.megaMenu.projects, href: "/projetos", icon: "architecture" },
+                    { label: t.megaMenu.companyNews, href: "/noticias", icon: "newspaper" },
                 ]
             },
             {
-                title: language === 'PT' ? "Meteorologia & Maré" : "Weather & Tides",
+                title: t.megaMenu.weather,
                 image: "/images/imagens/Mundo%20Namtech.jpeg",
                 items: [
                     { label: "Windguru (Namibe)", href: "https://www.windguru.cz/50205", icon: "air", external: true },
                     { label: "Marine Traffic", href: "https://www.marinetraffic.com", icon: "directions_boat", external: true },
-                    { label: language === 'PT' ? "Previsão Meteorológica" : "Weather Forecast", href: "https://www.ipma.pt", icon: "cloud", external: true },
-                    { label: language === 'PT' ? "Organismos Públicos" : "Public Organisms", href: "/links-uteis", icon: "account_balance" }
+                    { label: t.megaMenu.weatherForecast, href: "https://www.ipma.pt", icon: "cloud", external: true },
+                    { label: t.megaMenu.publicOrganisms, href: "/links-uteis", icon: "account_balance" }
                 ]
             }
         ]
@@ -231,16 +242,16 @@ export const Navbar = () => {
     const eletronicaMegaContent = {
         sections: [
             {
-                title: "Radares",
+                title: t.megaMenu.radars,
                 image: "/images/imagens/Radar_antenna.jpg",
                 items: [
-                    { label: "Antenas", href: "/catalogo?category=Radares", icon: "settings_input_antenna" },
-                    { label: "Sistemas de Radar", href: "/catalogo?category=Radares", icon: "radar" },
-                    { label: "Acessórios", href: "/catalogo?category=Radares", icon: "cable" }
+                    { label: t.megaMenu.antennas, href: "/catalogo?category=Radares", icon: "settings_input_antenna" },
+                    { label: t.megaMenu.radarSystems, href: "/catalogo?category=Radares", icon: "radar" },
+                    { label: t.megaMenu.accessories, href: "/catalogo?category=Radares", icon: "cable" }
                 ]
             },
             {
-                title: "Sondas",
+                title: t.megaMenu.sounders,
                 image: "/images/imagens/Sondas.jpg",
                 items: [
                     { label: "Furuno", href: "/catalogo?category=Sondas", icon: "waves" },
@@ -248,34 +259,34 @@ export const Navbar = () => {
                     { label: "Hondex", href: "/catalogo?category=Sondas", icon: "waves" },
                     { label: "Humminbird", href: "/catalogo?category=Sondas", icon: "waves" },
                     { label: "Notus", href: "/catalogo?category=Sondas", icon: "grid_on" },
-                    { label: "Acessórios", href: "/catalogo?category=Sondas", icon: "cable" }
+                    { label: t.megaMenu.accessories, href: "/catalogo?category=Sondas", icon: "cable" }
                 ]
             },
             {
-                title: "Sonares",
+                title: t.megaMenu.sonars,
                 image: "/images/imagens/Sonares.png",
                 items: [
                     { label: "Furuno", href: "/catalogo?category=Sonares", icon: "settings_input_component" },
                     { label: "Suzuki", href: "/catalogo?category=Sonares", icon: "settings_input_component" },
                     { label: "Sonic", href: "/catalogo?category=Sonares", icon: "settings_input_component" },
-                    { label: "Acessórios", href: "/catalogo?category=Sonares", icon: "cable" }
+                    { label: t.megaMenu.accessories, href: "/catalogo?category=Sonares", icon: "cable" }
                 ]
             },
             {
-                title: "GPS / PLOTTER",
-                image: "/images/imagens/GPS.PLOTTER.jpg",
+                title: t.megaMenu.gpsPlotter,
+                image: "/assets/new/equipamentos-maritimos.webp",
                 items: [
                     { label: "Furuno", href: "/catalogo?category=GPS%20%2F%20PLOTTER", icon: "location_on" },
                     { label: "Humminbird", href: "/catalogo?category=GPS%20%2F%20PLOTTER", icon: "location_on" },
                     { label: "Simrad", href: "/catalogo?category=GPS%20%2F%20PLOTTER", icon: "location_on" },
                     { label: "Onwa", href: "/catalogo?category=GPS%20%2F%20PLOTTER", icon: "location_on" },
                     { label: "BHC", href: "/catalogo?category=GPS%20%2F%20PLOTTER", icon: "location_on" },
-                    { label: "Acessórios", href: "/catalogo?category=GPS%20%2F%20PLOTTER", icon: "cable" }
+                    { label: t.megaMenu.accessories, href: "/catalogo?category=GPS%20%2F%20PLOTTER", icon: "cable" }
                 ]
             },
             {
-                title: "Cartografia",
-                image: "/images/imagens/Cartografia.webp",
+                title: t.megaMenu.cartography,
+                image: "/assets/new/equipamentos-maritimos.webp",
                 items: [
                     { label: "Timezero", href: "/catalogo?category=Cartografia", icon: "map" },
                     { label: "C-Map", href: "/catalogo?category=Cartografia", icon: "map" },
@@ -283,8 +294,8 @@ export const Navbar = () => {
                 ]
             },
             {
-                title: "Displays",
-                image: "/images/imagens/Displays.jpg",
+                title: t.megaMenu.displays,
+                image: "/assets/new/equipamentos-maritimos.webp",
                 items: [
                     { label: "TZT da Furuno", href: "/catalogo?category=Displays", icon: "monitor" },
                     { label: "XPLORER Humminbird", href: "/catalogo?category=Displays", icon: "monitor" },
@@ -293,7 +304,7 @@ export const Navbar = () => {
                 ]
             },
             {
-                title: "Sistemas AIS",
+                title: t.megaMenu.ais,
                 image: "/images/imagens/Radar_antenna.jpg",
                 items: [
                     { label: "em-track", href: "/catalogo?category=Sistemas%20AIS", icon: "directions_boat" },
@@ -301,8 +312,8 @@ export const Navbar = () => {
                 ]
             },
             {
-                title: "Pilotos Automáticos",
-                image: "/images/imagens/Pilotos%20Autom%C3%A1ticos.webp",
+                title: t.megaMenu.autopilots,
+                image: "/assets/new/piloto-automatico.webp",
                 items: [
                     { label: "Furuno", href: "/catalogo?category=Pilotos%20Autom%C3%A1ticos", icon: "settings_ethernet" }
                 ]
@@ -311,15 +322,15 @@ export const Navbar = () => {
     };
 
     const navLinks = [
-        { label: "SOBRE NÓS", href: '/sobre' },
-        { label: "ELETRONICA MARÍTIMA", href: '/catalogo', mega: eletronicaMegaContent },
-        { label: "COMUNICAÇÕES", href: '/comunicacoes', mega: comunicacoesMegaContent },
-        { label: "SEGURANÇA & ACESSÓRIOS", href: '/seguranca', mega: segurancaMegaContent },
-        { label: "BARCOS", href: '/barcos' },
-        { label: "SERVIÇOS", href: '/servicos', mega: servicesMegaContent },
-        { label: "ATUALIDADES", href: '/atualidades', mega: atualidadesMegaContent },
-        { label: "CONTATOS", href: '/contactos' },
-        ...(isAdmin ? [{ label: "BackOffice", href: '/namtechprobackoffice' }] : []),
+        { label: t.nav.about, href: '/sobre' },
+        { label: t.nav.electronics, href: '/catalogo', mega: eletronicaMegaContent },
+        { label: t.nav.communications, href: '/comunicacoes', mega: comunicacoesMegaContent },
+        { label: t.nav.safety, href: '/seguranca', mega: segurancaMegaContent },
+        { label: t.nav.boats, href: '/barcos' },
+        { label: t.nav.services, href: '/servicos', mega: servicesMegaContent },
+        { label: t.nav.news, href: '/atualidades', mega: atualidadesMegaContent },
+        { label: t.nav.contacts, href: '/contactos' },
+        ...(isAdmin ? [{ label: t.nav.backoffice, href: '/namtechprobackoffice' }] : []),
     ];
 
     const languages: { code: Language; label: string; flag: string }[] = [
@@ -331,7 +342,7 @@ export const Navbar = () => {
     return (
         <nav
             ref={navbarRef}
-            className="fixed w-full z-50 bg-white/90 backdrop-blur-md border-b border-slate-200 transition-colors"
+            className="fixed w-full z-50 bg-white border-b border-slate-200 transition-colors"
             onMouseLeave={() => setActiveMegaMenu(null)}
         >
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -339,7 +350,7 @@ export const Navbar = () => {
                     {/* Logo Section */}
                     <Link href="/" className="flex items-center gap-4 cursor-pointer shrink-0">
                         <Image
-                            src="/images/logo-horizontal.png"
+                            src="/images/logo.png"
                             alt="Namtech Pro"
                             width={140}
                             height={42}
@@ -358,7 +369,7 @@ export const Navbar = () => {
                             >
                                 <Link
                                     href={link.href}
-                                    className={`relative group text-[9px] xl:text-[11px] font-black tracking-tight uppercase whitespace-nowrap py-2 h-full flex items-center gap-1 transition-colors ${pathname === link.href
+                                    className={`relative group text-[9px] xl:text-[11px] font-bold tracking-tight uppercase whitespace-nowrap py-2 h-full flex items-center gap-1 transition-colors ${pathname === link.href
                                         ? 'text-primary'
                                         : 'text-slate-600 hover:text-primary'
                                         }`}

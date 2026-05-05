@@ -5,13 +5,15 @@ import { useQuery } from "convex/react";
 import { api } from "@/convex/_generated/api";
 import { motion } from "framer-motion";
 import { Calendar, ArrowRight } from "lucide-react";
+import { useLanguage } from '@/i18n';
 import Link from 'next/link';
 import Image from 'next/image';
 
 export const NewsSection = () => {
+    const { t } = useLanguage();
     const posts = useQuery(api.blog.list);
-
-    // Only show top 3 latest posts
+    
+    // ... rest of the logic ...
     const latestPosts = posts?.slice(0, 3);
 
     if (!latestPosts || latestPosts.length === 0) return null;
@@ -22,7 +24,7 @@ export const NewsSection = () => {
                 <div className="flex flex-col md:flex-row justify-between items-end mb-20 gap-8">
                     <div>
                         <h2 className="text-4xl md:text-6xl font-display font-bold text-primary mb-6">
-                            Blog & <span className="text-secondary">Notícias</span>
+                            {t.nav.blog} & <span className="text-secondary">{t.nav.news}</span>
                         </h2>
                         <div className="h-1.5 w-24 bg-secondary rounded-full"></div>
                     </div>
@@ -30,7 +32,7 @@ export const NewsSection = () => {
                         href="/blog"
                         className="group flex items-center gap-3 text-primary font-black text-sm uppercase tracking-widest hover:text-secondary transition-colors"
                     >
-                        Ver todos os artigos
+                        {t.home.viewAllArticles}
                         <div className="w-10 h-10 rounded-full bg-white border border-slate-200 flex items-center justify-center group-hover:bg-primary group-hover:text-white transition-all">
                             <ArrowRight size={18} />
                         </div>
@@ -55,7 +57,7 @@ export const NewsSection = () => {
                                     className="object-cover group-hover:scale-110 transition-transform duration-700"
                                 />
                                 <div className="absolute top-6 left-6">
-                                    <span className="bg-white/90 backdrop-blur text-primary text-[10px] font-black px-4 py-2 rounded-full uppercase tracking-widest shadow-lg">
+                                    <span className="bg-white text-primary text-[10px] font-black px-4 py-2 rounded-full uppercase tracking-widest shadow-lg">
                                         {post.category}
                                     </span>
                                 </div>
@@ -65,7 +67,7 @@ export const NewsSection = () => {
                                     <Calendar size={14} className="text-secondary" />
                                     {new Date(post.publishedAt).toLocaleDateString()}
                                 </div>
-                                <h3 className="text-2xl font-bold text-slate-900 mb-4 leading-tight group-hover:text-primary transition-colors line-clamp-2">
+                                <h3 className="text-2xl font-bold text-primary mb-4 leading-tight group-hover:text-primary transition-colors line-clamp-2">
                                     {post.title}
                                 </h3>
                                 <p className="text-slate-500 mb-8 line-clamp-3 text-sm leading-relaxed">
@@ -75,7 +77,7 @@ export const NewsSection = () => {
                                     href={`/blog/${post.slug}`}
                                     className="inline-flex items-center gap-2 text-primary font-black text-xs uppercase tracking-widest hover:gap-4 transition-all"
                                 >
-                                    Ler Artigo Completo
+                                    {t.home.readFullArticle}
                                     <ArrowRight size={16} />
                                 </Link>
                             </div>

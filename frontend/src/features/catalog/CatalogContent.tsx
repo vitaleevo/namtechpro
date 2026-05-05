@@ -117,7 +117,7 @@ export const CatalogContent = ({ initialCategory }: { initialCategory?: string }
                 title={t.catalog.title}
                 highlight={t.catalog.titleHighlight}
                 subtitle={t.catalog.subtitle}
-                image="https://images.unsplash.com/photo-1497048676732-d65bc937f952?auto=format&fit=crop&q=80&w=2000"
+                image="/images/decorativas/aquaculture-aerial.jpg"
                 height="h-[65vh]"
             />
 
@@ -189,7 +189,7 @@ export const CatalogContent = ({ initialCategory }: { initialCategory?: string }
                                     >
                                         <div className="relative h-64 bg-slate-100 overflow-hidden">
                                             <Image
-                                                src={product.imageUrl && typeof product.imageUrl === 'string' && product.imageUrl !== "" ? product.imageUrl : 'https://images.unsplash.com/photo-1511467687858-23d96c32e4ae'}
+                                                src={product.imageUrl && typeof product.imageUrl === 'string' && product.imageUrl !== "" ? product.imageUrl : '/images/decorativas/nav-equipment.jpg'}
                                                 alt={product.name}
                                                 fill
                                                 className="object-cover group-hover:scale-110 transition-transform duration-700"
@@ -207,7 +207,7 @@ export const CatalogContent = ({ initialCategory }: { initialCategory?: string }
                                             <p className="text-[10px] font-black text-secondary uppercase tracking-[0.3em] mb-3">
                                                 {getCategoryLabel(product.category)}
                                             </p>
-                                            <h3 className="text-xl font-bold text-slate-900 mb-2 leading-tight group-hover:text-primary transition-colors">
+                                            <h3 className="text-xl font-bold text-primary mb-2 leading-tight group-hover:text-primary transition-colors">
                                                 {product.name}
                                             </h3>
                                             <p className="text-sm text-slate-500 mb-6 line-clamp-2">{product.description}</p>
@@ -267,7 +267,7 @@ export const CatalogContent = ({ initialCategory }: { initialCategory?: string }
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             exit={{ opacity: 0 }}
-                            className="absolute inset-0 bg-primary/40 backdrop-blur-md"
+                            className="absolute inset-0 bg-black/40"
                             onClick={closeModal}
                         />
                         <motion.div
@@ -278,7 +278,7 @@ export const CatalogContent = ({ initialCategory }: { initialCategory?: string }
                         >
                             <button
                                 onClick={closeModal}
-                                className="absolute top-6 right-6 z-10 w-12 h-12 rounded-full bg-white/20 hover:bg-white/40 backdrop-blur-md text-white md:text-primary flex items-center justify-center transition-all"
+                                className="absolute top-6 right-6 z-10 w-12 h-12 rounded-full bg-black/40 hover:bg-black/60 text-white flex items-center justify-center transition-all border border-white/10"
                             >
                                 <X size={24} />
                             </button>
@@ -286,12 +286,12 @@ export const CatalogContent = ({ initialCategory }: { initialCategory?: string }
                             {/* Modal Image Section */}
                             <div className="md:w-1/2 h-64 md:h-auto overflow-hidden relative">
                                 <Image
-                                    src={detailedProduct.imageUrl && typeof detailedProduct.imageUrl === 'string' && detailedProduct.imageUrl !== "" ? detailedProduct.imageUrl : 'https://images.unsplash.com/photo-1511467687858-23d96c32e4ae'}
+                                    src={detailedProduct.imageUrl && typeof detailedProduct.imageUrl === 'string' && detailedProduct.imageUrl !== "" ? detailedProduct.imageUrl : '/images/decorativas/nav-equipment.jpg'}
                                     alt={detailedProduct.name}
                                     fill
                                     className="object-cover scale-105"
                                 />
-                                <div className="absolute inset-0 bg-gradient-to-t from-primary/60 to-transparent md:hidden"></div>
+                                <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent md:hidden"></div>
                                 <div className="absolute bottom-6 left-6 flex flex-col gap-2 md:hidden">
                                     <span className="bg-secondary text-primary text-[10px] font-black px-3 py-1.5 rounded-full uppercase tracking-widest">{detailedProduct.brand}</span>
                                 </div>

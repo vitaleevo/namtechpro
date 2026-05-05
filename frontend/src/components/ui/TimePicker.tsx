@@ -41,11 +41,11 @@ export const CustomTimePicker = ({ value, onChange, label }: TimePickerProps) =>
                     type="button"
                     onClick={() => setIsOpen(!isOpen)}
                     className={cn(
-                        "w-full px-6 py-4 rounded-2xl bg-white/60 border border-slate-200 text-left flex items-center justify-between transition-all outline-none",
-                        isOpen ? "border-primary ring-4 ring-primary/5" : "hover:border-slate-300"
+                        "w-full px-6 py-4 rounded-2xl bg-slate-800/50 border border-white/10 text-left flex items-center justify-between transition-all outline-none text-white",
+                        isOpen ? "border-secondary ring-4 ring-secondary/20" : "hover:border-white/20"
                     )}
                 >
-                    <span className={cn(value ? "text-primary font-bold" : "text-slate-400")}>
+                    <span className={cn(value ? "text-white font-bold" : "text-slate-500")}>
                         {value ? value : "-- : --"}
                     </span>
                     <Clock className="w-5 h-5 text-slate-400" />
@@ -57,7 +57,7 @@ export const CustomTimePicker = ({ value, onChange, label }: TimePickerProps) =>
                             initial={{ opacity: 0, y: 10, scale: 0.95 }}
                             animate={{ opacity: 1, y: 0, scale: 1 }}
                             exit={{ opacity: 0, y: 10, scale: 0.95 }}
-                            className="absolute z-50 mt-2 w-full bg-white/95 backdrop-blur-xl border border-white/40 rounded-[2rem] shadow-2xl p-4 overflow-hidden"
+                            className="absolute z-50 mt-2 w-full bg-white border border-slate-200 rounded-[2rem] shadow-2xl p-4 overflow-hidden"
                         >
                             <div className="max-h-60 overflow-y-auto custom-scrollbar pr-2">
                                 <div className="grid grid-cols-2 gap-2">
@@ -69,15 +69,15 @@ export const CustomTimePicker = ({ value, onChange, label }: TimePickerProps) =>
                                                 onChange(slot);
                                                 setIsOpen(false);
                                             }}
-                                            className={cn(
+                                             className={cn(
                                                 "flex items-center justify-between px-4 py-3 rounded-xl transition-all",
                                                 value === slot
-                                                    ? "bg-primary text-white font-bold"
-                                                    : "hover:bg-primary/5 text-slate-600 font-medium"
+                                                    ? "bg-secondary text-primary font-bold"
+                                                    : "hover:bg-white/5 text-slate-300 font-medium"
                                             )}
                                         >
                                             {slot}
-                                            {value === slot && <Check className="w-4 h-4 text-white" />}
+                                            {value === slot && <Check className="w-4 h-4 text-primary" />}
                                         </button>
                                     ))}
                                 </div>

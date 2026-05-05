@@ -28,7 +28,7 @@ export const ContactContent = () => {
             setFormData(prev => ({
                 ...prev,
                 subject: 'Orcamento',
-                message: `Ref: ${subjectParam}\n\nGostaria de obter mais informações sobre este item.`
+                message: t.contact.autoMessage.replace('{0}', subjectParam)
             }));
         }
     }, [searchParams]);
@@ -74,7 +74,7 @@ export const ContactContent = () => {
     };
 
     return (
-        <div className="bg-slate-50 min-h-screen">
+        <div className="bg-white min-h-screen">
             {/* New Hero Section for Contacts */}
             <section className="relative h-[45vh] flex items-center overflow-hidden mb-16">
                 <div className="absolute inset-0 z-0">
@@ -83,9 +83,10 @@ export const ContactContent = () => {
                         fill
                         priority
                         className="object-cover"
-                        src="https://images.unsplash.com/photo-1534533983688-c7ba8d13ec91?auto=format&fit=crop&q=80&w=2000"
+                        src="/images/loja/fachada.jpg"
                     />
-                    <div className="absolute inset-0 bg-primary/60 backdrop-blur-[2px]"></div>
+                    <div className="absolute inset-0 bg-gradient-to-r from-black/40 via-black/30 to-transparent"></div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
                 </div>
                 <div className="relative z-10 max-w-7xl mx-auto px-4 w-full text-center text-white">
                     <motion.h1
@@ -99,7 +100,7 @@ export const ContactContent = () => {
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.1 }}
-                        className="text-lg text-slate-200 max-w-2xl mx-auto font-medium"
+                        className="text-xl text-white/90 max-w-2xl mx-auto font-medium"
                     >
                         {t.contact.subtitle}
                     </motion.p>
@@ -111,7 +112,7 @@ export const ContactContent = () => {
                 <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
                     {/* Contact Information */}
                     <div className="lg:col-span-1 space-y-8">
-                        <div className="bg-primary p-10 rounded-[2.5rem] text-white shadow-2xl relative overflow-hidden group">
+                        <div className="bg-slate-50 p-10 rounded-[2.5rem] text-primary shadow-2xl relative overflow-hidden group border border-slate-200">
                             <div className="absolute top-0 right-0 w-32 h-32 bg-secondary/10 rounded-full -mr-16 -mt-16 group-hover:scale-110 transition-transform"></div>
 
                             <h3 className="text-2xl font-bold mb-8 relative z-10">{t.contact.ourContacts}</h3>
@@ -121,7 +122,7 @@ export const ContactContent = () => {
                                     <span className="material-symbols-outlined text-secondary">location_on</span>
                                     <div>
                                         <p className="font-bold">{t.contact.location}</p>
-                                        <p className="text-sm text-slate-300">{t.footer.address}</p>
+                                        <p className="text-sm text-slate-600">{t.footer.address}</p>
                                     </div>
                                 </div>
 
@@ -129,8 +130,8 @@ export const ContactContent = () => {
                                     <span className="material-symbols-outlined text-secondary">call</span>
                                     <div>
                                         <p className="font-bold">{t.contact.phone}</p>
-                                        <p className="text-sm text-slate-300">+244 921 791 515 (Escritório)</p>
-                                        <p className="text-sm text-slate-300">+244 921 807 557 (Loja)</p>
+                                        <p className="text-sm text-slate-600">+244 921 791 515 ({t.footer.office})</p>
+                                        <p className="text-sm text-slate-600">+244 921 807 557 ({t.footer.shop})</p>
                                     </div>
                                 </div>
 
@@ -138,16 +139,16 @@ export const ContactContent = () => {
                                     <span className="material-symbols-outlined text-secondary">mail</span>
                                     <div>
                                         <p className="font-bold">{t.contact.email}</p>
-                                        <p className="text-sm text-slate-300">geral@namtechpro.net</p>
-                                        <p className="text-sm text-slate-300">comercial@namtechpro.net</p>
+                                        <p className="text-sm text-slate-600">geral@namtechpro.net</p>
+                                        <p className="text-sm text-slate-600">comercial@namtechpro.net</p>
                                     </div>
                                 </div>
 
-                                <div className="pt-6 border-t border-white/10 flex gap-4">
-                                    <a href="https://www.facebook.com/Namtechpro" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-secondary hover:text-primary transition-all">
+                                <div className="pt-6 border-t border-slate-200 flex gap-4">
+                                    <a href="https://www.facebook.com/Namtechpro" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-slate-200 text-slate-600 flex items-center justify-center hover:bg-primary hover:text-white transition-all">
                                         <span className="material-symbols-outlined text-sm">public</span>
                                     </a>
-                                    <a href="https://www.instagram.com/namtechpro/" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-secondary hover:text-primary transition-all">
+                                    <a href="https://www.instagram.com/namtechpro/" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-slate-200 text-slate-600 flex items-center justify-center hover:bg-primary hover:text-white transition-all">
                                         <span className="material-symbols-outlined text-sm">share</span>
                                     </a>
                                 </div>
@@ -156,7 +157,7 @@ export const ContactContent = () => {
                     </div>
 
                     {/* Contact Form */}
-                    <div className="lg:col-span-2 bg-white p-8 md:p-12 rounded-[2.5rem] shadow-xl border border-slate-100">
+                    <div className="lg:col-span-2 bg-white p-8 md:p-12 rounded-[2.5rem] shadow-xl border border-slate-200">
                         {status === 'success' ? (
                             <div className="h-full flex flex-col items-center justify-center text-center py-20 animate-in fade-in zoom-in">
                                 <div className="w-20 h-20 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mb-6">
@@ -168,7 +169,7 @@ export const ContactContent = () => {
                                 </p>
                                 <button
                                     onClick={() => setStatus('idle')}
-                                    className="px-8 py-3 bg-primary text-white rounded-xl font-bold hover:bg-slate-800 transition-all"
+                                    className="px-8 py-3 bg-secondary text-primary rounded-xl font-bold hover:bg-white transition-all"
                                 >
                                     {t.contact.sendAnother}
                                 </button>
@@ -184,7 +185,7 @@ export const ContactContent = () => {
                                             value={formData.name}
                                             onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                                             placeholder="Ex: João Manuel"
-                                            className="w-full px-4 py-4 rounded-xl bg-slate-50 border border-slate-200 focus:ring-2 focus:ring-primary outline-none transition-all"
+                                            className="w-full px-4 py-4 rounded-xl bg-slate-50 border border-slate-200 focus:bg-white focus:ring-2 focus:ring-secondary text-primary outline-none transition-all"
                                         />
                                     </div>
                                     <div className="space-y-2">
@@ -195,11 +196,11 @@ export const ContactContent = () => {
                                             value={formData.email}
                                             onChange={handleEmailChange}
                                             placeholder="exemplo@empresa.ao"
-                                            className={`w-full px-4 py-4 rounded-xl bg-slate-50 border outline-none transition-all ${emailError
+                                            className={`w-full px-4 py-4 rounded-xl bg-slate-50 border focus:bg-white outline-none text-primary transition-all ${emailError
                                                 ? 'border-red-500 focus:ring-red-500'
                                                 : formData.email && !emailError
                                                     ? 'border-emerald-500 focus:ring-emerald-500'
-                                                    : 'border-slate-200 focus:ring-primary'
+                                                    : 'border-slate-200 focus:ring-secondary'
                                                 }`}
                                         />
                                     </div>
@@ -213,7 +214,7 @@ export const ContactContent = () => {
                                             value={formData.phone}
                                             onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                                             placeholder="+244"
-                                            className="w-full px-4 py-4 rounded-xl bg-slate-50 border border-slate-200 focus:ring-2 focus:ring-primary outline-none transition-all"
+                                            className="w-full px-4 py-4 rounded-xl bg-slate-50 border border-slate-200 focus:bg-white focus:ring-2 focus:ring-secondary text-primary outline-none transition-all"
                                         />
                                     </div>
                                     <div className="space-y-2">
@@ -221,7 +222,7 @@ export const ContactContent = () => {
                                         <select
                                             value={formData.subject}
                                             onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
-                                            className="w-full px-4 py-4 rounded-xl bg-slate-50 border border-slate-200 focus:ring-2 focus:ring-primary outline-none transition-all"
+                                            className="w-full px-4 py-4 rounded-xl bg-slate-50 border border-slate-200 focus:bg-white focus:ring-2 focus:ring-secondary text-primary outline-none transition-all"
                                         >
                                             <option value="Geral">{t.contact.subjectGeneral}</option>
                                             <option value="Orcamento">{t.contact.subjectQuote}</option>
@@ -239,14 +240,14 @@ export const ContactContent = () => {
                                         value={formData.message}
                                         onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                                         placeholder={t.contact.messagePlaceholder}
-                                        className="w-full px-4 py-4 rounded-xl bg-slate-50 border border-slate-200 focus:ring-2 focus:ring-primary outline-none transition-all resize-none"
+                                        className="w-full px-4 py-4 rounded-xl bg-slate-50 border border-slate-200 focus:bg-white focus:ring-2 focus:ring-secondary text-primary outline-none transition-all resize-none"
                                     ></textarea>
                                 </div>
 
                                 <button
                                     type="submit"
                                     disabled={status === 'loading'}
-                                    className="w-full bg-primary text-white py-5 rounded-2xl font-black text-lg hover:bg-slate-800 transition-all shadow-xl shadow-primary/20 flex items-center justify-center gap-3 disabled:opacity-70 disabled:cursor-not-allowed"
+                                    className="w-full bg-secondary text-primary py-5 rounded-2xl font-black text-lg hover:bg-white transition-all shadow-xl shadow-secondary/10 flex items-center justify-center gap-3 disabled:opacity-70 disabled:cursor-not-allowed"
                                 >
                                     {status === 'loading' ? (
                                         <>
@@ -262,7 +263,7 @@ export const ContactContent = () => {
                                 </button>
                                 {status === 'error' && (
                                     <p className="text-red-500 text-center text-sm font-bold mt-4 animate-bounce">
-                                        Erro ao enviar. Por favor, tente novamente ou ligue diretamente.
+                                        {t.contact.errorSending}
                                     </p>
                                 )}
                             </form>

@@ -70,7 +70,7 @@ export default function DashboardPage() {
             {/* Header section with welcome message */}
             <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 px-2">
                 <div>
-                    <h1 className="text-3xl sm:text-4xl md:text-5xl font-black text-slate-900 tracking-tight mb-2">Painel de Controlo</h1>
+                    <h1 className="text-3xl sm:text-4xl md:text-5xl font-black text-primary tracking-tight mb-2">Painel de Controlo</h1>
                     <p className="text-slate-500 font-medium text-base sm:text-lg">Bem-vindo à Namtech Cloud. Aqui está o resumo da sua operação.</p>
                 </div>
                 <div className="flex items-center gap-3">
@@ -100,7 +100,7 @@ export default function DashboardPage() {
                                         <ArrowUpRight size={20} />
                                     </div>
                                 </div>
-                                <h3 className="text-4xl font-black text-slate-900 mb-1 tracking-tight">{stat.value}</h3>
+                                <h3 className="text-4xl font-black text-primary mb-1 tracking-tight">{stat.value}</h3>
                                 <p className="text-xs font-black text-slate-400 uppercase tracking-widest mb-2">{stat.label}</p>
                                 <p className="text-xs text-slate-400 font-medium leading-relaxed">{stat.description}</p>
                             </div>
@@ -124,7 +124,7 @@ export default function DashboardPage() {
                                     <Clock size={24} />
                                 </div>
                                 <div className="min-w-0">
-                                    <h2 className="text-xl sm:text-2xl font-black text-slate-900 tracking-tight truncate">Próximos Agendamentos</h2>
+                                    <h2 className="text-xl sm:text-2xl font-black text-primary tracking-tight truncate">Próximos Agendamentos</h2>
                                     <p className="text-slate-400 text-xs sm:text-sm font-medium">Reuniões e serviços solicitados</p>
                                 </div>
                             </div>
@@ -144,7 +144,7 @@ export default function DashboardPage() {
                                                 {app.customerName.charAt(0)}
                                             </div>
                                             <div className="min-w-0">
-                                                <h4 className="font-black text-slate-900 text-base sm:text-lg group-hover:text-primary transition-colors truncate">{app.customerName}</h4>
+                                                <h4 className="font-black text-primary text-base sm:text-lg group-hover:text-primary transition-colors truncate">{app.customerName}</h4>
                                                 <div className="flex items-center gap-2 sm:gap-3 text-xs sm:text-sm text-slate-400">
                                                     <span className="font-bold flex items-center gap-1.5 whitespace-nowrap"><Calendar size={12} className="sm:w-3.5 sm:h-3.5" /> {new Date(app.date).toLocaleDateString()}</span>
                                                     <span className="hidden sm:inline">•</span>
@@ -209,7 +209,7 @@ export default function DashboardPage() {
                             </div>
 
                             <div className="mt-14 p-6 bg-white/5 border border-white/10 rounded-3xl flex items-center gap-5">
-                                <div className="w-12 h-12 bg-primary rounded-2xl flex items-center justify-center text-slate-900 shadow-xl shadow-primary/20">
+                                <div className="w-12 h-12 bg-primary rounded-2xl flex items-center justify-center text-primary shadow-xl shadow-primary/20">
                                     <TrendingUp size={24} />
                                 </div>
                                 <div>
@@ -220,12 +220,12 @@ export default function DashboardPage() {
                         </div>
 
                         {/* Background flare */}
-                        <div className="absolute top-0 right-0 w-64 h-64 bg-primary/20 blur-[100px] rounded-full -mr-32 -mt-32" />
+                        <div className="absolute top-0 right-0 w-64 h-64 bg-primary/20 rounded-full -mr-32 -mt-32" />
                     </div>
 
                     {/* Quick Access/Search Links */}
                     <div className="bg-white rounded-[2.5rem] shadow-sm border border-slate-100 p-8">
-                        <h3 className="text-lg font-black text-slate-900 mb-6 px-2">Acesso Rápido</h3>
+                        <h3 className="text-lg font-black text-primary mb-6 px-2">Acesso Rápido</h3>
                         <div className="grid grid-cols-2 gap-3">
                             <Link href="/namtechprobackoffice/categories" className="p-4 bg-slate-50 hover:bg-primary hover:text-white rounded-2xl text-xs font-black uppercase tracking-widest text-center transition-all">
                                 Categorias

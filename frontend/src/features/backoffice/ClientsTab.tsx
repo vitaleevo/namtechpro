@@ -32,7 +32,7 @@ export const ClientsTab: React.FC<ClientsTabProps> = ({ leads }) => {
                         <div className="w-24 h-24 bg-blue-600/10 text-blue-600 rounded-[2rem] flex items-center justify-center font-black text-3xl mb-8">
                             {client.name.charAt(0)}
                         </div>
-                        <h4 className="text-2xl font-black text-slate-900 mb-2 tracking-tight">{client.name}</h4>
+                        <h4 className="text-2xl font-black text-primary mb-2 tracking-tight">{client.name}</h4>
                         <p className="text-sm text-slate-400 font-medium mb-8 uppercase tracking-widest">{client.email}</p>
                         <div className="w-full flex gap-3">
                             <button className="flex-1 py-4 bg-slate-50 rounded-2xl font-black text-[10px] uppercase tracking-widest text-slate-500 hover:bg-blue-600 hover:text-white transition-all">

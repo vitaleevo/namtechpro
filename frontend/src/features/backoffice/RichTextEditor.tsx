@@ -72,7 +72,7 @@ const Toolbar = ({ editor, isUploading }: { editor: any, isUploading: boolean })
     const btnClass = "p-2 rounded-lg transition-all flex items-center justify-center disabled:opacity-50";
 
     return (
-        <div className="flex flex-wrap items-center gap-1 p-2 border-b border-slate-200 bg-slate-50/50 backdrop-blur-sm sticky top-0 z-10 rounded-t-xl">
+        <div className="flex flex-wrap items-center gap-1 p-2 border-b border-slate-200 bg-slate-50 sticky top-0 z-10 rounded-t-xl">
             <button
                 type="button"
                 onClick={() => editor.chain().focus().toggleBold().run()}

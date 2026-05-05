@@ -31,7 +31,7 @@ export default function LeadsPage() {
         <div className="space-y-10 relative">
             <div className="flex items-center justify-between">
                 <div>
-                    <h1 className="text-4xl font-black text-slate-900 tracking-tight">Gestão de Leads</h1>
+                    <h1 className="text-4xl font-black text-primary tracking-tight">Gestão de Leads</h1>
                     <p className="text-slate-500 font-medium">Acompanhe as interações e pedidos de contacto dos clientes.</p>
                 </div>
             </div>
@@ -70,7 +70,7 @@ export default function LeadsPage() {
                                     </span>
                                 </div>
 
-                                <h4 className={`text-base font-black transition-colors ${selectedLead?._id === lead._id ? 'text-primary' : 'text-slate-900'}`}>
+                                <h4 className={`text-base font-black transition-colors ${selectedLead?._id === lead._id ? 'text-primary' : 'text-primary'}`}>
                                     {lead.name}
                                 </h4>
                                 <p className="text-xs text-slate-500 line-clamp-1 font-medium">{lead.message}</p>
@@ -106,7 +106,7 @@ export default function LeadsPage() {
                                         </div>
                                         <div>
                                             <div className="flex items-center gap-3 mb-1">
-                                                <h2 className="text-3xl font-black text-slate-900 tracking-tight">{selectedLead.name}</h2>
+                                                <h2 className="text-3xl font-black text-primary tracking-tight">{selectedLead.name}</h2>
                                                 <span className="px-3 py-1 bg-primary/10 text-primary text-[10px] font-black uppercase tracking-widest rounded-full">Prospecção</span>
                                             </div>
                                             <p className="text-lg text-slate-500 font-medium">Assunto: {selectedLead.subject}</p>
@@ -187,7 +187,7 @@ export default function LeadsPage() {
                             <div className="w-32 h-32 bg-slate-50 rounded-[2.5rem] flex items-center justify-center mb-8 shadow-inner animate-pulse">
                                 <Mail size={48} className="text-slate-200" />
                             </div>
-                            <h3 className="text-3xl font-black text-slate-900 mb-3 tracking-tight">Centro de Mensagens</h3>
+                            <h3 className="text-3xl font-black text-primary mb-3 tracking-tight">Centro de Mensagens</h3>
                             <p className="text-slate-400 max-w-sm font-medium leading-relaxed">
                                 Selecione uma lead da lista lateral para visualizar os detalhes do contacto e o histórico da mensagem.
                             </p>

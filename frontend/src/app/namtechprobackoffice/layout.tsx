@@ -54,7 +54,7 @@ export default function BackofficeLayout({
             <div className="min-h-screen bg-slate-100 flex items-center justify-center p-4">
                 <div className="w-full max-w-md bg-white rounded-[2.5rem] shadow-2xl overflow-hidden border border-slate-100 p-10 text-center">
                     <div className="relative w-48 h-16 mx-auto mb-8">
-                        <Image src="/images/logo-horizontal.png" alt="Namtech Pro" fill className="object-contain" priority />
+                        <Image src="/images/logo.png" alt="Namtech Pro" fill className="object-contain" priority />
                     </div>
                     <SignIn redirectUrl="/namtechprobackoffice" />
                 </div>
@@ -66,7 +66,7 @@ export default function BackofficeLayout({
         return (
             <div className="min-h-screen bg-slate-50 flex flex-col items-center justify-center p-8 text-center">
                 <div className="w-16 h-16 border-4 border-slate-200 border-t-primary rounded-full animate-spin mb-6" />
-                <h2 className="text-xl font-bold text-slate-900 mb-2">A finalizar autenticação...</h2>
+                <h2 className="text-xl font-bold text-primary mb-2">A finalizar autenticação...</h2>
                 <p className="text-slate-500 mb-6">A estabelecer conexão segura com a base de dados.</p>
 
                 <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 max-w-lg w-full text-left">
@@ -99,7 +99,7 @@ export default function BackofficeLayout({
                 <div className="w-16 h-16 bg-red-100 text-red-500 rounded-full flex items-center justify-center mb-6">
                     <AlertTriangle size={32} />
                 </div>
-                <h2 className="text-xl font-bold text-slate-900 mb-2">Acesso Restrito</h2>
+                <h2 className="text-xl font-bold text-primary mb-2">Acesso Restrito</h2>
                 <p className="text-slate-500 mb-6 max-w-md">Esta área é exclusiva para administradores do sistema.</p>
 
                 <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 w-full max-w-md text-left text-xs mb-6">
@@ -135,7 +135,7 @@ export default function BackofficeLayout({
             {/* Mobile Header */}
             <header className="lg:hidden bg-primary p-4 flex items-center justify-between sticky top-0 z-50 shadow-lg">
                 <Link href="/namtechprobackoffice" className="relative w-32 h-8">
-                    <Image src="/images/logo-horizontal.png" alt="Namtech" fill className="object-contain" />
+                    <Image src="/images/logo.png" alt="Namtech" fill className="object-contain" />
                 </Link>
                 <button
                     onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
@@ -187,9 +187,9 @@ export default function BackofficeLayout({
                 <div className="p-6 flex items-center justify-between border-b border-white/10">
                     <Link href="/namtechprobackoffice" className="flex items-center gap-3">
                         {isSidebarOpen ? (
-                            <div className="relative w-32 h-10"><Image src="/images/logo-horizontal.png" alt="Namtech" fill className="object-contain" /></div>
+                            <div className="relative w-32 h-10"><Image src="/images/logo.png" alt="Namtech" fill className="object-contain" /></div>
                         ) : (
-                            <div className="relative w-8 h-8 mx-auto"><Image src="/images/flavico.png" alt="N" fill className="object-contain" /></div>
+                            <div className="relative w-8 h-8 mx-auto"><Image src="/images/favicon.png" alt="N" fill className="object-contain" /></div>
                         )}
                     </Link>
                     <button onClick={() => setIsSidebarOpen(!isSidebarOpen)} className="p-2 hover:bg-white/10 rounded-xl">

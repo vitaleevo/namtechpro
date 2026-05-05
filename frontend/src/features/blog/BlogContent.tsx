@@ -48,7 +48,7 @@ export function BlogContent({ post, relatedPosts }: BlogContentProps) {
                         </span>
                     </div>
 
-                    <h1 className="text-4xl md:text-5xl lg:text-6xl font-display font-black text-slate-900 mb-8 leading-tight">
+                    <h1 className="text-4xl md:text-5xl lg:text-6xl font-display font-black text-primary mb-8 leading-tight">
                         {post.title}
                     </h1>
 
@@ -58,7 +58,7 @@ export function BlogContent({ post, relatedPosts }: BlogContentProps) {
                                 <User size={24} className="text-slate-400" />
                             </div>
                             <div>
-                                <p className="text-sm font-bold text-slate-900">{post.author}</p>
+                                <p className="text-sm font-bold text-primary">{post.author}</p>
                                 <p className="text-xs text-slate-500 flex items-center gap-2">
                                     <Calendar size={12} />
                                     {new Date(post.publishedAt).toLocaleDateString()}
@@ -101,7 +101,7 @@ export function BlogContent({ post, relatedPosts }: BlogContentProps) {
                 {/* Related Posts */}
                 {relatedPosts && relatedPosts.length > 0 && (
                     <div className="max-w-7xl mx-auto px-4 sm:px-6 border-t border-slate-100 pt-16">
-                        <h3 className="text-2xl font-display font-bold text-slate-900 mb-8">Outros artigos que pode gostar</h3>
+                        <h3 className="text-2xl font-display font-bold text-primary mb-8">Outros artigos que pode gostar</h3>
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                             {relatedPosts.map((related) => (
                                 <Link
@@ -118,7 +118,7 @@ export function BlogContent({ post, relatedPosts }: BlogContentProps) {
                                         />
                                     </div>
                                     <p className="text-xs font-bold text-slate-400 mb-2 uppercase tracking-wider">{related.category}</p>
-                                    <h4 className="text-lg font-bold text-slate-900 group-hover:text-primary transition-colors line-clamp-2">
+                                    <h4 className="text-lg font-bold text-primary group-hover:text-primary transition-colors line-clamp-2">
                                         {related.title}
                                     </h4>
                                 </Link>

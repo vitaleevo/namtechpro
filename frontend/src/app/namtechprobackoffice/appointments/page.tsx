@@ -81,7 +81,7 @@ export default function AppointmentsPage() {
         <div className="space-y-10 relative">
             <div className="flex items-center justify-between">
                 <div>
-                    <h1 className="text-4xl font-black text-slate-900 tracking-tight">Gestão de Agenda</h1>
+                    <h1 className="text-4xl font-black text-primary tracking-tight">Gestão de Agenda</h1>
                     <p className="text-slate-500 font-medium">Controle os pedidos de intervenção e consultoria técnica.</p>
                 </div>
             </div>
@@ -121,7 +121,7 @@ export default function AppointmentsPage() {
                                         }`} />
                                 </div>
 
-                                <h4 className={`text-base font-black transition-colors ${selectedId === app._id ? 'text-primary' : 'text-slate-900'}`}>
+                                <h4 className={`text-base font-black transition-colors ${selectedId === app._id ? 'text-primary' : 'text-primary'}`}>
                                     {app.customerName}
                                 </h4>
 
@@ -162,7 +162,7 @@ export default function AppointmentsPage() {
                                         </div>
                                         <div>
                                             <div className="flex items-center gap-3 mb-1">
-                                                <h2 className="text-3xl font-black text-slate-900 tracking-tight">{selectedApp.customerName}</h2>
+                                                <h2 className="text-3xl font-black text-primary tracking-tight">{selectedApp.customerName}</h2>
                                                 <span className={`px-3 py-1 text-[10px] font-black uppercase tracking-widest rounded-full ${selectedApp.status === 'confirmed' ? 'bg-emerald-50 text-emerald-600' :
                                                     selectedApp.status === 'pending' ? 'bg-amber-50 text-amber-600' :
                                                         'bg-slate-50 text-slate-400'
@@ -277,7 +277,7 @@ export default function AppointmentsPage() {
                             <div className="w-32 h-32 bg-slate-50 rounded-[2.5rem] flex items-center justify-center mb-8 shadow-inner animate-pulse">
                                 <Clock size={48} className="text-slate-200" />
                             </div>
-                            <h3 className="text-3xl font-black text-slate-900 mb-3 tracking-tight">Agenda Namtech</h3>
+                            <h3 className="text-3xl font-black text-primary mb-3 tracking-tight">Agenda Namtech</h3>
                             <p className="text-slate-400 max-w-sm font-medium leading-relaxed">
                                 Selecione um agendamento da lista para visualizar os detalhes, gerir o estado da marcação e contactar o cliente.
                             </p>

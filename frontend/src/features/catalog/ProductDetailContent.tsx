@@ -37,7 +37,7 @@ export function ProductDetailContent({ product }: ProductDetailContentProps) {
                 style={{ y: quoteBarY }}
                 className="fixed bottom-8 left-1/2 -translate-x-1/2 z-50 w-[90%] max-w-4xl"
             >
-                <div className="bg-primary/90 backdrop-blur-xl p-4 rounded-3xl border border-white/10 shadow-2xl flex items-center justify-between gap-6 overflow-hidden relative group">
+                <div className="bg-primary/95 p-4 rounded-3xl border border-white/10 shadow-2xl flex items-center justify-between gap-6 overflow-hidden relative group">
                     <div className="hidden sm:flex items-center gap-4 pl-4 shrink-0">
                         <div className="w-12 h-12 rounded-xl bg-white/10 relative overflow-hidden">
                             <Image src={product.imageUrl} alt={product.name} fill className="object-cover" />
@@ -86,7 +86,7 @@ export function ProductDetailContent({ product }: ProductDetailContentProps) {
                                 className="aspect-square rounded-[4rem] overflow-hidden relative shadow-2xl bg-slate-50 border border-slate-100 group"
                             >
                                 <Image
-                                    src={product.imageUrl || 'https://images.unsplash.com/photo-1511467687858-23d96c32e4ae'}
+                                    src={product.imageUrl || '/images/decorativas/nav-equipment.jpg'}
                                     alt={product.name}
                                     fill
                                     priority

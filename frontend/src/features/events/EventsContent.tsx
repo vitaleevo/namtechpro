@@ -9,8 +9,9 @@ import { Calendar, MapPin, ArrowRight, Tag } from "lucide-react";
 import { useLanguage } from '@/i18n';
 import Link from 'next/link';
 import Image from 'next/image';
+import { FeaturedEvents, type EventGallery } from './FeaturedEvents';
 
-export const EventsContent = () => {
+export const EventsContent = ({ featuredEvents = [] }: { featuredEvents?: EventGallery[] }) => {
     const { t } = useLanguage();
     const events = useQuery(api.events.list);
     const dbCategories = useQuery(api.categories.list, { type: "event" });
@@ -22,35 +23,28 @@ export const EventsContent = () => {
         return events.filter((e: Doc<"events">) => e.type === filter);
     }, [events, filter]);
 
-    const filters = useMemo(() => {
-        const baseFilters = [
-            { id: 'All', label: t.eventsPage.filterAll }
-        ];
+    const filteredFeatured = useMemo(() => {
+        if (!featuredEvents) return [];
+        if (filter === 'All') return featuredEvents;
+        return (featuredEvents as any[]).filter(e => e.type === filter);
+    }, [featuredEvents, filter]);
 
-        if (dbCategories && dbCategories.length > 0) {
-            return [
-                ...baseFilters,
-                ...dbCategories.map(cat => ({ id: cat.name, label: cat.name }))
-            ];
-        }
-
-        return [
-            ...baseFilters,
-            { id: 'Project', label: t.eventsPage.filterProjects },
-            { id: 'Event', label: t.eventsPage.filterEvents },
-        ];
-    }, [dbCategories, t.eventsPage]);
+    const filters = [
+        { id: 'All', label: 'Todos' },
+        { id: 'Project', label: 'Projetos' },
+        { id: 'Event', label: 'Eventos' },
+    ];
 
     if (events === undefined) {
         return (
-            <div className="pt-40 pb-24 flex items-center justify-center min-h-screen bg-slate-50">
+            <div className="pt-40 pb-24 flex items-center justify-center min-h-screen bg-white">
                 <div className="w-12 h-12 border-4 border-primary/30 border-t-primary rounded-full animate-spin"></div>
             </div>
         );
     }
 
     return (
-        <div className="bg-slate-50 min-h-screen">
+        <div className="bg-white min-h-screen">
             {/* Hero Section */}
             <section className="relative h-[50vh] flex items-center overflow-hidden mb-16">
                 <div className="absolute inset-0 z-0">
@@ -59,16 +53,16 @@ export const EventsContent = () => {
                         fill
                         priority
                         className="object-cover"
-                        src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=2000"
+                        src="/images/decorativas/hero_principal.jpg"
                     />
-                    <div className="absolute inset-0 bg-primary/70 backdrop-blur-[2px]"></div>
+                    <div className="absolute inset-0 bg-black/40"></div>
                 </div>
 
                 <div className="relative z-10 max-w-7xl mx-auto px-4 w-full text-center text-white">
                     <motion.h1
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
-                        className="text-5xl md:text-8xl font-display font-black mb-6 tracking-tighter"
+                        className="text-5xl md:text-8xl font-display font-black mb-6 tracking-tighter text-white"
                     >
                         {t.eventsPage.title} <span className="text-secondary">{t.eventsPage.titleHighlight}</span>
                     </motion.h1>
@@ -76,12 +70,17 @@ export const EventsContent = () => {
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.1 }}
-                        className="text-xl text-slate-200 max-w-2xl mx-auto font-medium"
+                        className="text-xl text-white/90 max-w-2xl mx-auto font-medium"
                     >
                         {t.eventsPage.subtitle}
                     </motion.p>
                 </div>
             </section>
+
+            {/* Featured Events Section */}
+            {filteredFeatured.length > 0 && (
+                <FeaturedEvents events={filteredFeatured} />
+            )}
 
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
@@ -91,9 +90,9 @@ export const EventsContent = () => {
                         <button
                             key={f.id}
                             onClick={() => setFilter(f.id)}
-                            className={`px-6 py-3 rounded-full font-bold text-sm transition-all ${filter === f.id
-                                ? 'bg-primary text-white shadow-lg scale-105'
-                                : 'bg-white text-slate-500 hover:bg-slate-100'
+                            className={`px-6 py-3 rounded-full font-bold text-sm transition-all border ${filter === f.id
+                                ? 'bg-secondary text-white border-secondary shadow-lg scale-105'
+                                : 'bg-slate-50 text-primary border-slate-200 hover:bg-slate-100'
                                 }`}
                         >
                             {f.label}
@@ -106,12 +105,12 @@ export const EventsContent = () => {
                     <motion.div
                         initial={{ opacity: 0, scale: 0.95 }}
                         animate={{ opacity: 1, scale: 1 }}
-                        className="text-center py-24 bg-white rounded-[2rem] border border-slate-100 shadow-sm"
+                        className="text-center py-24 bg-slate-50 rounded-[2rem] border border-slate-100 shadow-sm"
                     >
-                        <div className="bg-slate-50 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6">
-                            <Tag className="text-slate-300" size={32} />
+                        <div className="bg-white w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6 shadow-sm border border-slate-100">
+                            <Tag className="text-slate-400" size={32} />
                         </div>
-                        <h3 className="text-2xl font-bold text-slate-900 mb-2">
+                        <h3 className="text-2xl font-bold text-primary mb-2">
                             {t.eventsPage.noResults}
                         </h3>
                         <p className="text-slate-500 mb-8 max-w-md mx-auto">
@@ -119,7 +118,7 @@ export const EventsContent = () => {
                         </p>
                         <button
                             onClick={() => setFilter('All')}
-                            className="inline-flex items-center gap-2 text-primary font-bold hover:underline"
+                            className="inline-flex items-center gap-2 text-secondary font-bold hover:underline"
                         >
                             <ArrowRight size={16} />
                             {t.catalog?.clearFilters}
@@ -135,7 +134,7 @@ export const EventsContent = () => {
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: idx * 0.1 }}
-                            className="group bg-white rounded-[2rem] overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-300 border border-slate-100 flex flex-col h-full"
+                            className="group bg-white rounded-[2rem] overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-300 border border-slate-100 flex flex-col h-full hover:-translate-y-1"
                         >
                             <div className="relative h-64 overflow-hidden">
                                 <Link href={`/eventos/${event._id}`} className="block h-full w-full">
@@ -147,14 +146,14 @@ export const EventsContent = () => {
                                     />
                                 </Link>
                                 <div className="absolute top-4 left-4 pointer-events-none">
-                                    <span className="bg-white/90 backdrop-blur text-primary text-xs font-black px-3 py-1.5 rounded-full uppercase tracking-widest shadow-lg flex items-center gap-2">
+                                    <span className="bg-white text-primary text-xs font-black px-3 py-1.5 rounded-full uppercase tracking-widest shadow-md border border-slate-100 flex items-center gap-2">
                                         <Tag size={12} />
                                         {event.type}
                                     </span>
                                 </div>
                             </div>
                             <div className="p-8 flex-1 flex flex-col">
-                                <div className="flex items-center gap-4 text-xs font-bold text-slate-400 mb-4 uppercase tracking-wider">
+                                <div className="flex items-center gap-4 text-xs font-bold text-slate-500 mb-4 uppercase tracking-wider">
                                     <span className="flex items-center gap-1">
                                         <Calendar size={14} className="text-secondary" />
                                         {new Date(event.date).toLocaleDateString()}
@@ -165,17 +164,17 @@ export const EventsContent = () => {
                                         {event.location}
                                     </span>
                                 </div>
-                                <Link href={`/eventos/${event._id}`} className="block hover:text-primary transition-colors">
-                                    <h3 className="text-2xl font-bold text-slate-900 mb-4 leading-tight group-hover:text-primary transition-colors">
+                                <Link href={`/eventos/${event._id}`} className="block hover:text-secondary transition-colors">
+                                    <h3 className="text-2xl font-bold text-primary mb-4 leading-tight group-hover:text-primary transition-colors">
                                         {event.title}
                                     </h3>
                                 </Link>
-                                <p className="text-slate-500 mb-8 line-clamp-3 flex-1">
+                                <p className="text-slate-600 mb-8 line-clamp-3 flex-1">
                                     {event.description}
                                 </p>
                                 <Link
                                     href={`/eventos/${event._id}`}
-                                    className="w-full py-4 bg-slate-50 group-hover:bg-primary group-hover:text-white rounded-xl font-bold text-sm transition-all flex items-center justify-center gap-2 text-slate-600"
+                                    className="w-full py-4 bg-slate-50 group-hover:bg-primary group-hover:text-white rounded-xl font-bold text-sm transition-all flex items-center justify-center gap-2 text-primary border border-slate-100 group-hover:border-primary"
                                 >
                                     {t.eventsPage.readMore}
                                     <ArrowRight size={16} />

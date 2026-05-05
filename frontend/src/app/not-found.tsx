@@ -8,9 +8,14 @@ import { Footer } from "@/features/navigation/Footer";
 
 export default function NotFound() {
     return (
-        <main className="min-h-screen bg-slate-50 flex flex-col">
+        <main className="min-h-screen bg-white flex flex-col relative overflow-hidden">
             <Navbar />
-            <div className="flex-1 flex items-center justify-center px-4 pt-20">
+            
+            {/* Background Decorative Elements - No Blur */}
+            <div className="absolute top-0 right-0 w-1/3 h-1/3 bg-slate-50 rounded-bl-full z-0"></div>
+            <div className="absolute bottom-0 left-0 w-1/4 h-1/4 bg-slate-50 rounded-tr-full z-0"></div>
+
+            <div className="flex-1 flex items-center justify-center relative z-10 px-4 pt-20">
                 <div className="max-w-2xl w-full text-center">
                     <motion.div
                         initial={{ opacity: 0, scale: 0.5 }}
@@ -18,7 +23,6 @@ export default function NotFound() {
                         transition={{ duration: 0.5 }}
                         className="mb-8 relative inline-block"
                     >
-                        <div className="absolute inset-0 bg-secondary/20 blur-3xl rounded-full scale-150 animate-pulse"></div>
                         <Anchor size={120} className="text-primary relative z-10 mx-auto" strokeWidth={1.5} />
                     </motion.div>
 
@@ -26,7 +30,7 @@ export default function NotFound() {
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.2 }}
-                        className="text-7xl md:text-9xl font-black text-primary mb-6 tracking-tighter"
+                        className="text-7xl md:text-9xl font-black text-slate-100 mb-6 tracking-tighter select-none"
                     >
                         404
                     </motion.h1>
@@ -35,7 +39,7 @@ export default function NotFound() {
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.3 }}
-                        className="text-2xl md:text-4xl font-bold text-slate-900 mb-6"
+                        className="text-2xl md:text-4xl font-bold text-primary mb-6"
                     >
                         Rota não encontrada
                     </motion.h2>
@@ -57,14 +61,14 @@ export default function NotFound() {
                     >
                         <button
                             onClick={() => window.history.back()}
-                            className="w-full sm:w-auto px-8 py-4 bg-white text-primary border-2 border-slate-200 rounded-2xl font-bold flex items-center justify-center gap-2 hover:border-primary transition-all"
+                            className="w-full sm:w-auto px-10 py-5 bg-slate-100 text-slate-600 border border-slate-200 rounded-2xl font-bold flex items-center justify-center gap-3 hover:bg-slate-200 transition-all"
                         >
                             <ArrowLeft size={20} />
                             Voltar
                         </button>
                         <Link
                             href="/"
-                            className="w-full sm:w-auto px-8 py-4 bg-primary text-white rounded-2xl font-bold flex items-center justify-center gap-2 hover:bg-slate-800 shadow-xl shadow-primary/20 transition-all"
+                            className="w-full sm:w-auto px-10 py-5 bg-primary text-white rounded-2xl font-bold flex items-center justify-center gap-3 hover:bg-slate-800 shadow-xl shadow-primary/20 transition-all"
                         >
                             <Home size={20} />
                             Página Inicial

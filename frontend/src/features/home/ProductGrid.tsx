@@ -7,8 +7,10 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowRight, Star, ShieldCheck, Zap } from "lucide-react";
+import { useLanguage } from '@/i18n';
 
 export const ProductGrid = () => {
+    const { t } = useLanguage();
     const convexProducts = useQuery(api.products.list);
 
     if (convexProducts === undefined) {
@@ -18,7 +20,7 @@ export const ProductGrid = () => {
                     <div className="absolute inset-0 border-4 border-primary/10 rounded-full" />
                     <div className="absolute inset-0 border-4 border-t-secondary rounded-full animate-spin" />
                 </div>
-                <p className="text-primary font-black text-[10px] uppercase tracking-[0.4em] animate-pulse">Sincronizando Catálogo Elite</p>
+                <p className="text-primary font-black text-[10px] uppercase tracking-[0.4em] animate-pulse">{t.home.syncingElite}</p>
             </div>
         );
     }
@@ -50,7 +52,7 @@ export const ProductGrid = () => {
                         
                         {/* Status & Category Floating */}
                         <div className="absolute top-10 left-10 z-20 flex flex-col gap-3">
-                            <span className="bg-secondary text-primary text-[9px] font-black px-6 py-2.5 rounded-full uppercase tracking-[0.2em] shadow-2xl backdrop-blur-md">
+                            <span className="bg-secondary text-primary text-[9px] font-black px-6 py-2.5 rounded-full uppercase tracking-[0.2em] shadow-2xl">
                                 {product.status}
                             </span>
                         </div>
@@ -66,7 +68,7 @@ export const ProductGrid = () => {
                             <div className="absolute inset-0 bg-gradient-to-t from-primary/80 via-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
                             
                             {/* Brand Tag */}
-                            <div className="absolute bottom-6 right-10 z-20 bg-white/95 backdrop-blur-sm px-6 py-2 rounded-2xl shadow-xl">
+                            <div className="absolute bottom-6 right-10 z-20 bg-slate-50 px-6 py-2 rounded-2xl shadow-xl">
                                 <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest">{product.brand}</span>
                             </div>
                         </div>
@@ -99,16 +101,15 @@ export const ProductGrid = () => {
                                     href={`/catalogo/${product._id}`}
                                     className="relative w-full group/btn overflow-hidden px-8 py-6 bg-primary text-white rounded-[2.5rem] font-black text-[10px] uppercase tracking-[0.3em] flex items-center justify-center gap-4 hover:shadow-2xl transition-all active:scale-95"
                                 >
-                                    <span className="relative z-10">Explorar Ficha Técnica</span>
+                                    <span className="relative z-10">{t.home.exploreSpecs}</span>
                                     <ArrowRight size={16} className="relative z-10 transition-transform group-hover/btn:translate-x-2" />
                                     <div className="absolute inset-0 bg-secondary translate-y-full group-hover/btn:translate-y-0 transition-transform duration-500 rounded-[2.5rem]" />
-                                    <div className="absolute inset-0 bg-secondary opacity-0 group-hover/btn:opacity-100 transition-opacity duration-500 blur-2xl -z-10" />
                                 </Link>
                             </div>
                         </div>
 
                         {/* Top Decoration */}
-                        <div className="absolute top-0 right-0 w-40 h-40 bg-secondary/5 rounded-full blur-3xl -mr-20 -mt-20 group-hover:bg-secondary/20 transition-colors duration-700" />
+                        <div className="absolute top-0 right-0 w-40 h-40 bg-secondary/5 rounded-full -mr-20 -mt-20 group-hover:bg-secondary/20 transition-colors duration-700" />
                     </div>
                 </motion.div>
             ))}

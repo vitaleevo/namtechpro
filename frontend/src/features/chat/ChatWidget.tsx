@@ -121,7 +121,7 @@ export const ChatWidget = () => {
                     >
                         {/* Header */}
                         <div className="bg-primary p-6 text-white relative flex items-center gap-4 overflow-hidden shadow-lg">
-                            <div className="w-12 h-12 bg-white/20 backdrop-blur-md rounded-2xl flex items-center justify-center shrink-0">
+                            <div className="w-12 h-12 bg-white/20 rounded-2xl flex items-center justify-center shrink-0">
                                 <HeadphonesIcon size={24} className="text-secondary" />
                             </div>
                             <div className="flex-1">

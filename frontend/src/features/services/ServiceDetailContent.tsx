@@ -7,8 +7,10 @@ import Link from "next/link";
 import Image from "next/image";
 import { Navbar } from "@/features/navigation/Navbar";
 import { Footer } from "@/features/navigation/Footer";
+import { useLanguage } from '@/i18n';
 
 export const ServiceDetailContent = ({ service }: { service: any }) => {
+    const { t } = useLanguage();
     return (
         <main className="min-h-screen bg-white">
             <Navbar />
@@ -18,27 +20,27 @@ export const ServiceDetailContent = ({ service }: { service: any }) => {
                 <motion.div 
                     initial={{ y: 100 }}
                     animate={{ y: 0 }}
-                    className="max-w-4xl mx-auto flex items-center justify-between p-6 bg-slate-900/90 backdrop-blur-xl rounded-[2.5rem] border border-white/10 shadow-2xl pointer-events-auto"
+                    className="max-w-4xl mx-auto flex items-center justify-between p-6 bg-black/95 rounded-[2.5rem] border border-white/10 shadow-2xl pointer-events-auto"
                 >
                     <div className="hidden md:flex items-center gap-6 px-4">
                         <div className="flex flex-col">
-                            <span className="text-[10px] font-black uppercase tracking-widest text-slate-400">Serviço</span>
+                            <span className="text-[10px] font-black uppercase tracking-widest text-slate-400">{t.services.serviceLabel}</span>
                             <span className="text-white font-bold">{service.title}</span>
                         </div>
                     </div>
                     <div className="flex items-center gap-4 w-full md:w-auto">
                         <Link 
                             href="tel:+244921791515"
-                            className="flex-1 md:flex-none px-8 py-4 bg-white/10 text-white rounded-2xl font-black text-[10px] uppercase tracking-widest hover:bg-white/20 transition-all flex items-center justify-center gap-2"
+                            className="flex-1 md:flex-none px-8 py-4 bg-black/40 text-white rounded-2xl font-black text-[10px] uppercase tracking-widest hover:bg-black/60 transition-all flex items-center justify-center gap-2"
                         >
                             <Phone size={14} />
-                            Emergência
+                            {t.services.emergency}
                         </Link>
                         <Link 
                             href={`/contactos?subject=${encodeURIComponent(service.title)}`}
                             className="flex-1 md:flex-none px-8 py-4 bg-secondary text-primary rounded-2xl font-black text-[10px] uppercase tracking-widest hover:bg-yellow-400 transition-all shadow-xl shadow-secondary/20 flex items-center justify-center gap-2"
                         >
-                            Solicitar Proposta
+                            {t.services.requestProposal}
                             <Mail size={14} />
                         </Link>
                     </div>
@@ -53,9 +55,9 @@ export const ServiceDetailContent = ({ service }: { service: any }) => {
                         fill
                         priority
                         className="object-cover"
-                        src={service.imageUrl || "https://images.unsplash.com/photo-1540962351504-03099e0a754b?auto=format&fit=crop&q=80&w=2000"}
+                        src={service.imageUrl || "/images/loja/showroom-panoramica.jpg"}
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-white via-white/40 to-transparent"></div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent"></div>
                 </div>
 
                 <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-12 w-full">
@@ -64,12 +66,12 @@ export const ServiceDetailContent = ({ service }: { service: any }) => {
                         className="inline-flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.3em] text-primary mb-8 hover:gap-4 transition-all"
                     >
                         <ArrowLeft size={14} />
-                        Voltar aos Serviços
+                        {t.services.backToServices}
                     </Link>
                     <motion.h1 
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
-                        className="text-5xl md:text-8xl font-display font-black text-primary tracking-tighter leading-none"
+                        className="text-5xl md:text-8xl font-display font-black text-white tracking-tighter leading-none"
                     >
                         {service.title}
                     </motion.h1>
@@ -108,34 +110,34 @@ export const ServiceDetailContent = ({ service }: { service: any }) => {
                     {/* Sidebar / Info */}
                     <div className="lg:col-span-5 space-y-10">
                         <div className="p-12 bg-primary rounded-[3.5rem] text-white overflow-hidden relative shadow-2xl">
-                            <div className="absolute top-0 right-0 w-64 h-64 bg-secondary/10 rounded-full blur-3xl -mr-32 -mt-32"></div>
+                            <div className="absolute top-0 right-0 w-64 h-64 bg-secondary/10 rounded-full -mr-32 -mt-32"></div>
                             
-                            <h3 className="text-2xl font-black mb-10 tracking-tight">Informações Premium</h3>
+                            <h3 className="text-2xl font-black mb-10 tracking-tight">{t.services.premiumInfo}</h3>
                             
                             <div className="space-y-8">
                                 <div className="flex gap-6">
-                                    <div className="w-12 h-12 bg-white/10 rounded-2xl flex items-center justify-center shrink-0">
+                                    <div className="w-12 h-12 bg-black/20 rounded-2xl flex items-center justify-center shrink-0">
                                         <Clock className="text-secondary" size={24} />
                                     </div>
                                     <div>
-                                        <p className="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-1">Tempo de Resposta</p>
-                                        <p className="font-bold text-lg">Inferior a 4 horas em Moçâmedes</p>
+                                        <p className="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-1">{t.services.responseTime}</p>
+                                        <p className="font-bold text-lg">{t.services.responseTimeDesc}</p>
                                     </div>
                                 </div>
                                 <div className="flex gap-6">
-                                    <div className="w-12 h-12 bg-white/10 rounded-2xl flex items-center justify-center shrink-0">
+                                    <div className="w-12 h-12 bg-black/20 rounded-2xl flex items-center justify-center shrink-0">
                                         <MapPin className="text-secondary" size={24} />
                                     </div>
                                     <div>
-                                        <p className="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-1">Abrangência</p>
-                                        <p className="font-bold text-lg">Todo o litoral de Angola</p>
+                                        <p className="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-1">{t.services.coverage}</p>
+                                        <p className="font-bold text-lg">{t.services.coverageDesc}</p>
                                     </div>
                                 </div>
                             </div>
 
-                            <div className="mt-12 p-8 bg-white/5 rounded-3xl border border-white/10">
+                            <div className="mt-12 p-8 bg-black/20 rounded-3xl border border-white/10">
                                 <p className="text-sm text-slate-300 italic mb-6">
-                                    "A Namtech Pro é o parceiro de confiança para as maiores armadoras de Angola, garantindo que o seu sistema nunca falha quando mais precisa."
+                                    {t.services.trustQuote}
                                 </p>
                                 <div className="flex items-center gap-4">
                                     <div className="w-10 h-10 rounded-full bg-secondary flex items-center justify-center font-black text-primary text-xs">

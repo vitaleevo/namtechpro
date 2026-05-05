@@ -110,7 +110,7 @@ export const ProductFormModal: React.FC<ProductFormModalProps> = ({
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
-                        className="absolute inset-0 bg-slate-950/80 backdrop-blur-xl"
+                        className="absolute inset-0 bg-slate-900/90"
                         onClick={onClose}
                     />
                     <motion.div
@@ -121,7 +121,7 @@ export const ProductFormModal: React.FC<ProductFormModalProps> = ({
                     >
                         {/* Header */}
                         <div className="px-12 py-10 border-b border-slate-100 flex items-center justify-between">
-                            <h2 className="text-3xl font-black text-slate-900 tracking-tighter flex items-center gap-4">
+                            <h2 className="text-3xl font-black text-primary tracking-tighter flex items-center gap-4">
                                 <div className="w-12 h-12 bg-blue-600 rounded-2xl flex items-center justify-center text-white">
                                     {editingItem ? <Edit2 size={24} /> : <PlusCircle size={24} />}
                                 </div>
@@ -141,7 +141,7 @@ export const ProductFormModal: React.FC<ProductFormModalProps> = ({
                                 <div className="space-y-3">
                                     <label className="text-[10px] font-black uppercase tracking-[0.3em] text-slate-400 ml-1">Nome Técnico</label>
                                     <input
-                                        className="w-full px-8 py-5 rounded-[2rem] bg-slate-50 border-2 border-transparent focus:border-blue-600 outline-none transition-all text-slate-900 font-black"
+                                        className="w-full px-8 py-5 rounded-[2rem] bg-slate-50 border-2 border-transparent focus:border-blue-600 outline-none transition-all text-primary font-black"
                                         value={formData.name}
                                         onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                                         required
@@ -150,7 +150,7 @@ export const ProductFormModal: React.FC<ProductFormModalProps> = ({
                                 <div className="space-y-3">
                                     <label className="text-[10px] font-black uppercase tracking-[0.3em] text-slate-400 ml-1">Categoria Operacional</label>
                                     <select
-                                        className="w-full px-8 py-5 rounded-[2rem] bg-slate-50 border-2 border-transparent focus:border-blue-600 outline-none transition-all text-slate-900 font-black cursor-pointer"
+                                        className="w-full px-8 py-5 rounded-[2rem] bg-slate-50 border-2 border-transparent focus:border-blue-600 outline-none transition-all text-primary font-black cursor-pointer"
                                         value={formData.category}
                                         onChange={(e) => setFormData({ ...formData, category: e.target.value })}
                                     >
@@ -165,7 +165,7 @@ export const ProductFormModal: React.FC<ProductFormModalProps> = ({
                             <div className="space-y-3">
                                 <label className="text-[10px] font-black uppercase tracking-[0.3em] text-slate-400 ml-1">Descrição do Módulo</label>
                                 <textarea
-                                    className="w-full px-8 py-5 rounded-[2.5rem] bg-slate-50 border-2 border-transparent focus:border-blue-600 outline-none transition-all text-slate-900 font-bold resize-none"
+                                    className="w-full px-8 py-5 rounded-[2.5rem] bg-slate-50 border-2 border-transparent focus:border-blue-600 outline-none transition-all text-primary font-bold resize-none"
                                     rows={4}
                                     value={formData.description}
                                     onChange={(e) => setFormData({ ...formData, description: e.target.value })}
@@ -177,7 +177,7 @@ export const ProductFormModal: React.FC<ProductFormModalProps> = ({
                                 <div className="space-y-3">
                                     <label className="text-[10px] font-black uppercase tracking-[0.3em] text-slate-400 ml-1">Marca / Fabricante</label>
                                     <input
-                                        className="w-full px-8 py-5 rounded-[2rem] bg-slate-50 border-2 border-transparent focus:border-blue-600 outline-none transition-all text-slate-900 font-black"
+                                        className="w-full px-8 py-5 rounded-[2rem] bg-slate-50 border-2 border-transparent focus:border-blue-600 outline-none transition-all text-primary font-black"
                                         value={formData.brand}
                                         onChange={(e) => setFormData({ ...formData, brand: e.target.value })}
                                         required
@@ -186,7 +186,7 @@ export const ProductFormModal: React.FC<ProductFormModalProps> = ({
                                 <div className="space-y-3">
                                     <label className="text-[10px] font-black uppercase tracking-[0.3em] text-slate-400 ml-1">Estado do Stock</label>
                                     <input
-                                        className="w-full px-8 py-5 rounded-[2rem] bg-slate-50 border-2 border-transparent focus:border-blue-600 outline-none transition-all text-slate-900 font-black"
+                                        className="w-full px-8 py-5 rounded-[2rem] bg-slate-50 border-2 border-transparent focus:border-blue-600 outline-none transition-all text-primary font-black"
                                         value={formData.status}
                                         onChange={(e) => setFormData({ ...formData, status: e.target.value })}
                                     />
@@ -197,7 +197,7 @@ export const ProductFormModal: React.FC<ProductFormModalProps> = ({
                                 <label className="text-[10px] font-black uppercase tracking-[0.3em] text-slate-400 ml-1">Media & Imagens</label>
                                 <div className="flex gap-4">
                                     <input
-                                        className="flex-1 px-8 py-5 rounded-[2rem] bg-slate-50 border-2 border-transparent focus:border-blue-600 outline-none transition-all text-slate-900 font-bold"
+                                        className="flex-1 px-8 py-5 rounded-[2rem] bg-slate-50 border-2 border-transparent focus:border-blue-600 outline-none transition-all text-primary font-bold"
                                         value={formData.imageUrl}
                                         onChange={(e) => setFormData({ ...formData, imageUrl: e.target.value })}
                                         placeholder="URL da Imagem ou Carregar Ficheiro"
@@ -222,7 +222,7 @@ export const ProductFormModal: React.FC<ProductFormModalProps> = ({
                             <div className="space-y-3">
                                 <label className="text-[10px] font-black uppercase tracking-[0.3em] text-slate-400 ml-1">Especificações Técnicas (CSV)</label>
                                 <input
-                                    className="w-full px-8 py-5 rounded-[2rem] bg-slate-50 border-2 border-transparent focus:border-blue-600 outline-none transition-all text-slate-900 font-bold"
+                                    className="w-full px-8 py-5 rounded-[2rem] bg-slate-50 border-2 border-transparent focus:border-blue-600 outline-none transition-all text-primary font-bold"
                                     value={formData.specs}
                                     onChange={(e) => setFormData({ ...formData, specs: e.target.value })}
                                     placeholder="Doppler, Radar, 24 inches..."

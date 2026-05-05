@@ -16,7 +16,7 @@ export default function Home() {
   const { t } = useLanguage();
 
   return (
-    <main className="min-h-screen bg-white text-slate-900 font-sans transition-colors duration-300">
+    <main className="min-h-screen bg-white text-primary font-sans transition-colors duration-300">
       <Navbar />
 
       <div className="animate-in fade-in duration-500">
@@ -26,15 +26,15 @@ export default function Home() {
         <section className="py-24 relative overflow-hidden bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div className="text-center mb-16">
-              <span className="text-secondary font-black text-[10px] uppercase tracking-[0.5em] mb-4 block">Especialidades Técnicas</span>
-              <h2 className="text-5xl md:text-7xl font-display font-black text-primary tracking-tighter">Navegue por <span className="text-secondary">Categoria</span></h2>
+              <span className="text-secondary font-black text-[10px] uppercase tracking-[0.5em] mb-4 block">{t.home.specialtiesBadge}</span>
+              <h2 className="text-5xl md:text-7xl font-display font-black text-primary tracking-tighter">{t.home.categoryTitle} <span className="text-secondary">{t.home.categoryHighlight}</span></h2>
             </div>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
               {[
-                { name: 'Navegação', icon: <Compass size={32} />, slug: 'navegacao', color: 'bg-blue-50' },
-                { name: 'Comunicação', icon: <Radio size={32} />, slug: 'comunicacao', color: 'bg-slate-50' },
-                { name: 'Energia', icon: <Zap size={32} />, slug: 'energia', color: 'bg-yellow-50' },
-                { name: 'Controlo', icon: <Box size={32} />, slug: 'controlo', color: 'bg-indigo-50' },
+                { name: t.home.catNavigation, icon: <Compass size={32} />, slug: 'navegacao', color: 'bg-blue-50' },
+                { name: t.home.catCommunication, icon: <Radio size={32} />, slug: 'comunicacao', color: 'bg-slate-50' },
+                { name: t.home.catEnergy, icon: <Zap size={32} />, slug: 'energia', color: 'bg-yellow-50' },
+                { name: t.home.catControl, icon: <Box size={32} />, slug: 'controlo', color: 'bg-indigo-50' },
               ].map((cat, i) => (
                 <Link key={i} href={`/catalogo/${cat.slug}`}>
                   <motion.div 
@@ -46,7 +46,7 @@ export default function Home() {
                     </div>
                     <span className="text-lg font-black text-primary uppercase tracking-widest leading-none">{cat.name}</span>
                     <div className="mt-4 opacity-0 group-hover:opacity-100 transition-opacity flex items-center gap-2 text-secondary font-black text-[10px] uppercase tracking-widest">
-                      Explorar <ArrowRight size={12} />
+                      {t.home.explore} <ArrowRight size={12} />
                     </div>
                   </motion.div>
                 </Link>
@@ -57,9 +57,7 @@ export default function Home() {
 
         {/* Premium Featured Products Section */}
         <section className="py-40 bg-slate-50 relative overflow-hidden">
-          {/* Background Elements */}
-          <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-secondary/5 rounded-full blur-[120px] -mr-64 -mt-64" />
-          <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[120px] -ml-64 -mb-64" />
+          {/* Clean background without blurs */}
 
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div className="flex flex-col lg:flex-row justify-between items-end mb-24 gap-12">
@@ -67,14 +65,14 @@ export default function Home() {
                 <div className="flex items-center gap-4 mb-6">
                   <div className="h-0.5 w-12 bg-secondary"></div>
                   <span className="text-secondary font-black text-[10px] uppercase tracking-[0.4em] block">
-                    Portfolio de Alta Performance
+                    {t.home.portfolioBadge}
                   </span>
                 </div>
                 <h2 className="text-5xl md:text-8xl font-display font-black text-primary mb-8 leading-[0.85] tracking-tighter">
-                  Equipamentos <br/> <span className="text-secondary underline decoration-primary/10 underline-offset-8">de Elite</span>
+                  {t.home.eliteTitle} <br/> <span className="text-secondary underline decoration-primary/10 underline-offset-8">{t.home.eliteHighlight}</span>
                 </h2>
                 <p className="text-slate-500 text-xl font-medium leading-relaxed max-w-xl">
-                  As tecnologias que definem o futuro das operações marítimas globais, selecionadas pelos nossos engenheiros.
+                  {t.home.eliteDesc}
                 </p>
               </div>
               
@@ -83,13 +81,13 @@ export default function Home() {
                   href="/catalogo"
                   className="group relative overflow-hidden px-14 py-8 bg-primary text-white rounded-[2.5rem] font-black text-xs uppercase tracking-[0.3em] flex items-center justify-center gap-6 hover:shadow-[0_40px_80px_-15px_rgba(0,0,0,0.3)] transition-all hover:-translate-y-1 active:scale-95"
                 >
-                  <span className="relative z-10">Explorar Todo o Inventário</span>
+                  <span className="relative z-10">{t.home.exploreInventory}</span>
                   <ArrowRight size={24} className="relative z-10 transition-transform group-hover:translate-x-3 duration-500" />
                   <div className="absolute inset-0 bg-secondary translate-y-full group-hover:translate-y-0 transition-transform duration-700" />
                 </Link>
                 <p className="text-slate-400 text-[10px] font-black uppercase tracking-widest flex items-center gap-2">
                   <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
-                  Sincronização em tempo real com Convex DB
+                  {t.home.realTimeSync}
                 </p>
               </div>
             </div>

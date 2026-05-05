@@ -69,7 +69,7 @@ export default function AdminChatPage() {
         <div className="h-[calc(100vh-120px)] flex flex-col gap-6">
             <div className="flex items-center justify-between">
                 <div>
-                    <h1 className="text-4xl font-black text-slate-900 tracking-tight">Suporte Live</h1>
+                    <h1 className="text-4xl font-black text-primary tracking-tight">Suporte Live</h1>
                     <p className="text-slate-500 font-medium">Fale em tempo real com os visitantes do site.</p>
                 </div>
                 <div className="flex items-center gap-3">
@@ -112,7 +112,7 @@ export default function AdminChatPage() {
                                             {session.userName ? session.userName.charAt(0) : <User size={16} />}
                                         </div>
                                         <div>
-                                            <h4 className="font-bold text-slate-900 text-sm">{session.userName || "Visitante"}</h4>
+                                            <h4 className="font-bold text-primary text-sm">{session.userName || "Visitante"}</h4>
                                             <p className="text-[10px] text-slate-400 font-medium">
                                                 {new Date(session.lastMessageAt).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
                                             </p>
@@ -150,7 +150,7 @@ export default function AdminChatPage() {
                                         {selectedSession?.userName?.charAt(0) || <User size={20} />}
                                     </div>
                                     <div>
-                                        <h3 className="font-black text-slate-900 leading-none mb-1">{selectedSession?.userName || "Visitante Anónimo"}</h3>
+                                        <h3 className="font-black text-primary leading-none mb-1">{selectedSession?.userName || "Visitante Anónimo"}</h3>
                                         <div className="flex items-center gap-2">
                                             <div className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
                                             <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest">Sessão Ativa</span>
@@ -228,7 +228,7 @@ export default function AdminChatPage() {
                             <div className="w-32 h-32 bg-slate-50 rounded-[3rem] flex items-center justify-center mb-10 shadow-inner">
                                 <MessageCircle size={64} className="text-slate-200" />
                             </div>
-                            <h3 className="text-3xl font-black text-slate-900 mb-4 tracking-tight">Centro de Suporte</h3>
+                            <h3 className="text-3xl font-black text-primary mb-4 tracking-tight">Centro de Suporte</h3>
                             <p className="max-w-sm text-slate-500 font-medium">
                                 Selecione uma conversa na barra lateral para começar a responder aos seus clientes.
                             </p>

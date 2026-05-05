@@ -53,7 +53,7 @@ export const DashboardTab: React.FC<DashboardTabProps> = ({ stats }) => {
                                 {s.up ? <ArrowUpRight size={14} /> : <ArrowDownRight size={14} />}
                             </div>
                         </div>
-                        <p className="text-5xl font-black text-slate-900 mb-2 tracking-tighter">{s.val}</p>
+                        <p className="text-5xl font-black text-primary mb-2 tracking-tighter">{s.val}</p>
                         <p className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em]">{s.label}</p>
                     </div>
                 ))}
@@ -89,7 +89,7 @@ export const DashboardTab: React.FC<DashboardTabProps> = ({ stats }) => {
                 </div>
 
                 <div className="bg-slate-900 p-12 rounded-[4rem] text-white flex flex-col justify-between relative overflow-hidden">
-                    <div className="absolute top-0 right-0 w-64 h-64 bg-blue-600/20 rounded-full -mr-32 -mt-32 blur-3xl" />
+                    <div className="absolute top-0 right-0 w-64 h-64 bg-blue-600/20 rounded-full -mr-32 -mt-32" />
                     <div>
                         <Zap size={48} className="text-blue-500 mb-8" />
                         <h3 className="text-3xl font-black mb-6 leading-tight">Estado Operacional Luanda/Namibe</h3>
@@ -97,7 +97,7 @@ export const DashboardTab: React.FC<DashboardTabProps> = ({ stats }) => {
                             Todos os sistemas de monitorização satélite estão operacionais. Nenhuma falha crítica reportada nas últimas 24h.
                         </p>
                     </div>
-                    <button className="w-full py-5 bg-white text-slate-900 rounded-2xl font-black text-sm hover:scale-105 transition-all flex items-center justify-center gap-3">
+                    <button className="w-full py-5 bg-white text-primary rounded-2xl font-black text-sm hover:scale-105 transition-all flex items-center justify-center gap-3">
                         <CheckCircle2 size={20} className="text-emerald-500" />
                         Relatório de Sistema
                     </button>

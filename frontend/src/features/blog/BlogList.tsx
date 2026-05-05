@@ -22,7 +22,7 @@ export const BlogList = () => {
     }
 
     return (
-        <section className="bg-slate-50 min-h-screen">
+        <section className="bg-white min-h-screen">
             {/* Hero Section */}
             <section className="relative h-[45vh] flex items-center overflow-hidden mb-16">
                 <div className="absolute inset-0 z-0">
@@ -31,9 +31,10 @@ export const BlogList = () => {
                         fill
                         priority
                         className="object-cover"
-                        src="https://images.unsplash.com/photo-1495020689067-958852abab05?auto=format&fit=crop&q=80&w=2000"
+                        src="/images/decorativas/lighthouse-storm.jpg"
                     />
-                    <div className="absolute inset-0 bg-primary/75 backdrop-blur-[2px]"></div>
+                    <div className="absolute inset-0 bg-gradient-to-r from-black/40 via-black/30 to-transparent"></div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
                 </div>
 
                 <div className="relative z-10 max-w-7xl mx-auto px-4 w-full text-center text-white">
@@ -66,7 +67,7 @@ export const BlogList = () => {
                                 initial={{ opacity: 0, y: 20 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ delay: idx * 0.1 }}
-                                className="group bg-white rounded-[2rem] overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-300 border border-slate-100 flex flex-col h-full"
+                                className="group bg-white rounded-[2rem] overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-300 border border-slate-100 flex flex-col h-full hover:-translate-y-1"
                             >
                                 <div className="relative h-64 overflow-hidden">
                                     <Link href={`/blog/${post.slug}`} className="block h-full w-full">
@@ -78,13 +79,13 @@ export const BlogList = () => {
                                         />
                                     </Link>
                                     <div className="absolute top-4 left-4">
-                                        <span className="bg-white/90 backdrop-blur text-primary text-[10px] font-black px-3 py-1.5 rounded-full uppercase tracking-widest shadow-lg">
+                                        <span className="bg-white text-primary text-[10px] font-black px-3 py-1.5 rounded-full uppercase tracking-widest shadow-md border border-slate-100">
                                             {post.category}
                                         </span>
                                     </div>
                                 </div>
                                 <div className="p-8 flex-1 flex flex-col">
-                                    <div className="flex items-center gap-4 text-xs font-bold text-slate-400 mb-4 uppercase tracking-wider">
+                                    <div className="flex items-center gap-4 text-xs font-bold text-slate-500 mb-4 uppercase tracking-wider">
                                         <span className="flex items-center gap-1">
                                             <Calendar size={14} className="text-secondary" />
                                             {new Date(post.publishedAt).toLocaleDateString()}
@@ -95,24 +96,24 @@ export const BlogList = () => {
                                             {post.readTime}
                                         </span>
                                     </div>
-                                    <Link href={`/blog/${post.slug}`} className="block hover:text-primary transition-colors">
-                                        <h3 className="text-2xl font-bold text-slate-900 mb-4 leading-tight group-hover:text-primary transition-colors line-clamp-2">
+                                    <Link href={`/blog/${post.slug}`} className="block hover:text-secondary transition-colors">
+                                        <h3 className="text-2xl font-bold text-primary mb-4 leading-tight group-hover:text-primary transition-colors line-clamp-2">
                                             {post.title}
                                         </h3>
                                     </Link>
-                                    <p className="text-slate-500 mb-8 line-clamp-3 flex-1">
+                                    <p className="text-slate-600 mb-8 line-clamp-3 flex-1">
                                         {post.excerpt}
                                     </p>
-                                    <div className="flex items-center justify-between pt-6 border-t border-slate-50">
+                                    <div className="flex items-center justify-between pt-6 border-t border-slate-100">
                                         <div className="flex items-center gap-2">
-                                            <div className="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center font-bold text-primary text-xs">
+                                            <div className="w-8 h-8 rounded-full bg-slate-50 flex items-center justify-center font-bold text-primary text-xs border border-slate-200">
                                                 {post.author.charAt(0)}
                                             </div>
                                             <span className="text-xs font-bold text-slate-600">{post.author}</span>
                                         </div>
                                         <Link
                                             href={`/blog/${post.slug}`}
-                                            className="text-primary font-black text-xs uppercase tracking-widest flex items-center gap-2 hover:gap-3 transition-all"
+                                            className="text-secondary font-black text-xs uppercase tracking-widest flex items-center gap-2 hover:gap-3 transition-all"
                                         >
                                             Ler Mais
                                             <ArrowRight size={14} />
@@ -123,8 +124,8 @@ export const BlogList = () => {
                         ))}
                     </div>
                 ) : (
-                    <div className="text-center py-24 bg-white rounded-[3rem] border border-slate-100">
-                        <p className="text-slate-400 font-bold">Ainda não há publicações no blog.</p>
+                    <div className="text-center py-24 bg-slate-50 rounded-[3rem] border border-slate-100">
+                        <p className="text-slate-500 font-bold">Ainda não há publicações no blog.</p>
                     </div>
                 )}
             </div>
