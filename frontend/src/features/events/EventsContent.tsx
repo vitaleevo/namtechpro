@@ -13,21 +13,26 @@ import { FeaturedEvents, type EventGallery } from './FeaturedEvents';
 
 export const EventsContent = ({ featuredEvents = [] }: { featuredEvents?: EventGallery[] }) => {
     const { t } = useLanguage();
-    const events = useQuery(api.events.list);
-    const dbCategories = useQuery(api.categories.list, { type: "event" });
+    const dbEvents = useQuery(api.events.list);
     const [filter, setFilter] = useState('All');
 
-    const filteredEvents = useMemo(() => {
-        if (!events) return [];
-        if (filter === 'All') return events;
-        return events.filter((e: Doc<"events">) => e.type === filter);
-    }, [events, filter]);
+    const processedEvents = useMemo(() => {
+        if (!dbEvents) return [];
+        return dbEvents.map(e => ({
+            id: e.id,
+            title: e.title,
+            date: e.date,
+            location: e.location,
+            images: e.images || [e.imageUrl],
+            videos: e.videos || [],
+            type: e.type
+        })) as EventGallery[];
+    }, [dbEvents]);
 
     const filteredFeatured = useMemo(() => {
-        if (!featuredEvents) return [];
-        if (filter === 'All') return featuredEvents;
-        return (featuredEvents as any[]).filter(e => e.type === filter);
-    }, [featuredEvents, filter]);
+        if (filter === 'All') return processedEvents;
+        return processedEvents.filter(e => e.type === filter);
+    }, [processedEvents, filter]);
 
     const filters = [
         { id: 'All', label: 'Todos' },
@@ -35,7 +40,7 @@ export const EventsContent = ({ featuredEvents = [] }: { featuredEvents?: EventG
         { id: 'Event', label: 'Eventos' },
     ];
 
-    if (events === undefined) {
+    if (dbEvents === undefined) {
         return (
             <div className="pt-40 pb-24 flex items-center justify-center min-h-screen bg-white">
                 <div className="w-12 h-12 border-4 border-primary/30 border-t-primary rounded-full animate-spin"></div>
@@ -77,9 +82,32 @@ export const EventsContent = ({ featuredEvents = [] }: { featuredEvents?: EventG
                 </div>
             </section>
 
+            {/* Filter Section */}
+            <div className="max-w-7xl mx-auto px-4 mb-12">
+                <div className="flex gap-4 justify-center">
+                    {filters.map((f) => (
+                        <button
+                            key={f.id}
+                            onClick={() => setFilter(f.id)}
+                            className={`px-8 py-3 rounded-full text-sm font-black uppercase tracking-widest transition-all ${
+                                filter === f.id 
+                                ? 'bg-primary text-white shadow-xl scale-105' 
+                                : 'bg-slate-50 text-slate-400 hover:bg-slate-100'
+                            }`}
+                        >
+                            {f.label}
+                        </button>
+                    ))}
+                </div>
+            </div>
+
             {/* Featured Events Section */}
-            {filteredFeatured.length > 0 && (
+            {filteredFeatured.length > 0 ? (
                 <FeaturedEvents events={filteredFeatured} />
+            ) : (
+                <div className="py-24 text-center text-slate-400 font-bold uppercase tracking-widest">
+                    Nenhum item encontrado nesta categoria.
+                </div>
             )}
         </div>
     );

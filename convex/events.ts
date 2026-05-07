@@ -8,9 +8,23 @@ export const list = query({
         const events = await ctx.db.query("events").withIndex("by_date").order("desc").collect();
         return await Promise.all(events.map(async (e) => {
             const storageUrl = e.storageId ? await ctx.storage.getUrl(e.storageId) : null;
+            
+            // Resolve all gallery IDs to URLs
+            const galleryUrls = e.galleryStorageIds 
+                ? await Promise.all(e.galleryStorageIds.map(id => ctx.storage.getUrl(id)))
+                : [];
+            
+            // Separate images and videos based on extension (simple heuristic)
+            // In a real app, you might store the type in the DB
+            const images = galleryUrls.filter(url => url && !url.includes('.mp4')) as string[];
+            const videos = galleryUrls.filter(url => url && url.includes('.mp4')) as string[];
+
             return {
                 ...e,
-                imageUrl: storageUrl || e.imageUrl || 'https://images.unsplash.com/photo-1511467687858-23d96c32e4ae'
+                id: e._id,
+                imageUrl: storageUrl || e.imageUrl || 'https://images.unsplash.com/photo-1511467687858-23d96c32e4ae',
+                images: images.length > 0 ? images : [e.imageUrl],
+                videos: videos
             };
         }));
     },
@@ -76,5 +90,12 @@ export const remove = mutation({
     handler: async (ctx, args) => {
         await validateAdmin(ctx);
         await ctx.db.delete(args.id);
+    },
+});
+
+export const generateUploadUrl = mutation({
+    args: {},
+    handler: async (ctx) => {
+        return await ctx.storage.generateUploadUrl();
     },
 });

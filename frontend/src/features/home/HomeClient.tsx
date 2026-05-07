@@ -17,8 +17,29 @@ import { VesselsShowcase } from '@/features/home/VesselsShowcase';
 
 import { CommunicationShowcase } from '@/features/home/CommunicationShowcase';
 
-export function HomeClient({ featuredEvents }: { featuredEvents: EventGallery[] }) {
+import { useQuery } from "convex/react";
+import { api } from "@/convex/_generated/api";
+
+export function HomeClient({ featuredEvents: staticFeatured }: { featuredEvents: EventGallery[] }) {
   const { t } = useLanguage();
+  const dbEvents = useQuery(api.events.list);
+
+  const events = React.useMemo(() => {
+    if (!dbEvents) return staticFeatured;
+    const processed = dbEvents.map(e => ({
+      id: e.id,
+      title: e.title,
+      date: e.date,
+      location: e.location,
+      images: e.images || [e.imageUrl],
+      videos: e.videos || [],
+      type: e.type,
+      featured: e.featured
+    })) as (EventGallery & { featured?: boolean })[];
+    
+    const featured = processed.filter(e => e.featured);
+    return featured.length > 0 ? featured : processed.slice(0, 2);
+  }, [dbEvents, staticFeatured]);
 
   return (
     <div className="animate-in fade-in duration-500">
@@ -114,7 +135,7 @@ export function HomeClient({ featuredEvents }: { featuredEvents: EventGallery[] 
       <SpecializedSolutions />
 
       {/* Featured Events (Now with Real Data) */}
-      <FeaturedEvents events={featuredEvents} />
+      <FeaturedEvents events={events} />
 
       {/* Latest News Section */}
       <NewsSection />

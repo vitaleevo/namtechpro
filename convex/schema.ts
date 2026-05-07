@@ -34,8 +34,9 @@ export default defineSchema({
         time: v.optional(v.string()), // HH:mm
         location: v.string(),
         type: v.string(), // 'Event', 'Project', 'Community'
-        imageUrl: v.string(),
-        storageId: v.optional(v.id("_storage")),
+        imageUrl: v.string(), // Main featured image
+        storageId: v.optional(v.id("_storage")), // Storage ID for main image
+        galleryStorageIds: v.optional(v.array(v.id("_storage"))), // Multiple images for the gallery
         featured: v.boolean(),
         content: v.optional(v.string()), // Detailed content
     }).index("by_date", ["date"]),
