@@ -31,11 +31,12 @@ export function HomeClient({ featuredEvents: staticFeatured }: { featuredEvents:
       title: e.title,
       date: e.date,
       location: e.location,
+      imageUrl: e.imageUrl,
       images: e.images || [e.imageUrl],
       videos: e.videos || [],
       type: e.type,
       featured: e.featured
-    })) as (EventGallery & { featured?: boolean })[];
+    })) as EventGallery[];
     
     const featured = processed.filter(e => e.featured);
     return featured.length > 0 ? featured : processed.slice(0, 2);

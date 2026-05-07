@@ -5,6 +5,8 @@ import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import { MapPin, Calendar, Camera, Video, X, ChevronLeft, ChevronRight } from 'lucide-react';
 
+export type EventType = 'Event' | 'Project' | 'Community';
+
 export type EventGallery = {
     id: string;
     title: string;
@@ -12,6 +14,11 @@ export type EventGallery = {
     location: string;
     images: string[];
     videos: string[];
+    type: EventType | string;
+    featured?: boolean;
+    description?: string;
+    content?: string;
+    imageUrl: string;
 };
 
 export const FeaturedEvents = ({ events }: { events: EventGallery[] }) => {

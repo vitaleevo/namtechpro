@@ -7,6 +7,7 @@ export const staticEvents = [
         "location": "Luanda",
         "type": "Event",
         "dir": "eventos",
+        "imageUrl": "/images/eventos/FILDA 2025/f1.jpg",
         "images": [
             "/images/eventos/FILDA 2025/f1.jpg",
             "/images/eventos/FILDA 2025/IMG-20250722-WA0013.jpg",
@@ -76,6 +77,7 @@ export const staticEvents = [
         "location": "Namibe",
         "type": "Event",
         "dir": "eventos",
+        "imageUrl": "/images/eventos/FEIRA DA CIDADE de MOÇAMEDES 2025/IMG-20250321-WA0023.jpg",
         "images": [
             "/images/eventos/FEIRA DA CIDADE de MOÇAMEDES 2025/IMG-20250321-WA0023.jpg",
             "/images/eventos/FEIRA DA CIDADE de MOÇAMEDES 2025/IMG-20250321-WA0025.jpg",
@@ -96,6 +98,7 @@ export const staticEvents = [
         "location": "Namibe",
         "type": "Event",
         "dir": "eventos",
+        "imageUrl": "/images/eventos/FEIRA DO TOMATE 2025 MOÇAMEDES/IMG-20250612-WA0101.jpg",
         "images": [
             "/images/eventos/FEIRA DO TOMATE 2025 MOÇAMEDES/IMG-20250612-WA0101.jpg",
             "/images/eventos/FEIRA DO TOMATE 2025 MOÇAMEDES/IMG-20250612-WA0103.jpg",
@@ -128,6 +131,7 @@ export const staticEvents = [
         "location": "Namibe",
         "type": "Event",
         "dir": "eventos",
+        "imageUrl": "/images/eventos/FEIRA DO TURISMO 2024 cidade MOÇAMEDES/IMG-20250612-WA0130.jpg",
         "images": [
             "/images/eventos/FEIRA DO TURISMO 2024 cidade MOÇAMEDES/IMG-20250612-WA0130.jpg",
             "/images/eventos/FEIRA DO TURISMO 2024 cidade MOÇAMEDES/IMG-20250612-WA0132.jpg",
@@ -151,6 +155,7 @@ export const staticEvents = [
         "location": "Parque Nacional de Iona",
         "type": "Project",
         "dir": "trabalhos",
+        "imageUrl": "/images/trabalhos/SEMI RIGIDO AFRICAN PARKS/IMG-20250331-WA0007.jpg",
         "images": [
             "/images/trabalhos/SEMI RIGIDO AFRICAN PARKS/IMG-20250331-WA0007.jpg",
             "/images/trabalhos/SEMI RIGIDO AFRICAN PARKS/IMG-20250408-WA0045.jpg",

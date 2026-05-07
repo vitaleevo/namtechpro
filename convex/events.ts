@@ -35,10 +35,23 @@ export const getById = query({
     handler: async (ctx, args) => {
         const event = await ctx.db.get(args.id);
         if (!event) return null;
+        
         const storageUrl = event.storageId ? await ctx.storage.getUrl(event.storageId) : null;
+        
+        // Resolve all gallery IDs to URLs
+        const galleryUrls = event.galleryStorageIds 
+            ? await Promise.all(event.galleryStorageIds.map(id => ctx.storage.getUrl(id)))
+            : [];
+        
+        const images = galleryUrls.filter(url => url && !url.includes('.mp4')) as string[];
+        const videos = galleryUrls.filter(url => url && url.includes('.mp4')) as string[];
+
         return {
             ...event,
-            imageUrl: storageUrl || event.imageUrl || 'https://images.unsplash.com/photo-1511467687858-23d96c32e4ae'
+            id: event._id,
+            imageUrl: storageUrl || event.imageUrl || 'https://images.unsplash.com/photo-1511467687858-23d96c32e4ae',
+            images: images.length > 0 ? images : [event.imageUrl],
+            videos: videos
         };
     },
 });

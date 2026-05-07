@@ -23,6 +23,7 @@ export const EventsContent = ({ featuredEvents = [] }: { featuredEvents?: EventG
             title: e.title,
             date: e.date,
             location: e.location,
+            imageUrl: e.imageUrl,
             images: e.images || [e.imageUrl],
             videos: e.videos || [],
             type: e.type

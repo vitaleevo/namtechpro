@@ -8,9 +8,10 @@ import { Navbar } from "@/features/navigation/Navbar";
 import { Footer } from "@/features/navigation/Footer";
 import { useLanguage } from '@/i18n';
 import Image from 'next/image';
+import { EventGallery } from './FeaturedEvents';
 
 interface EventsDetailContentProps {
-    event: any;
+    event: EventGallery;
 }
 
 export function EventsDetailContent({ event }: EventsDetailContentProps) {
@@ -71,7 +72,7 @@ export function EventsDetailContent({ event }: EventsDetailContentProps) {
                 <div className="max-w-3xl mx-auto px-4 sm:px-6">
                     <div className="prose prose-lg prose-slate prose-headings:font-display prose-headings:font-bold prose-a:text-primary hover:prose-a:text-secondary prose-img:rounded-xl">
                         <div
-                            dangerouslySetInnerHTML={{ __html: event.content || event.description }}
+                            dangerouslySetInnerHTML={{ __html: event.content || event.description || "" }}
                             className="leading-relaxed text-slate-600 text-lg"
                         />
                     </div>
