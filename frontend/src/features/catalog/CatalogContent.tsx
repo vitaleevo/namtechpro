@@ -122,7 +122,7 @@ export const CatalogContent = ({ initialCategory }: { initialCategory?: string }
             />
 
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-8 mb-16 pt-12 relative z-40">
+                <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-8 mb-12 pt-24 relative z-40">
                     <div className="max-w-xl">
                         <div className="h-1.5 w-12 bg-secondary mb-4 rounded-full"></div>
                         <h2 className="text-3xl md:text-4xl font-display font-black text-primary">

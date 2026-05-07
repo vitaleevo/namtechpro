@@ -341,7 +341,7 @@ export const Navbar = () => {
     return (
         <nav
             ref={navbarRef}
-            className="fixed w-full z-50 bg-white border-b border-slate-200 transition-colors"
+            className="sticky top-0 w-full z-50 bg-white border-b border-slate-200 transition-colors"
             onMouseLeave={() => setActiveMegaMenu(null)}
         >
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

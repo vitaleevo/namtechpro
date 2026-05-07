@@ -51,7 +51,7 @@ export const EventsContent = ({ featuredEvents = [] }: { featuredEvents?: EventG
     return (
         <div className="bg-white min-h-screen">
             {/* Hero Section */}
-            <section className="relative h-[50vh] flex items-center overflow-hidden mb-16">
+            <section className="relative h-[50vh] flex items-center overflow-hidden mb-24">
                 <div className="absolute inset-0 z-0">
                     <Image
                         alt="Events & Projects"
