@@ -26,19 +26,51 @@ export const ProductGrid = () => {
     }
 
     // Filtramos os produtos profissionais mais relevantes
-    const featuredNames = [
-        "Piloto Automático Simrad AP44",
-        "Rádio VHF Icom IC-M605",
-        "Iridium Certus 100",
-        "Painel Solar Marítimo 200W",
-        "Victron MultiPlus 3000",
-        "Telefone Satélite Iridium"
+    const products = [
+        {
+            _id: "simrad-ap44",
+            name: "Piloto Automático Simrad AP44",
+            brand: "Simrad",
+            category: "Controlo",
+            description: "Controlador intuitivo com ecrã de 4.1 polegadas de alta visibilidade. Perfeito para embarcações que exigem precisão absoluta em rotas complexas ou condições de mar adversas.",
+            imageUrl: "/images/produtos/novos/simrad_ap44.jpg",
+            status: "Disponível",
+            specs: ["Glass Helm Design", "NMEA 2000", "No Drift Steering"]
+        },
+        {
+            _id: "icom-605",
+            name: "Rádio VHF Icom IC-M605",
+            brand: "Icom",
+            category: "Comunicação",
+            description: "Rádio VHF com receptor AIS integrado e ecrã TFT colorido. O padrão ouro para comunicação marítima, permitindo a visualização de alvos AIS diretamente no visor do rádio.",
+            imageUrl: "/images/produtos/novos/navicom_vhf.jpg",
+            status: "Top Vendas",
+            specs: ["Integrated AIS", "DSC Class D", "Intuitive UI"]
+        },
+        {
+            _id: "iridium-certus",
+            name: "Iridium Certus 100",
+            brand: "Iridium",
+            category: "Comunicação",
+            description: "Terminal satélite compacto para voz e dados em qualquer ponto do globo. Ideal para manter a conectividade da tripulação e sistemas de monitorização em tempo real em alto mar.",
+            imageUrl: "/images/produtos/novos/iridium_use.webp",
+            status: "Novo",
+            specs: ["IP data up to 88kbps", "High-quality voice", "Small footprint"]
+        },
+        {
+            _id: "victron-3000",
+            name: "Victron MultiPlus 3000",
+            brand: "Victron",
+            category: "Energia",
+            description: "Inversor/carregador híbrido para sistemas marítimos e industriais. Garante uma transição perfeita entre energia de cais e baterias, protegendo eletrónicos sensíveis.",
+            imageUrl: "/images/produtos/novos/victron_multiplus.jpg",
+            status: "Top Vendas",
+            specs: ["Pure Sine Wave", "Parallel connection", "Remote monitoring"]
+        }
     ];
 
-    const products = convexProducts.filter(p => featuredNames.includes(p.name));
-
     return (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-12">
             {products.map((product, index) => (
                 <motion.div
                     key={product._id}
@@ -58,14 +90,14 @@ export const ProductGrid = () => {
                         </div>
 
                         {/* Image Container with Parallax Zoom */}
-                        <div className="relative h-96 overflow-hidden shrink-0">
+                        <div className="relative h-[400px] overflow-hidden shrink-0">
                             <Image
                                 src={product.imageUrl}
                                 alt={product.name}
                                 fill
-                                className="object-cover transition-transform duration-1000 ease-out group-hover:scale-110"
+                                className="object-contain p-8 transition-transform duration-1000 ease-out group-hover:scale-110"
                             />
-                            <div className="absolute inset-0 bg-gradient-to-t from-primary/80 via-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+                            <div className="absolute inset-0 bg-gradient-to-t from-primary/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
                             
                             {/* Brand Tag */}
                             <div className="absolute bottom-6 right-10 z-20 bg-slate-50 px-6 py-2 rounded-2xl shadow-xl">
@@ -89,7 +121,7 @@ export const ProductGrid = () => {
                             </p>
 
                             <div className="flex items-center gap-4 mb-10 overflow-x-auto pb-2 scrollbar-none">
-                                {product.specs?.slice(0, 3).map((spec: string, i: number) => (
+                                {product.specs?.map((spec: string, i: number) => (
                                     <span key={i} className="whitespace-nowrap bg-slate-50 text-slate-400 text-[9px] font-black uppercase tracking-widest px-4 py-2.5 rounded-xl border border-slate-100">
                                         {spec}
                                     </span>

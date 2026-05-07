@@ -2,7 +2,7 @@ import { Geist, Geist_Mono, Inter, Outfit } from "next/font/google";
 import "./globals.css";
 import { ConvexClientProvider } from "@/components/providers/ConvexClientProvider";
 import { ClientLanguageProvider } from "@/components/providers/ClientLanguageProvider";
-import { ChatWidget } from "@/features/chat/ChatWidget";
+
 
 const inter = Inter({
   variable: "--font-inter",
@@ -38,7 +38,7 @@ export const metadata: Metadata = {
     "radar",
     "GPS",
     "rádio VHF",
-    "energia solar",
+    "energia marítima",
     "Angola",
     "Namibe",
     "Luanda",
@@ -104,7 +104,7 @@ export default function RootLayout({
         <ConvexClientProvider>
           <ClientLanguageProvider>
             {children}
-            <ChatWidget />
+
           </ClientLanguageProvider>
         </ConvexClientProvider>
       </body>

@@ -3,7 +3,7 @@ import { mutation, query } from "./_generated/server";
 import { validateAdmin } from "./auth_utils";
 import { rateLimit } from "./rateLimit";
 
-const validServiceTypes = ["Naval Tech", "Solar Audit", "Radio Maintenance", "GPS Installation", "Radar System"];
+const validServiceTypes = ["Naval Tech", "Energy Systems", "Radio Maintenance", "GPS Installation", "Radar System"];
 const validLocations = ["Namibe", "Luanda", "Lobito"];
 
 function isValidTime(time: string): boolean {

@@ -17,7 +17,7 @@ export const HeroSection = () => {
                         fill
                         priority
                         className="object-cover scale-105"
-                        src="/images/decorativas/hero-yacht-night.jpg"
+                        src="/images/decorativas/hero_new.jpg"
                     />
                     <div className="absolute inset-0 bg-black/30"></div>
                     <div className="absolute inset-0 bg-gradient-to-r from-black/50 via-black/20 to-transparent"></div>
@@ -88,10 +88,10 @@ export const HeroSection = () => {
             <section className="relative z-20 -mt-32 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8">
                     {[
-                        { label: t.home.sectors.boats, image: '/images/decorativas/african-sailboat.jpg' },
-                        { label: t.home.sectors.rescue, image: '/images/decorativas/coast-guard-rescue.jpg' },
-                        { label: t.home.sectors.services, image: '/images/decorativas/nav-equipment.jpg' },
-                        { label: t.home.sectors.equipment, image: '/images/decorativas/combat-info-center.jpg' }
+                        { label: t.home.sectors.boats, image: '/images/barcos/pesca.jpg' },
+                        { label: t.home.sectors.rescue, image: '/images/produtos/novos/salvacao.jpg' },
+                        { label: t.home.sectors.services, image: '/images/loja/fachada.jpg' },
+                        { label: t.home.sectors.equipment, image: '/images/produtos/novos/acessorios.jpg' }
                     ].map((sector, i) => (
                         <motion.div
                             key={i}

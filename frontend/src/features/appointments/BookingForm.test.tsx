@@ -8,7 +8,7 @@ vi.mock('@/i18n', () => ({
   useLanguage: () => ({
     t: {
       booking: {
-        services: { naval: 'Naval', solar: 'Solar', radio: 'Radio', general: 'Geral' },
+        services: { naval: 'Naval', radio: 'Rádio', general: 'Geral' },
         locations: { namibe: 'Namibe', luanda: 'Luanda', lobito: 'Lobito', offshore: 'Offshore' },
         name: 'Nome',
         email: 'Email',

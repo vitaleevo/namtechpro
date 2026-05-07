@@ -179,13 +179,13 @@ export const processBotResponse = action({
         else if (text.includes("produto") || text.includes("catalogo") || text.includes("catálogo") || text.includes("comprar") || text.includes("venda") || text.includes("ver produtos")) {
             response = `Temos soluções avançadas em várias áreas. Qual destas categorias gostaria de explorar primeiro?`;
             options = catNames.slice(0, 4);
-            if (options.length === 0) options = ["Energia Solar", "Navegação", "Segurança"];
+            if (options.length === 0) options = ["Energia Marítima", "Navegação", "Segurança"];
         }
 
         // 3. SERVICES
         else if (text.includes("serviço") || text.includes("fazem") || text.includes("fazer") || text.includes("trabalho") || text.includes("nossos serviços")) {
             response = "A Namtech Pro foca-se na excelência tecnológica. Operamos em 4 pilares principais:";
-            response += "\n\n1. Energia Sustentável\n2. Tecnologia Naval\n3. Comunicações\n4. Segurança Eletrónica";
+            response += "\n\n1. Sistemas de Energia\n2. Tecnologia Naval\n3. Comunicações\n4. Segurança Eletrónica";
             response += "\n\nQual deles quer conhecer a fundo?";
             options = ["Energia", "Naval", "Rádio/Comunicações", "Segurança"];
         }

@@ -57,7 +57,7 @@ export default defineSchema({
         customerName: v.string(),
         email: v.string(),
         phone: v.string(),
-        serviceType: v.string(), // e.g., "Naval Tech", "Solar Audit", "Radio Maintenance"
+        serviceType: v.string(), // e.g., "Naval Tech", "Energy Systems", "Radio Maintenance"
         location: v.string(), // Namibe, Luanda, Lobito
         date: v.string(), // ISO string
         time: v.string(), // HH:mm

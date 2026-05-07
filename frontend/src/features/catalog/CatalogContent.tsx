@@ -122,12 +122,15 @@ export const CatalogContent = ({ initialCategory }: { initialCategory?: string }
             />
 
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-8 mb-16 -mt-12 relative z-40">
+                <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-8 mb-16 pt-12 relative z-40">
                     <div className="max-w-xl">
-                        <div className="h-1.5 w-12 bg-secondary mb-6 rounded-full"></div>
+                        <div className="h-1.5 w-12 bg-secondary mb-4 rounded-full"></div>
+                        <h2 className="text-3xl md:text-4xl font-display font-black text-primary">
+                            {t.catalog.exploreProducts}
+                        </h2>
                     </div>
                     <div className="flex flex-col sm:flex-row gap-4 w-full md:w-auto">
-                        <div className="relative flex-1 sm:w-80">
+                        <div className="relative flex-1 sm:w-96">
                             <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" size={20} />
                             <input
                                 type="text"

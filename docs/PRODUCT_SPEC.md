@@ -9,7 +9,7 @@ To provide a premium, modern, and reliable digital presence that reflects the "E
 ## 2. Target Audience
 - **Maritime Professionals**: Ship owners, technical managers, and port operators.
 - **Technical Engineers**: Professionals looking for specific technical specs and reliable equipment.
-- **Industrial Clients**: Entities requiring solar energy audits, radio maintenance, and control systems.
+- **Industrial Clients**: Entities requiring maritime energy systems, radio maintenance, and control systems.
 - **Local Communities**: Engaging with projects and technical events in coastal Angola.
 
 ## 3. Core Features
@@ -21,7 +21,7 @@ To provide a premium, modern, and reliable digital presence that reflects the "E
 - **Premium Visualization**: High-quality imagery for all technical equipment.
 
 ### 3.2 Service Scheduling (Agendamento)
-- **Service Types**: Solar Audits, Radio Maintenance, Naval Technology consultations.
+- **Service Types**: Maritime Energy Systems, Radio Maintenance, Naval Technology consultations.
 - **Location-based Booking**: Choice of service location (Namibe, Luanda, Lobito).
 - **Automated Workflow**: User-friendly form capturing customer details, desired service, date, and time.
 - **Status Tracking**: Internal tracking of appointments (Pending, Confirmed, Completed, Cancelled).

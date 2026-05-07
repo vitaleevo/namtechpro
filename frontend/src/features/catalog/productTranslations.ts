@@ -46,16 +46,16 @@ export const productTranslations: Record<string, {
             specs: ["Données IP jusqu'à 88kbps", "Voix haute qualité", "Faible encombrement"]
         }
     },
-    "Painel Solar Marítimo 200W": {
+    "Bateria AGM Victron 12V/220Ah": {
         EN: {
-            name: "Marine Solar Panel 200W",
-            description: "Flexible monocrystalline panel with ETFE coating for high durability. Developed to withstand extreme saline environments without loss of efficiency.",
-            specs: ["Flexible design", "Saltwater resistant", "Anti-reflective"]
+            name: "Victron AGM Battery 12V/220Ah",
+            description: "Deep cycle AGM battery with low self-discharge and high performance. Specially designed for maritime use in demanding conditions.",
+            specs: ["VRLA technology", "Low self-discharge", "Maintenance free"]
         },
         FR: {
-            name: "Panneau Solaire Maritime 200W",
-            description: "Panneau monocristallin flexible avec revêtement ETFE pour une haute durabilité. Développé pour résister aux environnements salins extrêmes sans perte d'efficacité.",
-            specs: ["Design flexible", "Résistant à l'eau salée", "Anti-reflet"]
+            name: "Batterie AGM Victron 12V/220Ah",
+            description: "Batterie AGM à décharge profonde avec faible autodécharge et haute performance. Spécialement conçue pour un usage maritime dans des conditions exigeantes.",
+            specs: ["Technologie VRLA", "Faible autodécharge", "Sans entretien"]
         }
     },
     "Victron MultiPlus 3000": {

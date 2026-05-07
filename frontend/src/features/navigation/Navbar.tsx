@@ -71,7 +71,7 @@ export const Navbar = () => {
         sections: [
             {
                 title: t.megaMenu.vhf,
-                image: "/images/imagens/Radar_antenna.jpg",
+                image: "/images/equipamentos/entel/HT644-front.jpg",
                 items: [
                     { label: "Sailor", href: "/catalogo?category=Radios%20VHF", icon: "radio" },
                     { label: "Navicon", href: "/catalogo?category=Radios%20VHF", icon: "radio" },
@@ -97,7 +97,7 @@ export const Navbar = () => {
             },
             {
                 title: t.megaMenu.gmdss,
-                image: "/images/imagens/Radar_antenna.jpg",
+                image: "/images/equipamentos/sailor/SAILOR T20.00223-2.jpg",
                 items: [
                     { label: "Sailor Cobham", href: "/catalogo?category=GMDSS", icon: "emergency" },
                     { label: "Thrane", href: "/catalogo?category=GMDSS", icon: "emergency" }
@@ -105,7 +105,7 @@ export const Navbar = () => {
             },
             {
                 title: t.megaMenu.satellite,
-                image: "/images/imagens/Radar_antenna.jpg",
+                image: "/images/loja/interior-iridium.jpg",
                 items: [
                     { label: "Iridium", href: "/catalogo?category=Sat%C3%A9lite", icon: "satellite_alt" },
                     { label: "Inmarsat", href: "/catalogo?category=Sat%C3%A9lite", icon: "satellite_alt" },

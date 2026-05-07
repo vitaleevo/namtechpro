@@ -142,6 +142,26 @@ export const seed = mutation({
         });
 
         await ctx.db.insert("products", {
+            name: "Victron MultiPlus 3000",
+            category: "Energia",
+            brand: "Victron Energy",
+            description: "Inversor/carregador híbrido para sistemas marítimos e industriais. Garante a transição perfeita entre a energia de cais e as baterias.",
+            status: "Top Vendas",
+            imageUrl: "/assets/new/victron-energy.webp",
+            specs: ["Onda Senoidal Pura", "Ligação em Paralelo", "Monitorização Remota"]
+        });
+
+        await ctx.db.insert("products", {
+            name: "Bateria AGM Victron 12V/220Ah",
+            category: "Energia",
+            brand: "Victron Energy",
+            description: "Bateria AGM de ciclo profundo com baixa auto-descarga e elevado desempenho. Especialmente desenhada para uso marítimo.",
+            status: "Disponível",
+            imageUrl: "/assets/new/victron-energy.webp",
+            specs: ["Tecnologia VRLA", "Ciclo Profundo", "Sem Manutenção"]
+        });
+
+        await ctx.db.insert("products", {
             name: "Kit de Resgate Marítimo",
             category: "Segurança",
             brand: "Lalizas",

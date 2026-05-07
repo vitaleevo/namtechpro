@@ -271,6 +271,66 @@ export const ContactContent = () => {
                     </div>
                 </div>
             </div>
+
+            {/* Store Gallery Section */}
+            <section className="py-32 mt-16 bg-slate-50 border-t border-slate-100">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div className="text-center mb-16">
+                        <span className="text-secondary font-black text-[10px] uppercase tracking-[0.5em] mb-4 block">Nossa Presença</span>
+                        <h2 className="text-4xl md:text-6xl font-display font-black text-primary tracking-tighter">
+                            Visite a nossa <span className="text-secondary">Loja no Namibe</span>
+                        </h2>
+                        <p className="text-slate-500 max-w-2xl mx-auto mt-6">
+                            Venha conhecer o nosso showroom e falar pessoalmente com os nossos especialistas. Dispomos de uma vasta gama de equipamentos em stock e prontos para entrega.
+                        </p>
+                    </div>
+
+                    <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                        {[
+                            { src: '/images/loja/fachada.jpg', span: 'col-span-2 row-span-2' },
+                            { src: '/images/loja/showroom-geral.jpg', span: 'col-span-2' },
+                            { src: '/images/loja/montra.jpg', span: 'col-span-1' },
+                            { src: '/images/loja/entrada.jpg', span: 'col-span-1' },
+                            { src: '/images/loja/interior-vitrine.jpg', span: 'col-span-2' },
+                        ].map((item, i) => (
+                            <motion.div
+                                key={i}
+                                whileHover={{ scale: 1.02 }}
+                                className={`relative rounded-[2rem] overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500 min-h-[200px] ${item.span}`}
+                            >
+                                <Image 
+                                    src={item.src} 
+                                    alt="Namtech Store" 
+                                    fill 
+                                    className="object-cover"
+                                />
+                                <div className="absolute inset-0 bg-primary/0 hover:bg-primary/10 transition-colors duration-300"></div>
+                            </motion.div>
+                        ))}
+                    </div>
+                    
+                    <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8">
+                        <div className="bg-white p-8 rounded-3xl border border-slate-100 flex items-center gap-6">
+                            <div className="w-12 h-12 rounded-2xl bg-slate-50 flex items-center justify-center shrink-0">
+                                <span className="material-symbols-outlined text-secondary">inventory_2</span>
+                            </div>
+                            <p className="text-sm font-bold text-primary">Equipamentos em Stock para entrega imediata</p>
+                        </div>
+                        <div className="bg-white p-8 rounded-3xl border border-slate-100 flex items-center gap-6">
+                            <div className="w-12 h-12 rounded-2xl bg-slate-50 flex items-center justify-center shrink-0">
+                                <span className="material-symbols-outlined text-secondary">support_agent</span>
+                            </div>
+                            <p className="text-sm font-bold text-primary">Atendimento personalizado e técnico especializado</p>
+                        </div>
+                        <div className="bg-white p-8 rounded-3xl border border-slate-100 flex items-center gap-6">
+                            <div className="w-12 h-12 rounded-2xl bg-slate-50 flex items-center justify-center shrink-0">
+                                <span className="material-symbols-outlined text-secondary">engineering</span>
+                            </div>
+                            <p className="text-sm font-bold text-primary">Área técnica dedicada para reparações e testes</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
         </div>
     );
 };

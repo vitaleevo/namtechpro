@@ -127,7 +127,6 @@ export default function BackofficeLayout({
         { href: "/namtechprobackoffice/categories", label: "Categorias", icon: Tag },
         { href: "/namtechprobackoffice/appointments", label: "Agendamentos", icon: Clock },
         { href: "/namtechprobackoffice/leads", label: "Contactos (Leads)", icon: Users },
-        { href: "/namtechprobackoffice/chat", label: "Suporte Live", icon: MessageCircle },
     ];
 
     return (
